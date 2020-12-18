@@ -1,0 +1,40 @@
+<%- include('./includes/head.ejs') %> 
+	</head>
+	<body>
+		<%- include('./includes/nav.ejs') %> 
+
+		<section class="welcome">
+			<h2>Welcome to Ex-Quiz-It!</h2>
+			<p>
+				Test your knowledge and see how you stack up against other
+				Ex-Quiz-It users!
+			</p>
+		</section>
+
+		<section class="main">
+			<% for (let quiz of quizzes) { %>
+
+				<a href="/<%= quiz._id %>">
+
+				<div class="quiz-card">
+					<div class="quiz-card-content">
+						<div class="quiz-card-title">
+							<h2><%= quiz.title %></h2>
+						</div>
+						<div class="quiz-card-onhover">
+							<p class="quiz-card-info">
+								<%- quiz.description%>
+							</p>
+							<br />
+							<p class="quiz-card-prompt">Take the Quiz!</p>
+						</div>
+					</div>
+				</div>
+			</a>
+			<% } %>
+		
+		</section>
+		</body>
+		</html>
+		<!-- <%- include('./includes/end.ejs') %>  -->
+
