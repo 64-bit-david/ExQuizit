@@ -35,7 +35,7 @@ exports.getQuiz = (req, res, nex) => {
 exports.createQuiz = (req, res, next) => {
   res.render('create-quiz', {
     pageTitle: 'Create Your Quiz',
-    path: 'create-quiz',
+
   })
 }
 

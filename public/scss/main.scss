@@ -209,9 +209,66 @@ nav {
   span:after {
     content: '\25b8';
   }
-
-  
 }
 
- 
 
+//Quiz Template
+
+.quiz-template-container{
+  display: flex;
+  align-items: start;
+  .table-quiz-container{
+    margin-right: 7rem;
+  }
+  .quiz-input-card{
+    border: 1px solid $primary-color;
+    padding: 2rem;
+    border-radius: .3rem;
+    width: 40rem;
+    h3{
+      font-size: 3rem;
+    }
+  }
+  .quiz-start{
+    &.hide{
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  .quiz-during{
+    opacity: 0;
+    visibility: hidden;
+      input{
+        font-size: 1.7rem;
+        color: #333;
+        &::placeholder {
+        // color: #333;
+        font-size: 1.7rem;
+      }
+      &:focus::placeholder {
+        color: transparent;
+      }
+    }
+    .quiz-timer{
+      font-size: 5rem;
+      font-weight: bold;
+
+    }
+    &.active{
+      opacity: 1;
+      visibility: visible;
+    }
+    &.hide{
+      display: none;
+    }
+  }
+  .quiz-end{
+    opacity: 0;
+    visibility: hidden;
+    &.active{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

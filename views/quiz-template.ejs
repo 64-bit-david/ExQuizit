@@ -1,35 +1,48 @@
-<%- include('./includes/head.ejs') %> 
-	</head>
-	<body>
-		<%- include('./includes/nav.ejs') %> 
+<%- include('./includes/head.ejs') %>
 
-		<section class="welcome">
-			<h2><%= quiz.title %> </h2>
-			<p>
-				Can you guess 10 biggest countries by population?
-			</p>
-		</section>
+<body>
+	<%- include('./includes/nav.ejs') %>
 
-		<section class="quiz-body">
-		<section class="quiz">
-			<table class="table-quiz">
-			<tr>
-				<th>#</th>
-				<th>Company</th>
-				<th>Contact</th>
-				<th>Country</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td class="">Alfreds Futterkiste</td>
-				<td>Maria Anders</td>
-				<td>Germany</td>
-			</tr>
-		</table>
+	<section class="welcome">
+		<h2><%= quiz.title %></h2>
+		<p>Can you guess 10 biggest countries by population?</p>
 	</section>
-	
+
+	<section class="quiz">
+		<div class="quiz-template-container">
+			<div class="table-quiz-container">
+				<table class="table-quiz">
+					<tr>
+						<th>#</th>
+						<th>Question</th>
+						<th>Answer</th>
+					</tr>
+					<% for(let i = 1; i < quiz.aList.length; i++) { %>
+					<tr>
+						<td><%= i %></td>
+						<td><%= quiz.qList[i]%></td>
+						<td><%= quiz.aList[i]%></td>
+					</tr>
+					<% } %>
+				</table>
+			</div>
+
+			<div class="quiz-input-card quiz-start">
+				<h3>Start Quiz</h3>
+				<div class="btn start-quiz-btn">Click to Start</div>
+			</div>
+			<div class="quiz-input-card quiz-during">
+				<input type="text" placeholder="Enter Answer here" />
+				<div class="btn during-quiz-btn">End Quiz?</div>
+				<div class="quiz-timer">2:00</div>
+			</div>
+			<div class="quiz-input-card quiz-end">
+				<h3>Quiz Ended!</h3>
+			</div>
+		</div>
+	</section>
+
+	<script src="/js/quiz-template.js"></script>
+
+	<!-- <%- include('./includes/end.ejs') %>  -->
 </body>
-</html>
-<!-- <%- include('./includes/end.ejs') %>  -->
-
-

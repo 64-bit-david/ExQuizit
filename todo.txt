@@ -1,14 +1,12 @@
+Immediate
 Goal
-  - Build quiz app similar to the bootstrap one
-  - But use own css, html
-  - Dynamic templating? ejs
-  - Have 4/5 different types of quizzes
-    - ie multiple choice, type in your answer
-    - Something else
-  Store quizzes in mongo db
-    - Need  a few different collections and schemas for our quiz types]
-  Have users and log them in
+  - Get quiz to render correctly from data
 
-   - build our basic backend first
-   -  Two quiz schemas
-   
+Later
+Quiz-creator
+  - fix schema, questions should not be necessity
+    -  so quiz just be answers
+  Add / update schema so we can implement multiple choice quiz
+  
+  
+
