@@ -5,7 +5,7 @@
 
 	<section class="welcome">
 		<h2><%= quiz.title %></h2>
-		<p>Can you guess 10 biggest countries by population?</p>
+		<p><%= quiz.description%></p>
 	</section>
 
 	<section class="quiz">
@@ -17,27 +17,72 @@
 						<th>Question</th>
 						<th>Answer</th>
 					</tr>
-					<% for(let i = 1; i < quiz.aList.length; i++) { %>
+					<% for(let i = 0; i < quiz.aList.length; i++) { %>
 					<tr>
-						<td><%= i %></td>
+						<td><%= i + 1%></td>
 						<td><%= quiz.qList[i]%></td>
-						<td><%= quiz.aList[i]%></td>
+						<td class="answer-cell">
+							<span class="answer-cell-text"
+								><%= quiz.aList[i]%></span
+							>
+						</td>
 					</tr>
 					<% } %>
 				</table>
 			</div>
+			<div class="quiz-input-container">
+				<div class="quiz-input-card quiz-start">
+					<div class="quiz-timer">
+						<span class="min-left"><%=quiz.time%></span>:<span
+							class="sec-left"
+							>00</span
+						>
+					</div>
 
-			<div class="quiz-input-card quiz-start">
-				<h3>Start Quiz</h3>
-				<div class="btn start-quiz-btn">Click to Start</div>
-			</div>
-			<div class="quiz-input-card quiz-during">
-				<input type="text" placeholder="Enter Answer here" />
-				<div class="btn during-quiz-btn">End Quiz?</div>
-				<div class="quiz-timer">2:00</div>
-			</div>
-			<div class="quiz-input-card quiz-end">
-				<h3>Quiz Ended!</h3>
+					<h3>Start Quiz</h3>
+					<br />
+					<div class="btn start-quiz-btn">Click to Start</div>
+				</div>
+				<div class="quiz-input-card quiz-during">
+					<div class="quiz-timer">
+						<span class="min-left" id="minutes-left"
+							><%=quiz.time%></span
+						>:<span class="sec-left" id="seconds-left">00</span>
+					</div>
+					<input
+						id="answer-input"
+						type="text"
+						placeholder="Enter Answer here"
+					/>
+					<br />
+					<div class="quiz-score during-score">
+						<p>
+							<span class="total-correct-during">0</span> /
+							<span class="total-questions"
+								><%= quiz.aList.length%></span
+							>
+						</p>
+					</div>
+					<br />
+					<div class="already-guessed">
+						<p>Already Guessed!</p>
+					</div>
+					<br />
+					<div class="btn during-quiz-btn">End Quiz?</div>
+				</div>
+				<div class="quiz-input-card quiz-end">
+					<h3>Quiz Finished!</h3>
+					<br />
+					<div class="quiz-score end-score">
+						<p>
+							You scored
+							<span class="total-correct-end">0</span> /
+							<span class="total-questions"
+								><%= quiz.aList.length%></span
+							>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

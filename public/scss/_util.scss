@@ -4,6 +4,7 @@
 //variables
 $primary-color: #00c9c8;
 $primary-color-dark: #008a8a;
+$primary-text-color: #333;
 
 
 
@@ -15,7 +16,8 @@ $primary-color-dark: #008a8a;
 
 html{
 	font-family: 'Nanum Gothic', sans-serif;
-	font-size: 10px;
+  font-size: 10px;
+  color: $primary-text-color;
 }
 ul {
   list-style-type: none;
@@ -90,6 +92,7 @@ input{
   font-family: 'Arial';
   border-collapse: collapse;
   border: 2px solid $primary-color;
+  margin-bottom: 5rem;
  
 
   th, td {
@@ -120,7 +123,6 @@ input{
   padding: 1rem;
   transition: all 0.2s;
   cursor: pointer;
-  margin: 5px;
 }
 
 

@@ -220,11 +220,37 @@ nav {
   .table-quiz-container{
     margin-right: 7rem;
   }
+  //questions table
+  
+  .answer-cell{
+    &.answer-correct{
+      background: rgb(155, 250, 147);
+    }
+    &.answer-wrong{
+      background-color: rgb(250, 136, 136);
+    }
+  
+  .answer-cell-text{
+    visibility: hidden;
+    opacity: 0;
+    z-index: 5;
+
+    &.active{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+  //question input
   .quiz-input-card{
     border: 1px solid $primary-color;
     padding: 2rem;
     border-radius: .3rem;
     width: 40rem;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h3{
       font-size: 3rem;
     }
@@ -250,10 +276,13 @@ nav {
         color: transparent;
       }
     }
-    .quiz-timer{
-      font-size: 5rem;
-      font-weight: bold;
-
+    .already-guessed{
+      visibility: hidden;
+      opacity: 0;
+      &.active{
+        opacity: 1;
+        visibility: visible;
+      }
     }
     &.active{
       opacity: 1;
@@ -262,6 +291,7 @@ nav {
     &.hide{
       display: none;
     }
+    
   }
   .quiz-end{
     opacity: 0;
@@ -271,4 +301,23 @@ nav {
       visibility: visible;
     }
   }
+  .quiz-timer{
+    font-size: 5rem;
+    font-weight: bold;
+  }
+
+  .quiz-score{
+    font-size: 1.9rem;
+
+    &.end-score p{
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-top: 5rem;
+    }
+  }
+
+  
 }
+  
+
+

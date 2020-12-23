@@ -44,8 +44,8 @@ exports.postCreateQuiz = (req, res, next) => {
   const description = req.body.description;
   const time = req.body.time;
   const category = req.body.category;
-  const qList = req.body.answer;
-  const aList = req.body.question;
+  const qList = req.body.question;
+  const aList = req.body.answer;
 
   const quiz = new Quiz({
     title: title,
