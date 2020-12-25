@@ -14,13 +14,17 @@
 				<table class="table-quiz">
 					<tr>
 						<th>#</th>
+						<%if(quiz.qList.length > 0){%>
 						<th>Question</th>
+						<%}%>
 						<th>Answer</th>
 					</tr>
 					<% for(let i = 0; i < quiz.aList.length; i++) { %>
 					<tr>
 						<td><%= i + 1%></td>
+						<%if(quiz.qList.length > 0){%>
 						<td><%= quiz.qList[i]%></td>
+						<%}%>
 						<td class="answer-cell">
 							<span class="answer-cell-text"
 								><%= quiz.aList[i]%></span

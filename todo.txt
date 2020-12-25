@@ -1,6 +1,9 @@
 Immediate
 Goal
-  - Get quiz to render correctly from data
+   - Work on Schema to create quiz without questions
+      - need to create a button that shows/hides question inputs
+      - a button to make quiz specific question - answer
+      
 
 Later
 Quiz-creator

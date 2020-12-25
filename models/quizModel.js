@@ -21,7 +21,6 @@ const quizSchema = new Schema({
   },
   qList: {
     type: Array,
-    required: true,
   },
   aList: {
     type: Array,

@@ -43,12 +43,12 @@ const quizEnd = () => {
   quizDuringCard.classList.remove('active');
   quizDuringCard.classList.add('hide');
   quizEndCard.classList.add('active');
-  totalCorrect.innerHTML = totalCorrect
+  endScore.innerHTML = totalCorrect
 
   aListCells.forEach((element, index) => {
     if (!element.classList.contains('answer-correct')) {
       element.classList.add('answer-wrong');
-      // aListElement[index].classList.add('active');
+      element.childNodes[1].classList.add('active');
     }
   });
 
