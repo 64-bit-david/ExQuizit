@@ -1,10 +1,11 @@
-<%- include('./includes/head.ejs') %>
+<%- include('../includes/head.ejs') %>
 
 <body>
-	<%- include('./includes/nav.ejs') %>
+	<%- include('../includes/nav.ejs') %>
 
 	<section class="welcome">
 		<h2>Create your own quiz for others to try!</h2>
+		<h3 id="quiz-type">Type B</h3>
 		<p>
 			Follow these simple sets and you'll be sharing this bad boy in no
 			time!
@@ -18,21 +19,10 @@
 					<table class="table-quiz create-quiz-table">
 						<tr>
 							<th>#</th>
-							<th>Question</th>
 							<th>Answer</th>
 						</tr>
 						<tr>
 							<td>1</td>
-							<td>
-								<div class="form-control">
-									<input
-										type="text"
-										name="question"
-										id="question"
-										placeholder="Question 1"
-									/>
-								</div>
-							</td>
 							<td>
 								<div class="form-control">
 									<input
@@ -46,16 +36,7 @@
 						</tr>
 						<tr>
 							<td>2</td>
-							<td>
-								<div class="form-control">
-									<input
-										type="text"
-										name="question"
-										id="question"
-										placeholder="Question 2"
-									/>
-								</div>
-							</td>
+
 							<td>
 								<div class="form-control">
 									<input
@@ -69,16 +50,7 @@
 						</tr>
 						<tr>
 							<td>3</td>
-							<td>
-								<div class="form-control">
-									<input
-										type="text"
-										name="question"
-										id="question"
-										placeholder="Question 3"
-									/>
-								</div>
-							</td>
+
 							<td>
 								<div class="form-control">
 									<input
@@ -96,16 +68,6 @@
 								<div class="form-control">
 									<input
 										type="text"
-										name="question"
-										id="question"
-										placeholder="Question 4"
-									/>
-								</div>
-							</td>
-							<td>
-								<div class="form-control">
-									<input
-										type="text"
 										name="answer"
 										id="answer"
 										placeholder="Answer 4"
@@ -115,16 +77,6 @@
 						</tr>
 						<tr>
 							<td>5</td>
-							<td>
-								<div class="form-control">
-									<input
-										type="text"
-										name="question"
-										id="question"
-										placeholder="Question 5"
-									/>
-								</div>
-							</td>
 							<td>
 								<div class="form-control">
 									<input
@@ -151,40 +103,7 @@
 					</button>
 				</div>
 
-				<%- include('./includes/create-quiz-meta.ejs') %>
-
-				<!-- <div class="create-quiz-right">
-					<div class="form-control">
-						<label for="title">Title</label>
-						<br />
-						<input type="text" name="title" id="title" />
-					</div>
-
-					<div class="form-control">
-						<label for="description">Description</label>
-						<br />
-						<input
-							type="text"
-							name="description"
-							id="description"
-						/>
-					</div>
-
-					<div class="form-control">
-						<label for="time">Time (minutes)</label>
-						<br />
-						<input type="text" name="time" id="time" />
-					</div>
-					<select id="category" name="category">
-						<option value="general-knowledge">
-							General Knowledge
-						</option>
-						<option value="canada">History</option>
-						<option value="usa">Geography</option>
-						<option value="usa">Music & Television</option>
-						<option value="usa">Sport</option>
-					</select>
-				</div> -->
+				<%- include('../includes/create-quiz-meta.ejs') %>
 			</div>
 			<button
 				class="btn quiz-creator-btn post-created-quiz"
@@ -196,5 +115,5 @@
 	</section>
 
 	<script src="/js/create-quiz.js"></script>
-	<%- include('./includes/end.ejs') %>
+	<%- include('../includes/end.ejs') %>
 </body>

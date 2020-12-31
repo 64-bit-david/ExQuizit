@@ -11,7 +11,14 @@ router.get('/quizzes/:quizId', quizController.getQuiz);
 
 router.get('/about', quizController.about);
 
-router.get('/create-quiz', quizController.createQuiz);
+router.get('/create-quiz/create-quiz-index', quizController.createQuizIndex);
+
+router.get('/create-quiz/create-quiz-a', quizController.createQuizA);
+
+router.get('/create-quiz/create-quiz-b', quizController.createQuizB);
+
+router.get('/create-quiz/create-quiz-c', quizController.createQuizC);
+
 
 router.post('/create-quiz', quizController.postCreateQuiz);
 

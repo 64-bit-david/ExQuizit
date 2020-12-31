@@ -32,13 +32,29 @@ exports.getQuiz = (req, res, nex) => {
 
 }
 
-exports.createQuiz = (req, res, next) => {
-  res.render('create-quiz', {
+exports.createQuizIndex = (req, res, next) => {
+  res.render('create-quiz/create-quiz-index', {
     pageTitle: 'Create Your Quiz',
-
   })
 }
 
+exports.createQuizA = (req, res, next) => {
+  res.render('create-quiz/create-quiz-a', {
+    pageTitle: 'Create Your Quiz',
+  })
+}
+
+exports.createQuizB = (req, res, next) => {
+  res.render('create-quiz/create-quiz-b', {
+    pageTitle: 'Create Your Quiz',
+  })
+}
+
+exports.createQuizC = (req, res, next) => {
+  res.render('create-quiz/create-quiz-c', {
+    pageTitle: 'Create Your Quiz',
+  })
+}
 exports.postCreateQuiz = (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;

@@ -1,15 +1,26 @@
 Immediate
 Goal
+  Maybe best thing to do is have two stages for quiz input
+    - first will be questions about what we want the quiz to be
+    - second will be actual creation of quiz
    - Work on Schema to create quiz without questions
       - need to create a button that shows/hides question inputs
       - a button to make quiz specific question - answer
-      
+
+
 
 Later
 Quiz-creator
   - fix schema, questions should not be necessity
     -  so quiz just be answers
   Add / update schema so we can implement multiple choice quiz
+
+
+
+
+What about...
+  - When quiz finished, save score for user
+  
   
   
 
