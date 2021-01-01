@@ -175,6 +175,9 @@ nav {
           color: black;
           margin: 5rem;
         }
+        &.multi-choice{
+          border: 2px solid $primary-color;
+        }
     }
 }
 

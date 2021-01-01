@@ -6,19 +6,22 @@ console.log(quizType.innerHTML)
 
 let numOfRows;
 
-//new row var info
+
+
+
+
+// MC STUFF
+
+let numQuestionsMC = 0;
+const mcQuestionList = document.querySelectorAll('.mc-question');
 
 
 
 
 
-//
-
-// const row = createQuizTable.insertRow(-1);
-
-
+//inserts rows in table when user wants to add questions
 addQuestionBtn.addEventListener('click', () => {
-  const row = createQuizTable.insertRow(-1);
+  let row = createQuizTable.insertRow(-1);
   numofRows = createQuizTable.rows.length;
   numOfRows++;
   qCLastRowStyler();
@@ -68,19 +71,153 @@ const qCLastRowStyler = () => {
     cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
   }
 
-
+  if (quizType.innerHTML == 'Type C') {
+    mcQuestionList[numQuestionsMC].innerHTML = mCQTemplate;
+    const mcQuizNum = document.querySelectorAll('.mc-quiz-num');
+    mcQuizNum[numQuestionsMC].innerHTML = numQuestionsMC + 2;
+    numQuestionsMC++;
+  }
 
 
 }
 
+
 //removes rows when use wants to remove question
 removeQuestionBtn.addEventListener('click', () => {
-  const createQuizTable = document.querySelector('.create-quiz-table');
-  const row = createQuizTable.deleteRow(-1);
-  numOfRows--;
+  if ((quizType.innerHTML === "Type A") || (quizType.innerHTML === 'Type B')) {
+    const createQuizTable = document.querySelector('.create-quiz-table');
+    let row = createQuizTable.deleteRow(-1);
+    numOfRows--;
+  }
+
 })
 numOfRows = createQuizTable.rows.length;
 
 // console.log(createQuizTable.rows[0].cells)
 // console.log(createQuizTable.rows[numOfRows])
 
+
+
+const mCQTemplate = `
+<table class="table-quiz create-quiz-table multi-choice">
+	<tr>
+		<th class="mc-quiz-num"></th>
+		<th>Question</th>
+		<th>Answer</th>
+		<th>Correct</th>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="question"
+					id="question"
+					placeholder="1"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="answer"
+					id="answer"
+					placeholder="Answer 1"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input type="radio" name="answer" id="answer" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="question"
+					id="question"
+					placeholder="2"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="answer"
+					id="answer"
+					placeholder="Answer 2"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input type="radio" name="answer" id="answer" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="question"
+					id="question"
+					placeholder="3"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="answer"
+					id="answer"
+					placeholder="Answer 3"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input type="radio" name="answer" id="answer" />
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="question"
+					id="question"
+					placeholder="4"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input
+					type="text"
+					name="answer"
+					id="answer"
+					placeholder="Answer 4"
+				/>
+			</div>
+		</td>
+		<td>
+			<div class="form-control">
+				<input type="radio" name="answer" id="answer" />
+			</div>
+		</td>
+	</tr>
+</table>
+
+`

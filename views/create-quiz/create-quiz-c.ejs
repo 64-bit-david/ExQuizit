@@ -2,4 +2,68 @@
 
 <body>
 	<%- include('../includes/nav.ejs') %>
+	<section class="welcome">
+		<h2>Create your own quiz for others to try!</h2>
+		<h3 id="quiz-type">Type C</h3>
+		<p>
+			Follow these simple sets and you'll be sharing this bad boy in no
+			time!
+		</p>
+	</section>
+
+	<section class="create-q-main">
+		<form action="/create-quiz" method="POST" autocomplete="off">
+			<div class="create-quiz-form-container">
+				<div class="create-quiz-left">
+					<ul class="mc-qList">
+						<li><%- include('../includes/mc-question.ejs') %></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+						<li class="mc-question"></li>
+					</ul>
+
+					<button
+						type="button"
+						class="btn quiz-creator-btn add-question"
+					>
+						<span>Add Question </span>
+					</button>
+					<button
+						type="button"
+						class="btn quiz-creator-btn remove-question"
+						style="display: none; visibility: hidden"
+					>
+						<span>Remove Question </span>
+					</button>
+				</div>
+				<%- include('../includes/create-quiz-meta.ejs') %>
+			</div>
+			<button
+				class="btn quiz-creator-btn post-created-quiz"
+				type="submit"
+			>
+				<span> Create! </span>
+			</button>
+		</form>
+	</section>
+
+	<script src="/js/create-quiz.js"></script>
+	<%- include('../includes/end.ejs') %>
 </body>
