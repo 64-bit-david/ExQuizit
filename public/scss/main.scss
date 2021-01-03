@@ -321,9 +321,37 @@ nav {
       margin-top: 5rem;
     }
   }
-
-  
 }
+
+
+
+
+
+//Login // SignUp
+
+
+.signup {
+  border: 2px solid $primary-color;
+  border-radius: 10px;
+  width: 50%;
+  margin-top: 5rem;
+  form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+
   
 
-
+  .form-control{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+  }
+  .auth-btn{
+    margin-top: 2rem;
+  }
+}
+}

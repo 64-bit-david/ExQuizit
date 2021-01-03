@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+
+<body>
+	<%- include('../includes/nav.ejs') %>
+
+	<section class="welcome">
+		<h2>Log In</h2>
+		<div class="signup">
+			<form action="/login" method="POST">
+				<div class="form-control">
+					<label for="email">Email</label>
+					<input
+						type="text"
+						name="email"
+						id="email"
+						placeholder="Email"
+					/>
+				</div>
+				<div class="form-control">
+					<label for="password">Password</label>
+					<input
+						type="text"
+						name="password"
+						id="password"
+						placeholder="Password"
+					/>
+				</div>
+				<button class="btn auth-btn" type="submit">Login</button>
+			</form>
+		</div>
+	</section>
+</body>

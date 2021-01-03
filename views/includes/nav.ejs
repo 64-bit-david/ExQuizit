@@ -25,11 +25,16 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="/">Login</a></li>
 					<li>
 						<a href="/create-quiz/create-quiz-index">Create Quiz</a>
 					</li>
 					<li><a href="/">Contact</a></li>
+					<% if(isAuthenticated) {%>
+					<li><a href="/logout">Log Out</a></li>
+					<%}%> <% if(!isAuthenticated) {%>
+					<li><a href="/signup">Sign Up</a></li>
+					<li><a href="/login">Login</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</div>
