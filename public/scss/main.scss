@@ -143,19 +143,7 @@ nav {
     //  justify-content: flex-start;
    }
   
-    input[type=text], input[type=number], select, textarea {
-      width: 30rem;
-      padding: 1.2rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-       margin: 1rem 0;
-    }
-
-    label{
-      font-size: 2rem;
-      font-weight: 700;
-    }
+  
     h3{
       font-size: 2.3rem;
     }
@@ -342,8 +330,6 @@ nav {
   align-items: center;
   padding: 3rem;
 
-  
-
   .form-control{
     display: flex;
     align-items: center;
@@ -354,4 +340,15 @@ nav {
     margin-top: 2rem;
   }
 }
+}
+
+.error-msg p{
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  // background-color: rgb(253, 84, 84);
+  border: 3px solid rgb(248, 39, 39);
+  border-radius: 5px;
+  width: initial;
+  padding: 1rem 2rem;
 }

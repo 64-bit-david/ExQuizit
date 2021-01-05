@@ -5,6 +5,9 @@
 </body>
 
 <section class="welcome">
+	<% if(errorMessage) { %>
+	<div class="error-msg"><p><%= errorMessage %></p></div>
+	<% } %>
 	<h2>Sign Up</h2>
 	<div class="signup">
 		<form action="/signup" method="POST">
@@ -29,16 +32,16 @@
 			<div class="form-control">
 				<label for="password">Password</label>
 				<input
-					type="text"
+					type="password"
 					name="password"
 					id="password"
 					placeholder="Password"
 				/>
 			</div>
 			<div class="form-control">
-				<label for="conf-">Confirm Password</label>
+				<label for="confPassword">Confirm Password</label>
 				<input
-					type="text"
+					type="password"
 					name="confPassword"
 					id="confPassword"
 					placeholder="Confirm Password"

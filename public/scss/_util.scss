@@ -125,8 +125,6 @@ input{
   cursor: pointer;
 }
 
-
-
 .btn span {
   cursor: pointer;
   display: inline-block;
@@ -134,3 +132,18 @@ input{
   transition: 0.2s;
 }
 
+
+//INPUTS
+
+input[type=text], input[type=number], input[type=password],select, textarea {
+  width: 30rem;
+  padding: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+label{
+  font-size: 2rem;
+  font-weight: 700;
+}

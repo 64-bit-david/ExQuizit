@@ -4,6 +4,9 @@
 	<%- include('../includes/nav.ejs') %>
 
 	<section class="welcome">
+		<% if(errorMessage) { %>
+		<div class="error-msg"><p><%= errorMessage %></p></div>
+		<% } %>
 		<h2>Log In</h2>
 		<div class="signup">
 			<form action="/login" method="POST">

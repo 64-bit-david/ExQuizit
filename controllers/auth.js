@@ -7,8 +7,15 @@ const jwt = require('jsonwebtoken');
 
 
 exports.getSignUp = (req, res, next) => {
+  let errMsg = req.flash('error');
+  if (errMsg.length > 0) {
+    errMsg = errMsg[0];
+  } else {
+    errMsg = null;
+  }
   res.render('auth/signup', {
     pageTitle: 'Sign Up',
+    errorMessage: errMsg,
   })
 }
 
@@ -32,19 +39,15 @@ exports.postSignUp = async (req, res, next) => {
     const userEmailExists = await User.findOne({ email: email });
 
     if (userEmailExists) {
-      const error = new Error('User with this email already exists');
-      error.statusCode = 401;
-      console.log('user with email exists');
-      res.redirect('/');
+      req.flash('error', 'Email already in use');
+      res.redirect('/signup');
     }
 
     const usernameExists = await User.findOne({ username: username });
 
     if (usernameExists) {
-      const error = new Error('username already exists');
-      error.statusCode = 401;
-      console.log('username already exists');
-      res.redirect('/');
+      req.flash('error', 'Username already taken');
+      res.redirect('/signup');
     }
 
     const user = new User({
@@ -54,7 +57,6 @@ exports.postSignUp = async (req, res, next) => {
     });
 
     await user.save();
-
     res.redirect('/');
   } catch (err) {
     console.log(err, 'hi');
@@ -63,8 +65,15 @@ exports.postSignUp = async (req, res, next) => {
 
 
 exports.getLogin = async (req, res, next) => {
+  let errMsg = req.flash('error');
+  if (errMsg.length > 0) {
+    errMsg = errMsg[0];
+  } else {
+    errMsg = null;
+  };
   res.render('auth/login', {
     pageTitle: 'Login',
+    errorMessage: errMsg,
   })
 }
 
@@ -73,12 +82,26 @@ exports.postLogin = async (req, res, next) => {
   const password = req.body.password;
   const user = await User.findOne({ email: email });
 
+  if (!user) {
+    req.flash('error', 'Invalid email or password');
+    return res.redirect('/login');
+  }
+
   const match = await bcrypt.compare(password, user.password);
+
+  if (!match) {
+    req.flash('error', 'Invalid email or password');
+    return res.redirect('/login');
+  }
+
   if (match) {
     req.session.isLoggedIn = true;
     req.session.user = user;
-    // req.session.save(err);
-    res.redirect('/');
+    return req.session.save(err => {
+      console.log(err);
+      res.redirect('/');
+
+    })
   }
   else {
     res.redirect('auth/signup');
@@ -86,7 +109,7 @@ exports.postLogin = async (req, res, next) => {
   }
 }
 
-exports.getLogout = async (req, res, next) => {
+exports.getLogout = (req, res, next) => {
   req.session.destroy(err => {
     console.log(err, 'hello');
     res.redirect('/');

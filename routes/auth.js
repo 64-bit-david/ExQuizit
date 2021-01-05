@@ -7,10 +7,6 @@ const router = express.Router();
 const authController = require('../controllers/auth');
 
 
-
-
-
-
 router.get('/signup', authController.getSignUp);
 router.post('/signup',
   [
@@ -24,7 +20,7 @@ router.post('/signup',
   authController.postSignUp);
 
 router.get('/login', authController.getLogin);
-router
+
 
 router.post('/login', authController.postLogin);
 

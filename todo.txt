@@ -23,4 +23,6 @@ What about...
   
   
   
-
+errors
+  - logging out throws error (req.session.destory in auth controller)
+  

@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const dotenv = require('dotenv');
+const flash = require('connect-flash');
 
 
 const errorController = require('./controllers/error');
@@ -15,7 +16,6 @@ const User = require('./models/user');
 dotenv.config();
 
 
-const router = express.Router();
 
 const quizRoutes = require('./routes/quiz');
 const authRoutes = require('./routes/auth');
@@ -48,14 +48,10 @@ app.use(
     store: store
   })
 );
-
-
-
-
+app.use(flash());
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
   next();
-
 })
 
 app.use(quizRoutes);
