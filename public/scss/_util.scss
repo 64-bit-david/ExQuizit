@@ -141,6 +141,10 @@ input[type=text], input[type=number], input[type=password], input[type=email], s
   border: 1px solid #ccc;
   border-radius: 4px;
   margin: 1rem 0;
+
+  &.invalid{
+    border-color: red;
+  }
 }
 
 label{

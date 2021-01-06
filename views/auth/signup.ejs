@@ -14,38 +14,31 @@
 			<div class="form-control">
 				<label for="email">Email</label>
 				<input
+					class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
 					type="email"
 					name="email"
 					id="email"
-					value="<%= oldInput.email %>"
+					value="<%= oldInput.email%>"
 				/>
 			</div>
 			<div class="form-control">
 				<label for="username">Username</label>
-				<input
-					type="text"
-					name="username"
-					id="username"
-					value="<%= oldInput.username%>"
-				/>
+				<input class="<%= validationErrors.find(e => e.param ===
+				"username") ? 'invalid': '' %>" type="text" name="username"
+				id="username" value="<%= oldInput.username%>" />
 			</div>
 			<div class="form-control">
 				<label for="password">Password</label>
-				<input
-					type="password"
-					name="password"
-					id="password"
-					value="<%= oldInput.password%>"
-				/>
+				<input class="<%= validationErrors.find(e => e.param ===
+				"password") ? 'invalid': '' %>" type="password" name="password"
+				id="password" value="<%= oldInput.password%>" />
 			</div>
 			<div class="form-control">
 				<label for="confirmPassword">Confirm Password</label>
-				<input
-					type="password"
-					name="confirmPassword"
-					id="confirmPassword"
-					value="<%= oldInput.confirmPassword%>"
-				/>
+				<input class="<%= validationErrors.find(e => e.param ===
+				"password") ? 'invalid': '' %>" type="password" type="password"
+				name="confirmPassword" id="confirmPassword" value="<%=
+				oldInput.confirmPassword%>" />
 			</div>
 			<button class="btn auth-btn" type="submit">Sign Up!</button>
 		</form>

@@ -1,4 +1,13 @@
 Immediate
+
+Password validation on signup
+input validation 
+validate crate quiz?
+
+
+
+
+
 Goal
   Maybe best thing to do is have two stages for quiz input
     - first will be questions about what we want the quiz to be

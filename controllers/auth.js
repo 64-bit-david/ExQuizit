@@ -21,7 +21,8 @@ exports.getSignUp = (req, res, next) => {
       username: '',
       password: '',
       confirmPassword: '',
-    }
+    },
+    validationErrors: []
   })
 }
 
@@ -29,35 +30,29 @@ exports.postSignUp = async (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
+  const confirmPassword = req.body.confirmPassword;
+  console.log(username);
 
   const errors = validationResult(req);
+  console.log(errors.array())
   if (!errors.isEmpty()) {
-    return res.render('auth/signup', {
+    return res.status(422).render('auth/signup', {
       pageTitle: "Sign Up",
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email: email,
         username: username,
         password: password,
-        confirmPassword: req.body.confirmPassword,
-      }
+        confirmPassword: confirmPassword,
+      },
+      validationErrors: errors.array()
     })
   }
-
-
-
-
-
 
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const userEmailExists = await User.findOne({ email: email });
 
-    if (userEmailExists) {
-      req.flash('error', 'Email already in use');
-      res.redirect('/signup');
-    }
 
     const usernameExists = await User.findOne({ username: username });
 
@@ -73,9 +68,10 @@ exports.postSignUp = async (req, res, next) => {
     });
 
     await user.save();
+    console.log('user created!')
     res.redirect('/');
   } catch (err) {
-    console.log(err, 'hi');
+    console.log(err);
   }
 }
 
@@ -116,7 +112,6 @@ exports.postLogin = async (req, res, next) => {
     return req.session.save(err => {
       console.log(err);
       res.redirect('/');
-
     })
   }
   else {
