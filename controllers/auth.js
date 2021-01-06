@@ -22,9 +22,11 @@ exports.getSignUp = (req, res, next) => {
 exports.postSignUp = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('Validation failed.');
-    error.statusCode = 422;
-    throw error;
+    console.log(errors.array()[0])
+    return res.render('auth/signup', {
+      pageTitle: "Sign Up",
+      errorMessage: errors.array()[0].msg,
+    })
   }
   const username = req.body.username;
   const email = req.body.email;
