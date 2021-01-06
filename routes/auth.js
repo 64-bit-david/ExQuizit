@@ -47,7 +47,14 @@ router.post('/signup',
 
 router.get('/login', authController.getLogin);
 
-router.post('/login', authController.postLogin);
+router.post('/login',
+  [
+    check('email', 'Please enter a valid email')
+      .normalizeEmail()
+      .isEmail()
+      .trim()
+
+  ], authController.postLogin);
 
 router.get('/logout', authController.getLogout);
 

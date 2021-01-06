@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 const { validationResult } = require('express-validator');
-const jwt = require('jsonwebtoken');
 
 
 
@@ -31,10 +30,7 @@ exports.postSignUp = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
-  console.log(username);
-
   const errors = validationResult(req);
-  console.log(errors.array())
   if (!errors.isEmpty()) {
     return res.status(422).render('auth/signup', {
       pageTitle: "Sign Up",
@@ -51,11 +47,7 @@ exports.postSignUp = async (req, res, next) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
-
-
-
     const usernameExists = await User.findOne({ username: username });
-
     if (usernameExists) {
       req.flash('error', 'Username already taken');
       res.redirect('/signup');
@@ -82,29 +74,54 @@ exports.getLogin = async (req, res, next) => {
     errMsg = errMsg[0];
   } else {
     errMsg = null;
-  };
+  }
   res.render('auth/login', {
     pageTitle: 'Login',
     errorMessage: errMsg,
+    oldInput: {
+      email: '',
+      password: '',
+    },
+    validationErrors: [],
   })
 }
 
 exports.postLogin = async (req, res, next) => {
+  const errors = validationResult(req);
   const email = req.body.email;
   const password = req.body.password;
   const user = await User.findOne({ email: email });
 
-  if (!user) {
-    req.flash('error', 'Invalid email or password');
-    return res.redirect('/login');
+  try {
+
+    if (!errors.isEmpty()) {
+      return res.render('auth/login', {
+        pageTitle: 'Login',
+        errorMessage: errors.array()[0].msg,
+        oldInput: {
+          email: email,
+        },
+        validationErrors: errors.array(),
+      })
+    }
+
+    if (!user) {
+      res.render('auth/login', {
+        pageTitle: 'Login',
+        errorMessage: 'Invalid email or password',
+        oldInput: {
+          email: email,
+        },
+        validationErrors: []
+      })
+    }
+  } catch (err) {
+    res.status(500).render('/404', {
+      pageTitle: 'Error'
+    })
   }
 
   const match = await bcrypt.compare(password, user.password);
-
-  if (!match) {
-    req.flash('error', 'Invalid email or password');
-    return res.redirect('/login');
-  }
 
   if (match) {
     req.session.isLoggedIn = true;
@@ -114,15 +131,21 @@ exports.postLogin = async (req, res, next) => {
       res.redirect('/');
     })
   }
-  else {
-    res.redirect('auth/signup');
-    console.log('did not work');
+  if (!match) {
+    return res.status(422).render('auth/login', {
+      pageTitle: 'Login',
+      errorMessage: "Invalid email or password",
+      oldInput: {
+        email: email,
+      },
+      validationErrors: []
+    })
   }
 }
 
 exports.getLogout = (req, res, next) => {
   req.session.destroy(err => {
-    console.log(err, 'hello');
+    console.log(err);
     res.redirect('/');
   })
 }
