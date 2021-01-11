@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Quiz = require('./quizModel');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -18,9 +19,13 @@ const userSchema = new mongoose.Schema({
     //max? 1024
     //min? 6
   },
-
-  //Date?
-
+  quizzes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: Quiz,
+      required: true,
+    }
+  ],
 })
 
 module.exports = mongoose.model('User', userSchema);

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const User = require('./user');
 const Schema = mongoose.Schema;
 
 const quizSchema = new Schema({
@@ -25,7 +25,13 @@ const quizSchema = new Schema({
   aList: {
     type: Array,
     required: true,
+  },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
+
 
 });
 

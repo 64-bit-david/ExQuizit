@@ -52,11 +52,30 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
   next();
+});
+
+app.use((req, res, next) => {
+  if (!req.session.user) {
+    return next();
+  }
+  User.findById(req.session.user._id)
+    .then(user => {
+      if (!user) {
+        next();
+      }
+      req.user = user;
+      next();
+    })
+    .catch(err => {
+      console.log(err);
+    });
 })
 
 app.use(quizRoutes);
 app.use(authRoutes);
 app.use(errorController.get404);
+
+
 
 mongoose.connect(MONGODB_URI,
   {

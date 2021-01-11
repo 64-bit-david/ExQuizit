@@ -1,10 +1,12 @@
 const Quiz = require('../models/quizModel');
+const User = require('../models/user');
 
 
 exports.getQuizzes = (req, res, next) => {
+
+
   Quiz.find()
     .then(quizzes => {
-
       res.render('index', {
         pageTitle: 'Home',
         path: '/',
@@ -55,14 +57,14 @@ exports.createQuizC = (req, res, next) => {
     pageTitle: 'Create Your Quiz',
   })
 }
-exports.postCreateQuiz = (req, res, next) => {
+exports.postCreateQuiz = async (req, res, next) => {
   const title = req.body.title;
   const description = req.body.description;
   const time = req.body.time;
   const category = req.body.category;
   const qList = req.body.question;
   const aList = req.body.answer;
-
+  const createdBy = req.user;
 
   const quiz = new Quiz({
     title: title,
@@ -71,11 +73,13 @@ exports.postCreateQuiz = (req, res, next) => {
     category: category,
     qList: qList,
     aList: aList,
+    createdBy: createdBy,
   });
 
-  quiz.save()
-    .then(result => {
-      res.redirect('/');
-    });
+  await quiz.save();
+  createdBy.quizzes.push(quiz);
+  createdBy.save();
+  res.redirect('/');
+
 }
 
