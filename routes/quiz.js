@@ -23,6 +23,8 @@ router.get('/create-quiz/create-quiz-c', isAuth, quizController.createQuizC);
 
 router.post('/create-quiz', isAuth, quizController.postCreateQuiz);
 
+router.get('/user-quizzes', isAuth, quizController.getUserQuizzes);
+
 
 
 

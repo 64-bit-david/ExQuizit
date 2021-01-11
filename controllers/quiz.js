@@ -80,6 +80,19 @@ exports.postCreateQuiz = async (req, res, next) => {
   createdBy.quizzes.push(quiz);
   createdBy.save();
   res.redirect('/');
+};
+
+exports.getUserQuizzes = async (req, res, next) => {
+  const userQuizzes = await User.findById(req.user).populate('quizzes');
+  const userQuizList = userQuizzes.quizzes;
+  res.render('user-quiz-list', {
+    pageTitle: 'Your Quizzes',
+    quizzes: userQuizList
+  })
+
+  // const quizList = await user.populate(quizzes);
+
+
 
 }
 
