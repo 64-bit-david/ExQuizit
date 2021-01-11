@@ -86,11 +86,54 @@ exports.getUserQuizzes = async (req, res, next) => {
   res.render('user-quiz-list', {
     pageTitle: 'Your Quizzes',
     quizzes: userQuizList
+  });
+};
+
+exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
+  const quizList = await Quiz.find({ category: 'general knowledge' });
+  res.render('categories', {
+    pageTitle: "General Knowledge Quizzes",
+    quizzes: quizList,
+  });
+};
+
+exports.getHistoryQuizzes = async (req, res, next) => {
+  const quizList = await Quiz.find({ category: 'history' });
+  res.render('categories', {
+    pageTitle: "History",
+    quizzes: quizList,
   })
-
-  // const quizList = await user.populate(quizzes);
-
-
-
 }
 
+
+exports.getGeographyQuizzes = async (req, res, next) => {
+  const quizList = await Quiz.find({ category: 'geography' });
+  res.render('categories', {
+    pageTitle: "Geography Quizzes",
+    quizzes: quizList,
+  });
+};
+
+exports.getMediaQuizzes = async (req, res, next) => {
+  const quizList = await Quiz.find({ category: 'media' });
+  res.render('categories', {
+    pageTitle: "Media Quizzes",
+    quizzes: quizList,
+  });
+};
+
+exports.getSportQuizzes = async (req, res, next) => {
+  const quizList = await Quiz.find({ category: 'sport' });
+  res.render('categories', {
+    pageTitle: "Sport Quizzes",
+    quizzes: quizList,
+  });
+};
+
+exports.getAllQuizzes = async (req, res, next) => {
+  const quizList = await Quiz.find();
+  res.render('categories', {
+    pageTitle: "All Quizzes",
+    quizzes: quizList,
+  });
+};

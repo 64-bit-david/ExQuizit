@@ -25,6 +25,19 @@ router.post('/create-quiz', isAuth, quizController.postCreateQuiz);
 
 router.get('/user-quizzes', isAuth, quizController.getUserQuizzes);
 
+router.get('/categories/general-knowledge', quizController.getGeneralKnowledgeQuizzes);
+
+router.get('/categories/history', quizController.getHistoryQuizzes);
+
+router.get('/categories/geography', quizController.getGeographyQuizzes);
+
+router.get('/categories/media', quizController.getMediaQuizzes);
+
+router.get('/categories/sport', quizController.getSportQuizzes);
+
+router.get('/categories/all-quizzes', quizController.getAllQuizzes);
+
+
 
 
 
