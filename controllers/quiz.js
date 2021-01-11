@@ -3,8 +3,6 @@ const User = require('../models/user');
 
 
 exports.getQuizzes = (req, res, next) => {
-
-
   Quiz.find()
     .then(quizzes => {
       res.render('index', {
