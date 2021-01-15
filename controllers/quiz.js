@@ -20,15 +20,17 @@ exports.about = (req, res, next) => {
   })
 }
 
-exports.getQuiz = (req, res, nex) => {
+exports.getQuiz = async (req, res, nex) => {
   const quizId = req.params.quizId;
-  Quiz.findById(quizId)
-    .then(quiz => {
-      res.render('quiz-template', {
-        quiz: quiz,
-        pageTitle: quiz.title,
-      })
-    })
+  const quiz = await Quiz.findById(quizId);
+  const userId = quiz.createdBy;
+  const user = await User.findById(userId);
+
+  res.render('quiz-template', {
+    quiz: quiz,
+    pageTitle: quiz.title,
+    username: user.username,
+  })
 
 }
 
@@ -80,6 +82,17 @@ exports.postCreateQuiz = async (req, res, next) => {
   res.redirect('/');
 };
 
+exports.getUser = async (req, res, next) => {
+  const userId = req.params.userId;
+  const user = await User.findById(userId);
+  console.log(user.username);
+  res.render('user', {
+    pageTitle: 'hello',
+    user: user,
+  })
+
+}
+
 exports.getUserQuizzes = async (req, res, next) => {
   const userQuizzes = await User.findById(req.user).populate('quizzes');
   const userQuizList = userQuizzes.quizzes;
@@ -102,8 +115,8 @@ exports.getHistoryQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "History",
     quizzes: quizList,
-  })
-}
+  });
+};
 
 
 exports.getGeographyQuizzes = async (req, res, next) => {

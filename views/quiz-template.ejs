@@ -6,6 +6,10 @@
 	<section class="welcome">
 		<h2><%= quiz.title %></h2>
 		<p><%= quiz.description%></p>
+		<p>
+			Created By:
+			<a href="/user/<%= quiz.createdBy %>"><%= username %></a>
+		</p>
 	</section>
 
 	<section class="quiz">

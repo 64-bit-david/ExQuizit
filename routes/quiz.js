@@ -15,6 +15,10 @@ router.get('/about', quizController.about);
 
 router.get('/create-quiz/create-quiz-index', isAuth, quizController.createQuizIndex);
 
+router.get('/user/:userId', quizController.getUser);
+
+//Creating Quizzes
+
 router.get('/create-quiz/create-quiz-a', isAuth, quizController.createQuizA);
 
 router.get('/create-quiz/create-quiz-b', isAuth, quizController.createQuizB);
@@ -24,6 +28,9 @@ router.get('/create-quiz/create-quiz-c', isAuth, quizController.createQuizC);
 router.post('/create-quiz', isAuth, quizController.postCreateQuiz);
 
 router.get('/user-quizzes', isAuth, quizController.getUserQuizzes);
+
+
+//Quiz Categories
 
 router.get('/categories/general-knowledge', quizController.getGeneralKnowledgeQuizzes);
 

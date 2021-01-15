@@ -3,9 +3,16 @@ Immediate
 
 
 Goal
-Link quizzes with users
-  - when logged in - see all the quizzes you have created
-  - Create user homepage - with list of said users created quizzes
+  - Update quiz to show which user created
+    - Display 
+  - Should be able to click on user be directed to a page with all their quizzes
+  - Update cateries pages with correct titles and such
+  Update styling
+    - Quiz cards
+    - Category colour theme
+    - grid for displaying quiz cards
+    - nav
+    - Responsive design 
 
 
 
