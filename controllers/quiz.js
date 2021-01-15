@@ -22,14 +22,15 @@ exports.about = (req, res, next) => {
 
 exports.getQuiz = async (req, res, nex) => {
   const quizId = req.params.quizId;
-  const quiz = await Quiz.findById(quizId);
-  const userId = quiz.createdBy;
-  const user = await User.findById(userId);
+  const quiz = await Quiz.findById(quizId).populate('createdBy');
+  const username = quiz.createdBy.username;
+  const userId = quiz.createdBy._id;
 
   res.render('quiz-template', {
     quiz: quiz,
     pageTitle: quiz.title,
-    username: user.username,
+    username: username,
+    userId: userId
   })
 
 }
