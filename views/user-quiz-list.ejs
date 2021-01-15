@@ -1,34 +1,46 @@
-<%- include('./includes/head.ejs') %> 
-	</head>
-	<body>
-    <%- include('./includes/nav.ejs') %> 
-    
-    <section class="welcome">
-			<p>
-				Here are all the quizzes you've created!
-			</p>
-		</section>
+<%- include('./includes/head.ejs') %>
 
-		<section class="main">
-			<% for (let quiz of quizzes) { %>
-				<a href="/quizzes/<%= quiz._id %>">
-					<div class="quiz-card">
-						<div class="quiz-card-content">
-							<div class="quiz-card-title">
-								<h2><%= quiz.title %></h2>
-							</div>
-							<div class="quiz-card-onhover">
-								<p class="quiz-card-info">
-									<%- quiz.description%>
-								</p>
-								<br />
-								<p class="quiz-card-prompt">Take the Quiz!</p>
-							</div>
-						</div>
-					</div>
-			</a>
-			<% } %>
-		
-		</section>
-		</body>
-		</html>
+<body>
+	<%- include('./includes/nav.ejs') %>
+
+	<section class="welcome">
+		<p>Here are all the quizzes you've created!</p>
+	</section>
+
+	<section class="user-quiz-list">
+		<% for (let quiz of quizzes) { %>
+		<li>
+			<a href="/quizzes/<%= quiz._id %>"> <%= quiz.title %> </a>
+			<input
+				class="input-id"
+				type="hidden"
+				name="quizId"
+				value="<%= quiz._id%>"
+			/>
+			<button class="btn" type="button" onclick="deleteQuizPrompt(this)">
+				Delete
+			</button>
+		</li>
+		<% } %>
+
+		<div class="delete-quiz-card">
+			<h3>
+				Are you sure you want to delete? <br />
+				This quiz and all associated data will be deleted permanently.
+			</h3>
+			<div class="btn-container">
+				<button class="btn" type="button" onclick="deleteProduct(this)">
+					Delete
+				</button>
+				<button
+					class="btn"
+					type="button"
+					onclick="deleteQuizPromptCancel()"
+				>
+					Cancel
+				</button>
+			</div>
+		</div>
+	</section>
+	<script src="/js/delete-quiz.js"></script>
+</body>

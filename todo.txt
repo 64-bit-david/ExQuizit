@@ -3,9 +3,6 @@ Immediate
 
 
 Goal
-  - Update quiz to show which user created
-    - Display 
-  - Should be able to click on user be directed to a page with all their quizzes
   - Update cateries pages with correct titles and such
   Update styling
     - Quiz cards
