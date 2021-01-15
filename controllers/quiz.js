@@ -25,21 +25,31 @@ exports.getQuiz = async (req, res, nex) => {
   const quiz = await Quiz.findById(quizId).populate('createdBy');
   const username = quiz.createdBy.username;
   const userId = quiz.createdBy._id;
-
   res.render('quiz-template', {
     quiz: quiz,
     pageTitle: quiz.title,
     username: username,
     userId: userId
-  })
+  });
+};
 
-}
+exports.getUser = async (req, res, next) => {
+  const userId = req.params.userId;
+  const user = await User.findById(userId).populate('quizzes');
+  console.log(user);
+  res.render('user', {
+    pageTitle: 'hello',
+    user: user,
+    quizzes: user.quizzes,
+  });
+
+};
 
 exports.createQuizIndex = (req, res, next) => {
   res.render('create-quiz/create-quiz-index', {
     pageTitle: 'Create Your Quiz',
-  })
-}
+  });
+};
 
 exports.createQuizA = (req, res, next) => {
   res.render('create-quiz/create-quiz-a', {
@@ -83,16 +93,7 @@ exports.postCreateQuiz = async (req, res, next) => {
   res.redirect('/');
 };
 
-exports.getUser = async (req, res, next) => {
-  const userId = req.params.userId;
-  const user = await User.findById(userId);
-  console.log(user.username);
-  res.render('user', {
-    pageTitle: 'hello',
-    user: user,
-  })
 
-}
 
 exports.getUserQuizzes = async (req, res, next) => {
   const userQuizzes = await User.findById(req.user).populate('quizzes');
