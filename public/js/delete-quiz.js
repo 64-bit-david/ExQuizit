@@ -2,17 +2,14 @@
 
 
 const deleteQuizPromptCard = document.querySelector('.delete-quiz-card');
-
 let inputList = document.querySelectorAll('.input-id')
-
-
 let quizId;
 let quizElement;
 const deleteQuizPrompt = (btn) => {
   deleteQuizPromptCard.classList.toggle('active');
   quizId = btn.previousElementSibling.value;
   quizElement = btn.closest('li');
-  console.log(quizElement);
+
 }
 
 

@@ -106,13 +106,12 @@ exports.getLoggedInUserQuizzes = async (req, res, next) => {
 
 exports.deleteQuiz = async (req, res, next) => {
   const quizId = req.params.quizId;
-  console.log(quizId);
   try {
     await Quiz.deleteOne({ _id: quizId });
+    await User.updateOne({ _id: req.user }, { $pull: { "quizzes": quizId } });
   } catch (err) {
     console.log(err)
   }
-  console.log('it works')
 }
 
 exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {

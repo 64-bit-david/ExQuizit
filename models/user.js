@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
       ref: Quiz,
       required: true,
     }
-  ],
+  ]
 })
 
 module.exports = mongoose.model('User', userSchema);

@@ -1,4 +1,9 @@
 Immediate
+  - quiz delete 
+    implement csrf protection
+    figure out how to post/store user quiz results on quiz end..
+    
+
 
 
 
@@ -10,6 +15,9 @@ Goal
     - grid for displaying quiz cards
     - nav
     - Responsive design 
+    - styling - Card - color themed to the catagory
+
+
 
 
 
