@@ -2,7 +2,6 @@ const addQuestionBtn = document.querySelector('.add-question');
 const removeQuestionBtn = document.querySelector('.remove-question');
 const createQuizTable = document.querySelector('.create-quiz-table');
 const quizType = document.getElementById('quiz-type');
-console.log(quizType.innerHTML)
 
 let numOfRows;
 
@@ -21,62 +20,62 @@ const mcQuestionList = document.querySelectorAll('.mc-question');
 
 //inserts rows in table when user wants to add questions
 addQuestionBtn.addEventListener('click', () => {
-  let row = createQuizTable.insertRow(-1);
-  numofRows = createQuizTable.rows.length;
-  numOfRows++;
-  qCLastRowStyler();
+	let row = createQuizTable.insertRow(-1);
+	numofRows = createQuizTable.rows.length;
+	numOfRows++;
+	qCLastRowStyler();
 })
 
 //inserts rows in table when user wants to add questions
 const qCLastRowStyler = () => {
 
-  if (quizType.innerHTML === 'Type A') {
-    const cell1Value = numOfRows - 1;
+	if (quizType.innerHTML === 'Type A') {
+		const cell1Value = numOfRows - 1;
 
-    let lastRow = createQuizTable.rows[numOfRows - 1];
+		let lastRow = createQuizTable.rows[numOfRows - 1];
 
-    const cell1 = lastRow.insertCell(0);
-    const cell2 = lastRow.insertCell(1);
-    const cell3 = lastRow.insertCell(2);
+		const cell1 = lastRow.insertCell(0);
+		const cell2 = lastRow.insertCell(1);
+		const cell3 = lastRow.insertCell(2);
 
-    cell1.innerHTML = cell1Value;
-    cell2.innerHTML = '<div class="form-control"></div>'
-    cell2.childNodes[0].innerHTML = '<input>';
-    cell2.childNodes[0].childNodes[0].setAttribute('type', 'text');
-    cell2.childNodes[0].childNodes[0].setAttribute('name', 'question');
-    cell2.childNodes[0].childNodes[0].setAttribute('id', 'question');
-    cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Question ${cell1Value}`);
+		cell1.innerHTML = cell1Value;
+		cell2.innerHTML = '<div class="form-control"></div>'
+		cell2.childNodes[0].innerHTML = '<input>';
+		cell2.childNodes[0].childNodes[0].setAttribute('type', 'text');
+		cell2.childNodes[0].childNodes[0].setAttribute('name', 'question');
+		cell2.childNodes[0].childNodes[0].setAttribute('id', 'question');
+		cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Question ${cell1Value}`);
 
-    cell3.innerHTML = '<div class="form-control"></div>'
-    cell3.childNodes[0].innerHTML = '<input>';
-    cell3.childNodes[0].childNodes[0].setAttribute('type', 'text');
-    cell3.childNodes[0].childNodes[0].setAttribute('name', 'answer');
-    cell3.childNodes[0].childNodes[0].setAttribute('id', 'answer');
-    cell3.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
-  }
+		cell3.innerHTML = '<div class="form-control"></div>'
+		cell3.childNodes[0].innerHTML = '<input>';
+		cell3.childNodes[0].childNodes[0].setAttribute('type', 'text');
+		cell3.childNodes[0].childNodes[0].setAttribute('name', 'answer');
+		cell3.childNodes[0].childNodes[0].setAttribute('id', 'answer');
+		cell3.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
+	}
 
-  if (quizType.innerHTML == 'Type B') {
+	if (quizType.innerHTML == 'Type B') {
 
-    const cell1Value = numOfRows - 1;
-    let lastRow = createQuizTable.rows[numOfRows - 1];
-    const cell1 = lastRow.insertCell(0);
-    const cell2 = lastRow.insertCell(1);
+		const cell1Value = numOfRows - 1;
+		let lastRow = createQuizTable.rows[numOfRows - 1];
+		const cell1 = lastRow.insertCell(0);
+		const cell2 = lastRow.insertCell(1);
 
-    cell1.innerHTML = cell1Value;
-    cell2.innerHTML = '<div class="form-control"></div>'
-    cell2.childNodes[0].innerHTML = '<input>';
-    cell2.childNodes[0].childNodes[0].setAttribute('type', 'text');
-    cell2.childNodes[0].childNodes[0].setAttribute('name', 'answer');
-    cell2.childNodes[0].childNodes[0].setAttribute('id', 'answer');
-    cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
-  }
+		cell1.innerHTML = cell1Value;
+		cell2.innerHTML = '<div class="form-control"></div>'
+		cell2.childNodes[0].innerHTML = '<input>';
+		cell2.childNodes[0].childNodes[0].setAttribute('type', 'text');
+		cell2.childNodes[0].childNodes[0].setAttribute('name', 'answer');
+		cell2.childNodes[0].childNodes[0].setAttribute('id', 'answer');
+		cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
+	}
 
-  if (quizType.innerHTML == 'Type C') {
-    mcQuestionList[numQuestionsMC].innerHTML = mCQTemplate;
-    const mcQuizNum = document.querySelectorAll('.mc-quiz-num');
-    mcQuizNum[numQuestionsMC].innerHTML = numQuestionsMC + 2;
-    numQuestionsMC++;
-  }
+	if (quizType.innerHTML == 'Type C') {
+		mcQuestionList[numQuestionsMC].innerHTML = mCQTemplate;
+		const mcQuizNum = document.querySelectorAll('.mc-quiz-num');
+		mcQuizNum[numQuestionsMC].innerHTML = numQuestionsMC + 2;
+		numQuestionsMC++;
+	}
 
 
 }
@@ -84,11 +83,11 @@ const qCLastRowStyler = () => {
 
 //removes rows when use wants to remove question
 removeQuestionBtn.addEventListener('click', () => {
-  if ((quizType.innerHTML === "Type A") || (quizType.innerHTML === 'Type B')) {
-    const createQuizTable = document.querySelector('.create-quiz-table');
-    let row = createQuizTable.deleteRow(-1);
-    numOfRows--;
-  }
+	if ((quizType.innerHTML === "Type A") || (quizType.innerHTML === 'Type B')) {
+		const createQuizTable = document.querySelector('.create-quiz-table');
+		let row = createQuizTable.deleteRow(-1);
+		numOfRows--;
+	}
 
 })
 numOfRows = createQuizTable.rows.length;

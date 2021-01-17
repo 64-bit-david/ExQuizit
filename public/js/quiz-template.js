@@ -24,6 +24,8 @@ const liveScore = document.querySelector('.total-correct-during');
 const endScore = document.querySelector('.total-correct-end');
 
 
+
+
 startBtn.addEventListener('click', () => {
   countDown();
   quizStartCard.classList.add('hide');
@@ -51,9 +53,24 @@ const quizEnd = () => {
       element.childNodes[1].classList.add('active');
     }
   });
+  quizEndValueInput = totalCorrect;
 
-  console.log(aListCells[1].children);
+  const quizId = document.getElementById('quiz-id').value;
+  const userId = document.getElementById('quiz-user').value;
 
+  const quizData = { score: totalCorrect, quizId: quizId, userId, userId };
+
+
+
+
+  fetch('/user-quiz-score', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(quizData)
+  })
 }
 
 const countDown = () => {

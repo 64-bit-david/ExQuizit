@@ -69,7 +69,9 @@ app.use((req, res, next) => {
     .catch(err => {
       console.log(err);
     });
-})
+});
+
+app.use(express.json({ limit: '1mb' }));
 
 app.use(quizRoutes);
 app.use(authRoutes);

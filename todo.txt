@@ -1,11 +1,15 @@
 Immediate
-  - quiz delete 
     implement csrf protection
     figure out how to post/store user quiz results on quiz end..
+
     
+    user takes quiz
+        - new routes for posting data
+        - get endQuiz score to post to db
+        - reload page with results
+        - send msg if not logged in? like  - you wanna keep your score m8?
 
-
-
+    
 
 Goal
   - Update cateries pages with correct titles and such

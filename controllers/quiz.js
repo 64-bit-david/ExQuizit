@@ -174,3 +174,13 @@ exports.getAllQuizzes = async (req, res, next) => {
     quizzes: quizList,
   });
 };
+
+
+exports.postUserQuizScore = async (req, res, next) => {
+  const quizId = req.body.quizId;
+  const score = req.body.score;
+  const user = req.body.userId;
+  const quizObj = { quizId, score };
+  await User.updateOne({ _id: user }, { $push: { "quizzesTaken": quizObj } });
+  console.log('quiz updated!');
+}

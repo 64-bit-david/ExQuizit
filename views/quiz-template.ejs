@@ -84,11 +84,22 @@
 					<div class="quiz-score end-score">
 						<p>
 							You scored
-							<span class="total-correct-end">0</span> /
+							<span class="total-correct-end"> 0</span>
+							/
 							<span class="total-questions"
 								><%= quiz.aList.length%></span
 							>
 						</p>
+						<input
+							id="quiz-id"
+							type="hidden"
+							value="<%= quiz._id %>"
+						/>
+						<input
+							id="quiz-user"
+							type="hidden"
+							value="<%= userId %>"
+						/>
 					</div>
 				</div>
 			</div>

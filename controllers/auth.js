@@ -32,6 +32,7 @@ exports.postSignUp = async (req, res, next) => {
   const confirmPassword = req.body.confirmPassword;
   const errors = validationResult(req);
   const quizzes = [];
+  const quizzesTaken = [];
   if (!errors.isEmpty()) {
     return res.status(422).render('auth/signup', {
       pageTitle: "Sign Up",
@@ -42,6 +43,7 @@ exports.postSignUp = async (req, res, next) => {
         password: password,
         confirmPassword: confirmPassword,
         quizzes: quizzes,
+        quizzesTaken: quizzesTaken
       },
       validationErrors: errors.array()
     })

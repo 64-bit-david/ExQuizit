@@ -51,7 +51,7 @@ router.get('/categories/sport', quizController.getSportQuizzes);
 router.get('/categories/all-quizzes', quizController.getAllQuizzes);
 
 
-
+router.post('/user-quiz-score', quizController.postUserQuizScore);
 
 
 module.exports = router;

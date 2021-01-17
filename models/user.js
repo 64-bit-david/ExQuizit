@@ -25,6 +25,12 @@ const userSchema = new mongoose.Schema({
       ref: Quiz,
       required: true,
     }
+  ],
+  quizzesTaken: [
+    {
+      quiz: String,
+      score: Number,
+    }
   ]
 })
 
