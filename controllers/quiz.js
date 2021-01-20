@@ -1,4 +1,6 @@
+const e = require('express');
 const Quiz = require('../models/quizModel');
+const { findById } = require('../models/user');
 const User = require('../models/user');
 
 
@@ -177,10 +179,26 @@ exports.getAllQuizzes = async (req, res, next) => {
 
 
 exports.postUserQuizScore = async (req, res, next) => {
-  const quizId = req.body.quizId;
-  const score = req.body.score;
-  const user = req.body.userId;
-  const quizObj = { quizId, score };
-  await User.updateOne({ _id: user }, { $push: { "quizzesTaken": quizObj } });
-  console.log('quiz updated!');
+  const quiz = req.body.quizId;
+  const latestScore = req.body.score;
+  const userId = req.body.userId;
+  const quizObj = { quiz, score: latestScore };
+
+
+  const user = await User.findById(userId);
+  const quizzesTakenQuizIds = user.quizzesTaken.map((quiz) => {
+    return quiz.quiz;
+  })
+  const quizTakenBefore = quizzesTakenQuizIds.includes(quiz);
+  if (!quizTakenBefore) {
+    await User.updateOne({ _id: user }, { $push: { "quizzesTaken": quizObj } });
+  }
+  else {
+    const quizPos = quizzesTakenQuizIds.findIndex(quizzesTakenQuizId => quizzesTakenQuizId === quiz);
+    user.quizzesTaken[quizPos].score.push(latestScore);
+    await user.save();
+  }
+  console.log('quiz posted');
+  res.end();
 }
+

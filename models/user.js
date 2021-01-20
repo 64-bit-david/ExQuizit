@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
   quizzesTaken: [
     {
       quiz: String,
-      score: Number,
+      score: [],
     }
   ]
 })
