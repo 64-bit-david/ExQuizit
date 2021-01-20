@@ -41,10 +41,9 @@ duringBtn.addEventListener('click', () => {
 
 
 
-const quizEnd = () => {
+const quizEnd = async () => {
   quizDuringCard.classList.remove('active');
   quizDuringCard.classList.add('hide');
-  quizEndCard.classList.add('active');
   endScore.innerHTML = totalCorrect
 
   aListCells.forEach((element, index) => {
@@ -63,7 +62,7 @@ const quizEnd = () => {
 
 
 
-  fetch('/user-quiz-score', {
+  await fetch('/user-quiz-score', {
     method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain, */*',
@@ -71,6 +70,7 @@ const quizEnd = () => {
     },
     body: JSON.stringify(quizData)
   })
+  quizEndCard.classList.add('active');
 }
 
 const countDown = () => {

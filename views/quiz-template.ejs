@@ -8,8 +8,11 @@
 		<p><%= quiz.description%></p>
 		<p>
 			Created By:
-			<a href="/user/<%= userId %>"><%= username %></a>
+			<a href="/user/<%= createdById %>"><%= createdBy %></a>
 		</p>
+		<br />
+		<br />
+		<p><%= highestScore %></p>
 	</section>
 
 	<section class="quiz">
@@ -98,7 +101,7 @@
 						<input
 							id="quiz-user"
 							type="hidden"
-							value="<%= userId %>"
+							value="<%= createdById %>"
 						/>
 					</div>
 				</div>

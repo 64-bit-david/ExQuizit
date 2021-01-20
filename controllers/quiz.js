@@ -25,13 +25,30 @@ exports.about = (req, res, next) => {
 exports.getQuiz = async (req, res, nex) => {
   const quizId = req.params.quizId;
   const quiz = await Quiz.findById(quizId).populate('createdBy');
-  const username = quiz.createdBy.username;
-  const userId = quiz.createdBy._id;
+  const createdBy = quiz.createdBy.username;
+  const createdById = quiz.createdBy._id;
+  let highestScore = "You haven't taken this quiz before"
+
+  const userLoggedIn = await User.findById(req.user);
+  //get array of the quizIds of quizzes the user has taken
+  const userQuizzesTakenArray = userLoggedIn.quizzesTaken.map((quiz) => {
+    return quiz.quiz
+  });
+  //if user has taken current quiz before, get the quiz from their quizzestaken array
+  //and extract the highest score taken
+  if (userQuizzesTakenArray.includes(quizId)) {
+    const quizArrayPos = userQuizzesTakenArray.findIndex(quiz => quiz === quizId)
+    const currentQuizHistory = userLoggedIn.quizzesTaken[quizArrayPos];
+    highestScore = `Your highest score in this quiz so far is ${Math.max(...currentQuizHistory.score)}!`;
+  }
+
   res.render('quiz-template', {
     quiz: quiz,
     pageTitle: quiz.title,
-    username: username,
-    userId: userId
+    createdBy: createdBy,
+    createdById: createdById,
+    highestScore: highestScore
+
   });
 };
 
