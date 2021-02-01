@@ -171,6 +171,22 @@ exports.getLoggedInUserQuizzes = async (req, res, next) => {
 };
 
 
+//passed to render method for caterogies
+const catPaginationHelper = (quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes) => {
+  return {
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+  }
+}
+
+
+
 exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
   const category = "general knowledge";
   const page = +req.query.page || 1;
@@ -181,17 +197,11 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
     .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
     .limit(QUIZ_CARDS_PER_PAGE);
 
+  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
   res.render('categories', {
     pageTitle: "General Knowledge Quizzes",
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    ...categoryRenderInfo,
   });
 };
 
@@ -205,17 +215,11 @@ exports.getHistoryQuizzes = async (req, res, next) => {
     .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
     .limit(QUIZ_CARDS_PER_PAGE);
 
+  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
   res.render('categories', {
     pageTitle: "History",
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    ...categoryRenderInfo,
   });
 };
 
@@ -230,16 +234,11 @@ exports.getGeographyQuizzes = async (req, res, next) => {
     .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
     .limit(QUIZ_CARDS_PER_PAGE);
 
+  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+
   res.render('categories', {
     pageTitle: "Geography Quizzes",
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    ...categoryRenderInfo,
   });
 };
 
@@ -254,16 +253,11 @@ exports.getMediaQuizzes = async (req, res, next) => {
     .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
     .limit(QUIZ_CARDS_PER_PAGE);
 
+  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+
   res.render('categories', {
     pageTitle: "Media Quizzes",
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    ...categoryRenderInfo,
   });
 };
 
@@ -277,16 +271,11 @@ exports.getSportQuizzes = async (req, res, next) => {
     .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
     .limit(QUIZ_CARDS_PER_PAGE);
 
+  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+
   res.render('categories', {
     pageTitle: "Sport Quizzes",
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    ...categoryRenderInfo,
   });
 };
 
@@ -298,16 +287,12 @@ exports.getAllQuizzes = async (req, res, next) => {
   const quizzes = await Quiz.find()
     .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
     .limit(QUIZ_CARDS_PER_PAGE);
+
+  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+
   res.render('categories', {
     pageTitle: "All Quizzes",
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    ...categoryRenderInfo,
   });
 };
 
