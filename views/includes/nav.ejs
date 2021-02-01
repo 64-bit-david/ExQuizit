@@ -1,14 +1,12 @@
 <header>
 	<nav>
-		<div class="container">
-			<div class="nav-left">
-				<a href="/"><img src="/img/logo/logo.svg" alt="" /></a>
-			</div>
-			<div class="nav-right">
-				<ul class="nav-list">
-					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li class="dropdown-btn">
+		<div class="logo">
+			<a href="/"><img src="/img/logo/logo.svg" alt="" /></a>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<!-- <li class="dropdown-btn">
 						<a href="/"
 							>Categories
 							<i class="fas fa-chevron-down"></i>
@@ -34,32 +32,36 @@
 								>
 							</li>
 						</ul>
-					</li>
-					<li>
-						<a href="/create-quiz/create-quiz-index">Create Quiz</a>
-					</li>
-					<li><a href="/">Contact</a></li>
-					<% if(isAuthenticated) {%>
-					<li class="dropdown-btn">
-						<a href="/"
-							>Account
-							<i class="fas fa-chevron-down"></i>
-						</a>
-						<ul class="dropdown-list">
+					</li> -->
+			<li>
+				<a href="/create-quiz/create-quiz-index">Create Quiz</a>
+			</li>
+			<li><a href="/">Contact</a></li>
+			<% if(isAuthenticated) {%>
+			<li class="dropdown-btn">
+				<a href="/"
+					>Account
+					<i class="fas fa-chevron-down"></i>
+				</a>
+				<!-- <ul class="dropdown-list">
 							<li><a href="/user-quizzes">Your Quizzes</a></li>
 							<li>
 								<a href="/logout" class="drop-item-last"
 									>Log Out</a
 								>
 							</li>
-						</ul>
-					</li>
-					<%}%> <% if(!isAuthenticated) {%>
-					<li><a href="/signup">Sign Up</a></li>
-					<li><a href="/login">Login</a></li>
-					<% } %>
-				</ul>
-			</div>
+						</ul> -->
+			</li>
+
+			<%}%> <% if(!isAuthenticated) {%>
+			<li><a href="/signup">Sign Up</a></li>
+			<li><a href="/login">Login</a></li>
+			<% } %>
+		</ul>
+		<div class="burger">
+			<div class="line1"></div>
+			<div class="line2"></div>
+			<div class="line3"></div>
 		</div>
 	</nav>
 </header>

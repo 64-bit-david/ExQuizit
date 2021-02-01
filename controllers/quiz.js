@@ -1,6 +1,9 @@
 const Quiz = require('../models/quizModel');
 const User = require('../models/user');
 
+const { validationResult } = require('express-validator');
+
+
 const QUIZ_CARDS_PER_PAGE = 10;
 const USER_QUIZ_PER_PAGE = 5;
 
@@ -65,6 +68,7 @@ exports.getQuiz = async (req, res, nex) => {
 
 
 exports.createQuizIndex = (req, res, next) => {
+
   res.render('create-quiz/create-quiz-index', {
     pageTitle: 'Create Your Quiz',
   });
@@ -88,6 +92,7 @@ exports.createQuizC = (req, res, next) => {
   })
 }
 exports.postCreateQuiz = async (req, res, next) => {
+
   const title = req.body.title;
   const description = req.body.description;
   const time = req.body.time;

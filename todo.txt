@@ -1,14 +1,13 @@
 Immediate
  validate create quiz?
-  - sanatize user input
+
   
-    
-    user takes quiz
-        - send msg if not logged in? like  - you wanna keep your score m8?
+
+
 
     
 
-Goal
+STYLING
   - Update cateries pages with correct titles and such
   Update styling
     - Quiz cards
@@ -22,18 +21,17 @@ Goal
 
 
 
-Later
-Quiz-creator
+Later important
 File Storage? Maybe just use svg?
+Implement Error Handling
+Implement Some testing
 
 
+Later not so important
+  - on complete quiz - msg if not signed in - sign up / login to save score?
+  -   - sanatize user input
 
-
-What about...
-  - When quiz finished, save score for user
   
   
-  
-errors
-  - logging out throws error (req.session.destory in auth controller)
+
   

@@ -1,119 +1,45 @@
 @import 'util';
+@import 'config';
 
 
 //nav
 
-nav {
-  background: $primary-color;
-  height: 6rem;
-
-
-  
-  .container{
-    // border: 1px solid black;
+  nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    height: inherit;
-
-    margin: 0 35rem;
+    min-height: 8vh;
   }
-  .nav-left{
-    height: inherit;
-    flex: 1;
-    display: flex;
-    a{
-      display: flex;
-      justify-content: center;
-      align-self: center;
-      height: 90%;
+
+  .logo {
     img{
-      height: inherit;
-      margin: auto;
+      max-height: 8vh;
     }
   }
-    
-  }
 
-  .nav-right {
-    height: 100%;
-    flex: 1.5;
-    .nav-list {
-    // border: 1px solid black;
+  .nav-links {
     display: flex;
+    justify-content: space-around;
+    width: 50%;
 
-    height: 100%;
-
-    li{
-      height: inherit;
-      display: flex;
-      align-items: center;
-      a{
-        font-size: 20px;
-        font-weight: bold;
-        color: #333;
-        padding: .8rem 1.4rem;
-        transition: all .1s ease;
-        &:hover{
-          font-weight: 600;
-          border-bottom: 1px solid black;
-        }
-        i{
-          font-size: 10px;
-       }
-      }
-      &.dropdown-btn{
-        position: relative;
-        
-
-        a:hover{
-          border: none;
-        }
+    a{
+      color: $primary-text-color;
+      // letter-spacing: 1px;
+      font-weight: bold;
+      font-size: 1.8rem;
     }
-    &.dropdown-btn:hover > .dropdown-list {
-      visibility: visible;
-      opacity: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
+  }
 
+  .burger {
+    display: none;
+  }
 
-     
-    }
-    .dropdown-list{
-      display: block;
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      width: 120%;
-      background: #fff;
-      top: 6rem;
-      border: .5px solid $primary-color;
-      border-top: none;
-      border-radius: 0 0 10px 10px ;
-      background: #fff;
-      transition: all .2s ease-in-out;
-      z-index: 5;
-        li{
-          min-width: 100%;
-        a{
-          min-width: inherit;
-          &:hover{
-            background: $primary-color;
-            color: #eee;
-          }
-          &.drop-item-last{
-            border-top: 1px solid $primary-color;
-            border-radius: 0 0 8px 8px;
-          }
-        }
-      }
-       
-      }
-     }
-    }
-   }
+  .burger div {
+    width: 2.5rem;
+    height: .3rem;
+    background-color: $primary-text-color;
+    margin: .5rem;
+    transition: all .3s ease;
   }
   
   section{
@@ -409,3 +335,4 @@ section.user-quiz-list{
   }
 }
 
+@import 'qSelector';
