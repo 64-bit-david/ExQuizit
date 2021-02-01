@@ -1,12 +1,9 @@
 Immediate
-    implement csrf protection
-    figure out how to post/store user quiz results on quiz end..
-
+ validate create quiz?
+  - sanatize user input
+  
     
     user takes quiz
-        - new routes for posting data
-        - get endQuiz score to post to db
-        - reload page with results
         - send msg if not logged in? like  - you wanna keep your score m8?
 
     
@@ -27,11 +24,7 @@ Goal
 
 Later
 Quiz-creator
-  - fix schema, questions should not be necessity
-    -  so quiz just be answers
-  Add / update schema so we can implement multiple choice quiz
-  validate create quiz?
-  File Storage? Maybe just use svg?
+File Storage? Maybe just use svg?
 
 
 

@@ -87,6 +87,7 @@ exports.getLogin = async (req, res, next) => {
       password: '',
     },
     validationErrors: [],
+
   })
 }
 
@@ -116,7 +117,8 @@ exports.postLogin = async (req, res, next) => {
         oldInput: {
           email: email,
         },
-        validationErrors: []
+        validationErrors: [],
+
       })
     }
   } catch (err) {

@@ -1,18 +1,32 @@
-const e = require('express');
 const Quiz = require('../models/quizModel');
-const { findById } = require('../models/user');
 const User = require('../models/user');
 
+const ITEMS_PER_PAGE = 5;
 
-exports.getQuizzes = (req, res, next) => {
-  Quiz.find()
-    .then(quizzes => {
-      res.render('index', {
-        pageTitle: 'Home',
-        path: '/',
-        quizzes: quizzes,
-      })
-    })
+
+
+exports.getQuizzes = async (req, res, next) => {
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find().countDocuments()
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find()
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
+
+  return res.render('index', {
+    pageTitle: 'Home',
+    path: '/',
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
+
+  })
 }
 
 exports.about = (req, res, next) => {
@@ -135,11 +149,25 @@ exports.deleteQuiz = async (req, res, next) => {
 
 exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
   const category = "general knowledge";
-  const quizList = await Quiz.find({ category });
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find({ category }).countDocuments()
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find({ category })
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
+
 
   res.render('categories', {
     pageTitle: "General Knowledge Quizzes",
-    quizzes: quizList,
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
   });
 };
 
@@ -200,9 +228,8 @@ exports.postUserQuizScore = async (req, res, next) => {
   const latestScore = req.body.score;
   const userId = req.body.userId;
   const quizObj = { quiz, score: latestScore };
-
-
   const user = await User.findById(userId);
+
   const quizzesTakenQuizIds = user.quizzesTaken.map((quiz) => {
     return quiz.quiz;
   })

@@ -22,6 +22,7 @@ const authRoutes = require('./routes/auth');
 
 
 
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
@@ -49,10 +50,13 @@ app.use(
   })
 );
 app.use(flash());
+
+
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
   next();
 });
+
 
 app.use((req, res, next) => {
   if (!req.session.user) {
