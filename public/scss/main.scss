@@ -403,6 +403,9 @@ section.user-quiz-list{
   margin-left: 20rem;
   a{
   font-size: 6rem;
+  &.active{
+    text-decoration: underline;
+  }
   }
 }
 

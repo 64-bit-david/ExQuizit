@@ -1,13 +1,12 @@
 const Quiz = require('../models/quizModel');
 const User = require('../models/user');
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 1;
 
 
 
 exports.getQuizzes = async (req, res, next) => {
-  const page = +req.query.page || 1;
-  let totalQuizzes;
+  page = +req.query.page || 1;
   const numofQuizzes = await Quiz.find().countDocuments()
   totalQuizzes = numofQuizzes;
   const quizzes = await Quiz.find()
@@ -25,7 +24,6 @@ exports.getQuizzes = async (req, res, next) => {
     nextPage: page + 1,
     previousPage: page - 1,
     lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
-
   })
 }
 
@@ -151,7 +149,7 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
   const category = "general knowledge";
   const page = +req.query.page || 1;
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find({ category }).countDocuments()
+  const numofQuizzes = await Quiz.find({ category }).countDocuments();
   totalQuizzes = numofQuizzes;
   const quizzes = await Quiz.find({ category })
     .skip((page - 1) * ITEMS_PER_PAGE)
@@ -173,52 +171,117 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
 
 exports.getHistoryQuizzes = async (req, res, next) => {
   const category = "history";
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find({ category }).countDocuments();
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find({ category })
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
 
-  const quizList = await Quiz.find({ category });
 
   res.render('categories', {
     pageTitle: "History",
-    quizzes: quizList,
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
   });
 };
 
 
 exports.getGeographyQuizzes = async (req, res, next) => {
   const category = "geography";
-
-  const quizList = await Quiz.find({ category });
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find({ category }).countDocuments();
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find({ category })
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
 
   res.render('categories', {
     pageTitle: "Geography Quizzes",
-    quizzes: quizList,
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
   });
 };
 
 exports.getMediaQuizzes = async (req, res, next) => {
   const category = "media";
 
-  const quizList = await Quiz.find({ category });
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find({ category }).countDocuments();
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find({ category })
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
 
   res.render('categories', {
     pageTitle: "Media Quizzes",
-    quizzes: quizList,
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
   });
 };
 
 exports.getSportQuizzes = async (req, res, next) => {
   const category = "sport";
-  const quizList = await Quiz.find({ category });
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find({ category }).countDocuments();
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find({ category })
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
+
   res.render('categories', {
     pageTitle: "Sport Quizzes",
-    quizzes: quizList,
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
   });
 };
 
 exports.getAllQuizzes = async (req, res, next) => {
-  const quizList = await Quiz.find();
+  const page = +req.query.page || 1;
+  let totalQuizzes;
+  const numofQuizzes = await Quiz.find().countDocuments();
+  totalQuizzes = numofQuizzes;
+  const quizzes = await Quiz.find()
+    .skip((page - 1) * ITEMS_PER_PAGE)
+    .limit(ITEMS_PER_PAGE);
   res.render('categories', {
     pageTitle: "All Quizzes",
-    quizzes: quizList,
+    quizzes: quizzes,
+    totalQuizzes: totalQuizzes,
+    currentPage: page,
+    hasNextPage: ITEMS_PER_PAGE * page < totalQuizzes,
+    hasPreviousPage: page > 1,
+    nextPage: page + 1,
+    previousPage: page - 1,
+    lastPage: Math.ceil(totalQuizzes / ITEMS_PER_PAGE)
   });
 };
 
