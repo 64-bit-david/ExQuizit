@@ -19,4 +19,17 @@ const navSlide = () => {
     burger.classList.toggle('toggle');
   });
 }
+
+const dropDownToggle = () => {
+  const dropDownBtns = document.querySelectorAll('.dropdown-toggle');
+  const dropDownMenus = document.querySelectorAll('.dropdown-menu');
+
+  dropDownBtns.forEach((dropDownBtn, index) => {
+    dropDownBtn.addEventListener("click", () => {
+      dropDownMenus[index].classList.toggle('active');
+    });
+  });
+}
+
+dropDownToggle();
 navSlide();

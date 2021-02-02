@@ -4,58 +4,56 @@
 			<a href="/"><img src="/img/logo/logo.svg" alt="" /></a>
 		</div>
 		<ul class="nav-links">
-			<li><a href="/">Home</a></li>
-			<li><a href="/about">About</a></li>
-			<!-- <li class="dropdown-btn">
-						<a href="/"
-							>Categories
-							<i class="fas fa-chevron-down"></i>
-						</a>
-						<ul class="dropdown-list">
-							<li>
-								<a href="/categories/general-knowledge"
-									>General Knowledge</a
-								>
-							</li>
-							<li><a href="/categories/history">History</a></li>
-							<li>
-								<a href="/categories/geography">Geography</a>
-							</li>
-							<li><a href="/categories/media">Media</a></li>
-							<li><a href="/categories/sport">Sport</a></li>
-
-							<li>
-								<a
-									href="/categories/all-quizzes"
-									class="drop-item-last"
-									>All Quizzes</a
-								>
-							</li>
-						</ul>
-					</li> -->
-			<li>
-				<a href="/create-quiz/create-quiz-index">Create Quiz</a>
-			</li>
-			<li><a href="/">Contact</a></li>
-			<% if(isAuthenticated) {%>
-			<li class="dropdown-btn">
-				<a href="/"
-					>Account
+			<li><a class="nav-main-a" href="/">Home</a></li>
+			<li><a class="nav-main-a" href="/about">About</a></li>
+			<li class="dropdown-toggle">
+				<div class="d-toggle-container">
+					<div class="nav-btn">Categories</div>
 					<i class="fas fa-chevron-down"></i>
-				</a>
-				<!-- <ul class="dropdown-list">
-							<li><a href="/user-quizzes">Your Quizzes</a></li>
-							<li>
-								<a href="/logout" class="drop-item-last"
-									>Log Out</a
-								>
-							</li>
-						</ul> -->
+				</div>
+				<ul class="dropdown-menu drop-down-cat">
+					<li>
+						<a href="/categories/general-knowledge"
+							>General Knowledge</a
+						>
+					</li>
+					<li><a href="/categories/history">History</a></li>
+					<li>
+						<a href="/categories/geography">Geography</a>
+					</li>
+					<li><a href="/categories/media">Media</a></li>
+					<li><a href="/categories/sport">Sport</a></li>
+
+					<li>
+						<a href="/categories/all-quizzes" class="drop-item-last"
+							>All Quizzes</a
+						>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a class="nav-main-a" href="/create-quiz/create-quiz-index"
+					>Create Quiz</a
+				>
+			</li>
+			<li><a class="nav-main-a" href="/">Contact</a></li>
+			<% if(isAuthenticated) {%>
+			<li class="dropdown-toggle">
+				<div class="d-toggle-container">
+					<div class="nav-btn">Account</div>
+					<i class="fas fa-chevron-down"></i>
+				</div>
+				<ul class="dropdown-menu drop-down-auth">
+					<li><a href="/user-quizzes">Your Quizzes</a></li>
+					<li>
+						<a href="/logout" class="drop-item-last">Log Out</a>
+					</li>
+				</ul>
 			</li>
 
 			<%}%> <% if(!isAuthenticated) {%>
-			<li><a href="/signup">Sign Up</a></li>
-			<li><a href="/login">Login</a></li>
+			<li><a class="nav-main-a" href="/signup">Sign Up</a></li>
+			<li><a class="nav-main-a" href="/login">Login</a></li>
 			<% } %>
 		</ul>
 		<div class="burger">

@@ -13,10 +13,14 @@ STYLING
     - Quiz cards
     - Category colour theme
     - grid for displaying quiz cards
-    - nav
     - Responsive design 
     - styling - Card - color themed to the catagory
 
+Styling Fixes needed
+  nav
+    - in the dd menu, when hovering the menu the nav parent scales up. prevent
+    - dds not quite in line with above parent
+    
 
 
 
