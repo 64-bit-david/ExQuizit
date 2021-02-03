@@ -4,9 +4,11 @@
 			<a href="/"><img src="/img/logo/logo.svg" alt="" /></a>
 		</div>
 		<ul class="nav-links">
-			<li><a class="nav-main-a" href="/">Home</a></li>
-			<li><a class="nav-main-a" href="/about">About</a></li>
-			<li class="dropdown-toggle">
+			<li class="nav-main-li"><a class="nav-main-a" href="/">Home</a></li>
+			<li class="nav-main-li">
+				<a class="nav-main-a" href="/about">About</a>
+			</li>
+			<li class="dropdown-toggle nav-main-li">
 				<div class="d-toggle-container">
 					<div class="nav-btn">Categories</div>
 					<i class="fas fa-chevron-down"></i>
@@ -31,14 +33,16 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li class="nav-main-li">
 				<a class="nav-main-a" href="/create-quiz/create-quiz-index"
 					>Create Quiz</a
 				>
 			</li>
-			<li><a class="nav-main-a" href="/">Contact</a></li>
+			<li class="nav-main-li">
+				<a class="nav-main-a" href="/">Contact</a>
+			</li>
 			<% if(isAuthenticated) {%>
-			<li class="dropdown-toggle">
+			<li class="dropdown-toggle nav-main-li">
 				<div class="d-toggle-container">
 					<div class="nav-btn">Account</div>
 					<i class="fas fa-chevron-down"></i>
@@ -52,8 +56,12 @@
 			</li>
 
 			<%}%> <% if(!isAuthenticated) {%>
-			<li><a class="nav-main-a" href="/signup">Sign Up</a></li>
-			<li><a class="nav-main-a" href="/login">Login</a></li>
+			<li class="nav-main-li">
+				<a class="nav-main-a" href="/signup">Sign Up</a>
+			</li>
+			<li class="nav-main-li">
+				<a class="nav-main-a" href="/login">Login</a>
+			</li>
 			<% } %>
 		</ul>
 		<div class="burger">
@@ -62,4 +70,29 @@
 			<div class="line3"></div>
 		</div>
 	</nav>
+
+	<ul class="dropdown-menu-mobile">
+		<li>
+			<a href="/categories/general-knowledge">General Knowledge</a>
+		</li>
+		<li><a href="/categories/history">History</a></li>
+		<li>
+			<a href="/categories/geography">Geography</a>
+		</li>
+		<li><a href="/categories/media">Media</a></li>
+		<li><a href="/categories/sport">Sport</a></li>
+
+		<li>
+			<a href="/categories/all-quizzes" class="drop-item-last"
+				>All Quizzes</a
+			>
+		</li>
+	</ul>
+
+	<ul class="dropdown-menu-mobile ddm-auth">
+		<li><a href="/user-quizzes">Your Quizzes</a></li>
+		<li>
+			<a href="/logout" class="drop-item-last">Log Out</a>
+		</li>
+	</ul>
 </header>

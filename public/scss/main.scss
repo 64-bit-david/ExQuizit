@@ -1,5 +1,5 @@
 @import 'util';
-@import 'config';
+@import './breakP.scss';
 
 
 //nav
@@ -61,16 +61,15 @@
   }
 
   .dropdown-menu {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     background: $primary-color;
     top: 6vh;
-    transition: all .1s ease;
     margin-left: -2rem;
-
+    z-index: 20;
+    transition: all .2s ease-in;
     li {
-  
-
       a {
         display: block;
         width: inherit;
@@ -85,12 +84,17 @@
           transform: scale(1);
         }
       }
- 
     }
     &.active {
       display: flex;
+      visibility: visible;
+      opacity: 1;
       flex-direction: column;
     }
+  }
+
+  .dropdown-menu-mobile {
+    display: none;
   }
 
   .burger {
@@ -398,4 +402,106 @@ section.user-quiz-list{
   }
 }
 
-@import 'qSelector';
+
+
+
+
+
+@include media("<=768px"){
+    body{
+      overflow: hidden;
+    }
+    .nav-links{
+      position: fixed;
+      right: 0px;
+      height: 94vh;
+      top: 6vh;
+      background-color: $primary-color;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform .2s ease-in;
+      z-index: 5;
+  }
+   
+    .burger{
+      display: block;
+      cursor: pointer;
+    }
+    .nav-active {
+      transform: translateX(0);
+    }
+   
+    .dropdown-menu-mobile{
+      position: fixed;
+      right: 0px;
+      height: 94vh;
+      top: 6vh;
+      background-color: $primary-color;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      font-size: 1.8rem;
+      font-weight: bold;
+      font-family: $font-1;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform .2s ease-in;
+      z-index: 10;
+      li{
+        opacity: 0;
+        text-align: center;
+        a {
+          color: $primary-text-color;
+        }
+      }
+      &.active{
+        transform: translateX(0);
+        li{
+        opacity: 1;
+        visibility: visible;
+        }
+      }
+    }
+    .ddm-auth {
+      justify-content: flex-start;
+      margin-top: 5vh;
+
+      li{
+        margin-bottom: 4rem;
+      }
+    }
+
+    .dropdown-menu {
+      display: none;
+      &.active{
+        display: none;
+      }
+    }
+  
+}
+
+@include media (">=769px", "<=1300px"){
+  nav{
+    min-height: 9vh;
+  }
+  .logo {
+    img{
+      max-height: 7vh;
+    }
+  }
+  .nav-links {
+    width: 65%;
+    a, .nav-btn{
+      font-size: 1.6rem;
+    }
+
+    .dropdown-menu {
+      top: 9vh;
+    }
+
+  }
+}

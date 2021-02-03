@@ -153,3 +153,21 @@ label{
   font-size: 2rem;
   font-weight: 700;
 }
+
+
+
+//animations
+
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px,6px) scale(.7);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px,-6px) scale(.7);
+}
+
