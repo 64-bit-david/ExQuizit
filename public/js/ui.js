@@ -47,11 +47,21 @@ const navSlide = () => {
 const dropDownToggle = () => {
   const dropDownBtns = document.querySelectorAll('.dropdown-toggle');
   const dropDownMenus = document.querySelectorAll('.dropdown-menu');
+  //click on certain dropbtn will toggle corresponding d-menu
   dropDownBtns.forEach((dropDownBtn, index) => {
     dropDownBtn.addEventListener("click", () => {
       dropDownMenus[index].classList.toggle('active');
     });
   });
+  //click anywhere off dbtn removes corresponding dmenu' active class
+  document.addEventListener("click", (event) => {
+    dropDownBtns.forEach((dbtn, index) => {
+      const isClickedInside = dbtn.contains(event.target);
+      if (!isClickedInside) {
+        dropDownMenus[index].classList.remove('active');
+      }
+    })
+  })
 }
 
 dropDownToggle();
