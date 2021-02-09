@@ -108,25 +108,31 @@
     margin: .5rem;
     transition: all .3s ease;
   }
-  
-  section{
-    margin: 0 35rem;
-    &.welcome{
-      padding: 4rem 0;
-    }
-    h2{
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-    p{
-      font-size: 2rem;
-    }
-    &.main{
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 7rem;
+
+  // NAV END
+
+
+  //Grid for quiz cards
+
+  //Welcome
+
+  .welcome {
+    padding: 5rem 10vw;
+
+    h4{
+      font-size: 3rem;
     }
   }
+
+  .quiz-list-main{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 3rem 5rem;
+    padding: 4rem 10vw;
+   
+
+  }
+
 
   
   //create quiz
@@ -408,9 +414,7 @@ section.user-quiz-list{
 
 
 @include media("<=768px"){
-    body{
-      overflow: hidden;
-    }
+
     .nav-links{
       position: fixed;
       right: 0px;

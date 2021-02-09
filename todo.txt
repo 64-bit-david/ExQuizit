@@ -1,5 +1,13 @@
 Immediate
  validate create quiz?
+  - Need to add limits to characters - make sure doesn't allow for text overlap in cards
+
+  
+  
+Bugs - When user deletes quiz - it remains in the users list of quizzes they created
+  - Causes error when trying to load user or quiz 
+  - maybe investigate error being thrown in devtools
+  -  
 
   
 
@@ -9,18 +17,14 @@ Immediate
 
 STYLING
   - Update cateries pages with correct titles and such
-  Update styling
-    - Quiz cards
-    - Category colour theme
-    - grid for displaying quiz cards
-    - Responsive design 
-    - styling - Card - color themed to the catagory
+  - Need to style
+    - sign up + login
+    - create Quiz
+    - Quiz template
+    - Create about page
 
-Styling Fixes needed
-  nav
-    - in the dd menu, when hovering the menu the nav parent scales up. prevent
-    - dds not quite in line with above parent
-    
+
+
 
 
 
