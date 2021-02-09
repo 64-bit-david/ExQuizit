@@ -12,6 +12,8 @@ router.get('/quizzes/:quizId', quizController.getQuiz);
 
 router.get('/about', quizController.about);
 
+router.get('/contact', quizController.contact);
+
 router.get('/user/:userId', quizController.getUser);
 
 router.get('/user-quizzes', isAuth, quizController.getLoggedInUserQuizzes);

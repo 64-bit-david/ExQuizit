@@ -36,6 +36,15 @@ exports.about = (req, res, next) => {
   })
 }
 
+exports.contact = (req, res, next) => {
+  res.render('contact', {
+    pageTitle: "Contact",
+    path: '/contact',
+    errorMessage: null,
+
+  })
+}
+
 exports.getQuiz = async (req, res, nex) => {
   const quizId = req.params.quizId;
   const quiz = await Quiz.findById(quizId).populate('createdBy');

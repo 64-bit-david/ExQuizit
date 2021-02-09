@@ -1,0 +1,28 @@
+<%- include('./includes/head.ejs') %>
+
+<body>
+	<%- include('./includes/nav.ejs') %>
+
+	<section class="welcome">
+		<% if(errorMessage) { %>
+		<div class="error-msg"><p><%= errorMessage %></p></div>
+		<% } %>
+		<h2>Contact</h2>
+	</section>
+	<form class="form" action="/contact" method="POST" novalidate>
+		<div class="form-control">
+			<label for="email">Your Email</label>
+			<input type="email" id="email" name="email" />
+		</div>
+		<div class="form-control">
+			<label for="title">Title</label>
+			<input type="text" id="title" name="title" />
+		</div>
+
+		<div class="form-control">
+			<label for="message">Message</label>
+			<textarea type="text" id="text" name="T=text" rows="8"></textarea>
+		</div>
+	</form>
+	<script src="/js/ui.js"></script>
+</body>

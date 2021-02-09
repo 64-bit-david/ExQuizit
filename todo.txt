@@ -1,13 +1,20 @@
 Immediate
  validate create quiz?
   - Need to add limits to characters - make sure doesn't allow for text overlap in cards
+  
+
+
+  - impletement working contact form
+    - remember to validate input
+   
 
   
   
 Bugs - When user deletes quiz - it remains in the users list of quizzes they created
   - Causes error when trying to load user or quiz 
-  - maybe investigate error being thrown in devtools
-  -  
+
+maybe investigate error being thrown in devtools
+Error thrown on user log in - not sure what 
 
   
 
