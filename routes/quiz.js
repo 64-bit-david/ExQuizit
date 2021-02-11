@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { check, body } = require('express-validator');
+const nodemailer = require('nodemailer');
+
 
 const quizController = require('../controllers/quiz');
 const isAuth = require('../middleware/isAuth')
@@ -12,13 +14,16 @@ router.get('/quizzes/:quizId', quizController.getQuiz);
 
 router.get('/about', quizController.about);
 
-router.get('/contact', quizController.contact);
+router.get('/contact', quizController.getContact);
+
+router.post('/contact', quizController.postContact)
 
 router.get('/user/:userId', quizController.getUser);
 
 router.get('/user-quizzes', isAuth, quizController.getLoggedInUserQuizzes);
 
 router.delete('/delete-quiz/:quizId', isAuth, quizController.deleteQuiz);
+
 
 
 //Quiz Categories

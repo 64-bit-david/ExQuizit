@@ -11,7 +11,7 @@
 	</section>
 
 	<form class="form" action="/signup" method="POST" novalidate>
-		<div class="form-control">
+		<div class="form-control form-control-log-sign">
 			<label for="email">Email</label>
 			<input
 				class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
@@ -21,19 +21,19 @@
 				value="<%= oldInput.email%>"
 			/>
 		</div>
-		<div class="form-control">
+		<div class="form-control form-control-log-sign">
 			<label for="username">Username</label>
 			<input class="<%= validationErrors.find(e => e.param === "username")
 			? 'invalid': '' %>" type="text" name="username" id="username"
 			value="<%= oldInput.username%>" />
 		</div>
-		<div class="form-control">
+		<div class="form-control form-control-log-sign">
 			<label for="password">Password</label>
 			<input class="<%= validationErrors.find(e => e.param === "password")
 			? 'invalid': '' %>" type="password" name="password" id="password"
 			value="<%= oldInput.password%>" />
 		</div>
-		<div class="form-control">
+		<div class="form-control form-control-log-sign">
 			<label for="confirmPassword">Confirm Password</label>
 			<input class="<%= validationErrors.find(e => e.param === "password")
 			? 'invalid': '' %>" type="password" type="password"

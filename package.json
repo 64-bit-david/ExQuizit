@@ -23,8 +23,11 @@
     "g": "^2.0.1",
     "include-media": "^1.4.9",
     "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8",
+    "nodemailer": "^6.4.17",
+    "nodemailer-mailgun-transport": "^2.0.2",
     "sass": "^1.30.0"
   },
   "devDependencies": {

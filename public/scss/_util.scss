@@ -110,13 +110,12 @@ background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox=
   font-family: 'Arial';
   border-collapse: collapse;
   border: 2px solid $primary-color;
-  margin-bottom: 5rem;
  
 
   th, td {
     border: 1px solid #eee;
-    padding: 1rem 3rem;
-    // border-collapse: collapse;
+    padding: 1rem .5rem;
+    text-align: center;
   }
   th {
     background: #00cccc;
@@ -158,6 +157,7 @@ input[type=text], input[type=number], input[type=password], input[type=email], s
   border-radius: 4px;
   width: 65%;
   border: 2px solid $primary-color;
+  font-size: 1.6rem;
  
 
   &.invalid{
@@ -193,4 +193,7 @@ label{
 .toggle .line3 {
   transform: rotate(45deg) translate(-5px,-6px) scale(.7);
 }
+
+
+
 

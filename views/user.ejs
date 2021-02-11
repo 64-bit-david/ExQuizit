@@ -4,10 +4,10 @@
 	<%- include('./includes/nav.ejs') %>
 
 	<section class="welcome">
-		<p><%= user.username %></p>
+		<h2>Quizzes made by <%=user.username%></h2>
 	</section>
 
-	<section class="main">
+	<section class="quiz-list-main">
 		<% for (let quiz of quizzes) { %>
 		<a href="/quizzes/<%= quiz._id %>">
 			<div class="quiz-card">
@@ -15,11 +15,10 @@
 					<div class="quiz-card-title">
 						<h2><%= quiz.title %></h2>
 					</div>
-					<div class="quiz-card-onhover">
-						<p class="quiz-card-info"><%- quiz.description%></p>
-						<br />
-						<p class="quiz-card-prompt">Take the Quiz!</p>
+					<div class="quiz-card-desc">
+						<p><%- quiz.description%></p>
 					</div>
+					<p class="quiz-card-onhover">Take the Quiz!</p>
 				</div>
 			</div>
 		</a>

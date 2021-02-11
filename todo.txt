@@ -45,6 +45,8 @@ Implement Some testing
 Later not so important
   - on complete quiz - msg if not signed in - sign up / login to save score?
   -   - sanatize user input
+   - fix height of mobile nav dropdown to full screen height
+    - When you scroll with it active you see the gap where the nav is 
 
   
   

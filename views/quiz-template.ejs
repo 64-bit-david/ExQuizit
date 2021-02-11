@@ -3,11 +3,11 @@
 <body>
 	<%- include('./includes/nav.ejs') %>
 
-	<section class="welcome">
+	<section class="welcome quiz-template-welcome">
 		<h2><%= quiz.title %></h2>
 		<p><%= quiz.description%></p>
 		<p>
-			Created By:
+			Created by:
 			<a href="/user/<%= createdById %>"><%= createdBy %></a>
 		</p>
 		<br />
@@ -20,7 +20,7 @@
 			<div class="table-quiz-container">
 				<table class="table-quiz">
 					<tr>
-						<th>#</th>
+						<th class="number-row">#</th>
 						<%if(quiz.qList.length > 0){%>
 						<th>Question</th>
 						<%}%>

@@ -8,19 +8,20 @@
 		<div class="error-msg"><p><%= errorMessage %></p></div>
 		<% } %>
 		<h2>Log In</h2>
-		<form class="form" action="/login" method="POST">
-			<div class="form-control">
-				<label for="email">Email</label>
-				<input class="<%= validationErrors.find(e => e.param ===
-				"password") ? 'invalid': '' %>" type="text" name="email"
-				id="email" value="<%= oldInput.email%>" />
-			</div>
-			<div class="form-control">
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" />
-			</div>
-			<button class="btn auth-btn" type="submit">Login</button>
-		</form>
 	</section>
+
+	<form class="form" action="/login" method="POST">
+		<div class="form-control form-control-log-sign">
+			<label for="email">Email</label>
+			<input class="<%= validationErrors.find(e => e.param === "password")
+			? 'invalid': '' %>" type="text" name="email" id="email" value="<%=
+			oldInput.email%>" />
+		</div>
+		<div class="form-control form-control-log-sign">
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" />
+		</div>
+		<button class="btn auth-btn" type="submit">Login</button>
+	</form>
 	<script src="/js/ui.js"></script>
 </body>

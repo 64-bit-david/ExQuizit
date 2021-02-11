@@ -1,7 +1,14 @@
+const { validationResult } = require('express-validator');
+const nodemailer = require('nodemailer');
+const mailGun = require('nodemailer-mailgun-transport')
+const dotenv = require('dotenv');
+const mg = require('mailgun-js');
+
+
 const Quiz = require('../models/quizModel');
 const User = require('../models/user');
 
-const { validationResult } = require('express-validator');
+dotenv.config()
 
 
 const QUIZ_CARDS_PER_PAGE = 10;
@@ -36,7 +43,7 @@ exports.about = (req, res, next) => {
   })
 }
 
-exports.contact = (req, res, next) => {
+exports.getContact = (req, res, next) => {
   res.render('contact', {
     pageTitle: "Contact",
     path: '/contact',
@@ -44,6 +51,34 @@ exports.contact = (req, res, next) => {
 
   })
 }
+
+exports.postContact = (req, res, next) => {
+  const auth = {
+    auth: {
+      apiKey: `${process.env.MAILGUN_API_KEY}`,
+      domain: 'sandbox399246faa3c14351988023444b52bf4a.mailgun.org',
+    }
+  };
+  const transporter = nodemailer.createTransport(mailGun(auth));
+  const mailOptions = {
+    from: req.body.email,
+    to: 'devtestingforme@gmail.com',
+    subject: 'Ex-quiz-it contact',
+    text: req.body.message
+  }
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.render('message-sent', {
+        pageTitle: 'Message Sent',
+        path: '/contact'
+      })
+    }
+  })
+}
+
 
 exports.getQuiz = async (req, res, nex) => {
   const quizId = req.params.quizId;
@@ -62,7 +97,7 @@ exports.getQuiz = async (req, res, nex) => {
   if (userQuizzesTakenArray.includes(quizId)) {
     const quizArrayPos = userQuizzesTakenArray.findIndex(quiz => quiz === quizId)
     const currentQuizHistory = userLoggedIn.quizzesTaken[quizArrayPos];
-    highestScore = `Your highest score in this quiz so far is ${Math.max(...currentQuizHistory.score)}!`;
+    highestScore = `Your high score for this quiz is ${Math.max(...currentQuizHistory.score)}`;
   }
 
   res.render('quiz-template', {
