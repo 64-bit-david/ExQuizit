@@ -106,14 +106,14 @@
 
 
   .welcome {
-    padding: 5rem 10vw;
+    padding: 4rem 10vw 1rem 10vw;
 
     & > * {
       margin-bottom: 1rem;
     }
 
     h2{
-      font-size: 3rem;
+      font-size: 4rem;
     }
 
     h3{
@@ -121,7 +121,9 @@
     }
 
     p{
-      font-size: 1.8rem;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 3rem;
     }
   }
 
@@ -135,12 +137,36 @@
     padding: 4rem 10vw;
   }
 
+  
+  .category-title{
+    display: inline-block;
+    text-transform: capitalize;
+    border-bottom: 3px solid transparent;
+    padding-right: 2rem;
+
+    &.geography{
+      border-color: $geo-color;
+    }
+    &.history{
+      border-color: $history-color;
+    }
+    &.media{
+      border-color: $media-color;
+    }
+    &.sport{
+      border-color: $sport-color;
+    }
+    &.general.knowledge{
+      border-color: $primary-color;
+    }
+
+  }
 
 
   //create quiz
 
   .create-quiz-header {
-    h3{
+   h3{
       font-size: 4rem;
     }
    }
@@ -181,6 +207,7 @@
 
     .create-quiz-right {
       margin-left: 5rem;
+      margin-top: 1.2rem;
       width: 44rem;
 
     }
@@ -238,8 +265,18 @@
   h2{
     font-size: 3.5rem;
   }
+  p {
+    font-weight: normal;
+    letter-spacing: -.5px;
+    &.quiz-desc {
+      font-weight: bold;
+    }
+  }
   a{
     border-bottom: 1px solid $primary-text-color;
+    &:hover{
+      font-weight: bold;
+    }
   }
 }
 
@@ -284,8 +321,10 @@
   .quiz-input-card{
     border: 1px solid $primary-color;
     padding: 2rem;
+    margin-left: 5rem;
+    margin-top: 4rem;
     border-radius: .3rem;
-    width: 25vw;
+    width: 35rem;
     position: fixed;
     display: flex;
     flex-direction: column;

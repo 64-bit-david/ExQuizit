@@ -139,9 +139,38 @@ form{
   }
 }
 
+section.quiz-template-welcome {
+  margin: .4rem;
+  h2{
+    font-size: 3rem;
+    letter-spacing: -.5px;
+    line-height: 1;
+  }
+  p{
+    letter-spacing: -.5px;
+    line-height: 1;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    &.quiz-desc{
+      font-weight: bold;
+      font-size: 1.7rem;
+      margin-top: 1rem;
+    }
+  }
+  br{
+    margin: 0;
+    width: 0;
+    height: 0;
+  }
+  
+}
+
 .quiz-template-container {
-  display: flex;
+  display: block;
   flex-direction: column;
+  margin: 2rem;
 }
 
 }

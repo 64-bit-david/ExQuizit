@@ -1,12 +1,13 @@
 <div class="quiz-card">
 	<div class="quiz-card-content">
-		<div class="quiz-card-title">
+		<div class="quiz-card-title <%= quiz.category %>">
 			<h2><%= quiz.title %></h2>
 		</div>
+		<div class="quiz-card-desc">
+			<p><%- quiz.description%></p>
+		</div>
 		<div class="quiz-card-onhover">
-			<p class="quiz-card-info"><%- quiz.description%></p>
-			<br />
-			<p class="quiz-card-prompt">Take the Quiz!</p>
+			<p>Take the Quiz!</p>
 		</div>
 	</div>
 </div>

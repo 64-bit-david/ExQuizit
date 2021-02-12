@@ -155,6 +155,7 @@ exports.postCreateQuiz = async (req, res, next) => {
     createdBy: createdBy,
   });
 
+
   await quiz.save();
   createdBy.quizzes.push(quiz);
   createdBy.save();
@@ -251,6 +252,7 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "General Knowledge Quizzes",
     ...categoryRenderInfo,
+    category: category
   });
 };
 
@@ -269,6 +271,8 @@ exports.getHistoryQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "History",
     ...categoryRenderInfo,
+    category: category
+
   });
 };
 
@@ -285,9 +289,12 @@ exports.getGeographyQuizzes = async (req, res, next) => {
 
   const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
+
   res.render('categories', {
     pageTitle: "Geography Quizzes",
     ...categoryRenderInfo,
+    category: category
+
   });
 };
 
@@ -307,6 +314,8 @@ exports.getMediaQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "Media Quizzes",
     ...categoryRenderInfo,
+    category: category
+
   });
 };
 
@@ -325,11 +334,14 @@ exports.getSportQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "Sport Quizzes",
     ...categoryRenderInfo,
+    category: category
+
   });
 };
 
 exports.getAllQuizzes = async (req, res, next) => {
   const page = +req.query.page || 1;
+  const category = 'All Quizzes';
   let totalQuizzes;
   const numofQuizzes = await Quiz.find().countDocuments();
   totalQuizzes = numofQuizzes;
@@ -342,6 +354,7 @@ exports.getAllQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "All Quizzes",
     ...categoryRenderInfo,
+    category: category
   });
 };
 
@@ -365,7 +378,6 @@ exports.postUserQuizScore = async (req, res, next) => {
     user.quizzesTaken[quizPos].score.push(latestScore);
     await user.save();
   }
-  console.log('quiz posted');
   res.end();
 }
 

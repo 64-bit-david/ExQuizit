@@ -5,8 +5,9 @@
 	<section class="welcome">
 		<h2>
 			Test your knowledge and see how you stack up against other
-			Ex-Quiz-It users!
+			<br />Ex-Quiz-It users!
 		</h2>
+		<p>Click on a quiz below to get started</p>
 	</section>
 
 	<section class="quiz-list-main">
@@ -14,7 +15,7 @@
 		<a href="/quizzes/<%= quiz._id %>">
 			<div class="quiz-card">
 				<div class="quiz-card-content">
-					<div class="quiz-card-title">
+					<div class="quiz-card-title <%= quiz.category %>">
 						<h2><%= quiz.title %></h2>
 					</div>
 					<div class="quiz-card-desc">
