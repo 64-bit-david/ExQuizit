@@ -1,0 +1,149 @@
+
+@media only screen and (max-width: 768px) {
+
+  .nav-links{
+    position: fixed;
+    right: 0px;
+    height: 94vh;
+    top: 6vh;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform .2s ease-in;
+    z-index: 5;
+}
+ 
+  .burger{
+    display: block;
+    cursor: pointer;
+  }
+  .nav-active {
+    transform: translateX(0);
+  }
+ 
+  .dropdown-menu-mobile{
+    position: fixed;
+    right: 0px;
+    height: 100vh;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: $font-1;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform .2s ease-in;
+    z-index: 10;
+    li{
+      opacity: 0;
+      text-align: center;
+      a {
+        color: $primary-text-color;
+      }
+    }
+    &.active{
+      transform: translateX(0);
+      li{
+      opacity: 1;
+      visibility: visible;
+      }
+    }
+  }
+  .ddm-auth {
+    justify-content: flex-start;
+    margin-top: 5vh;
+
+    li{
+      margin-bottom: 4rem;
+    }
+  }
+
+  .dropdown-menu {
+    display: none;
+    &.active{
+      display: none;
+    }
+  }
+
+  section.welcome {
+    padding: .5rem 3vw 0 3vw;
+    h2{
+      font-size: 1.9rem;
+    }
+  }
+
+  .quiz-list-main{
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+
+  
+  //mobile-nav end
+  .form{
+    margin: 3vw;
+
+   .form-control {
+    width: 92vw !important;
+    flex-direction: column;
+
+    label {
+      align-self: flex-start;
+      margin: .5rem 0;
+      font-size: 1.7rem;
+    }
+
+    input, textarea{
+      margin: 0;
+      width: inherit;
+      border-width: 1px;
+    }
+  }
+  .auth-btn {
+    align-self: center;
+  }
+}
+
+.create-q-main{
+  margin: auto 10px;
+  input{
+    width: 95%;
+  }
+
+form{
+  margin: auto;
+}
+
+  .create-quiz-form-container{
+    flex-direction: column;
+    width: 100%;
+
+    .create-quiz-left{
+      width: inherit;
+    }
+
+  }
+  .create-quiz-right{
+    width: 95vw;
+    margin: 0;
+  }
+
+  .quiz-creator-btn{
+    margin-top: 2rem;
+    display: block;
+  }
+}
+
+.quiz-template-container {
+  display: flex;
+  flex-direction: column;
+}
+
+}
+// mobile  break end
+

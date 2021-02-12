@@ -11,189 +11,21 @@ $font-1: 'Nanum Gothic', sans-serif;
 $font-2: 'Roboto Mono', monospace;
 
 
-
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html{
-	font-family: $font-1;
-  font-size: 10px;
-  color: $primary-text-color;
-}
-ul {
-  list-style-type: none;
-}
-
-a{
-  color: #000;
-  text-decoration: none;
-}
-
-input{
-  &:focus{
-    outline: none;
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
   }
 }
 
-
-//QUIZ CARD
-
-.quiz-card{
-  border: 1px solid black;
-  height: 30rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 8px 11px rgba(0,0,0,0.15);
-  transition: all .2s ease-in;
-  background-color: #ffffff;
-background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23d6d6d6' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-
- &:hover{
-   box-shadow: 0 20px 30px rgba(0,0,0,0.15);
- }
-    .quiz-card-title {
-      display: inline-block;
-      background-color: #eee;
-      margin-top: 3.5rem;
-      padding: 1rem 2rem;
-
-      h2{
-      font-size: 2.9rem;
-      color:$primary-text-color;
-    }
-  }
-    .quiz-card-desc{
-      margin: 2rem;
-      p{
-        font-size: 2rem;
-        margin-top: 2rem;
-      font-family: $font-2;
-
-      }
-    }
-    .quiz-card-onhover {
-      transform: translateX(-50%);
-      opacity: 0;
-      visibility: hidden;
-      font-size: 2.2rem;
-      font-family: $font-2;
-      padding: .7rem 2rem;
-      background-color: $primary-color;
-      display: inline-block;
-      transition: all .2s ease-in;
-    }
-
-    &:hover  .quiz-card-onhover {
-      transform: translateX(0);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    //direct to quizcard not qcard hover!
-  
-
-
-  }
-  
-
-
-
-
-//quizTable
-
-
-.table-quiz {
-  font-family: 'Arial';
-  border-collapse: collapse;
-  border: 2px solid $primary-color;
- 
-
-  th, td {
-    border: 1px solid #eee;
-    padding: 1rem .5rem;
-    text-align: center;
-  }
-  th {
-    background: #00cccc;
-    color: #fff;
-    font-size: 2.2rem;
-  }
-
-  tr {
-    font-size: 2rem;
+@mixin mdScreen {
+  @media screen and (max-width: 1300px) and (min-width: 769px){
+    @content;
   }
 }
 
-
-.btn {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: $primary-color;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 2rem;
-  padding: 1rem;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.btn span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.2s;
-}
-
-
-//INPUTS
-
-input[type=text], input[type=number], input[type=password], input[type=email], select, textarea {
-  padding: 1.1rem;
-  border-radius: 4px;
-  width: 65%;
-  border: 2px solid $primary-color;
-  font-size: 1.6rem;
- 
-
-  &.invalid{
-    border-color: red;
-  }
-}
-
-textarea:focus, input:focus{
-  border-color: lighten($primary-color, 5%);
- 
-}
-
-
-
-label{
-  font-size: 2rem;
-  font-weight: 700;
-}
 
 
 
 //animations
-
-
-.toggle .line1 {
-  transform: rotate(-45deg) translate(-5px,6px) scale(.7);
-}
-
-.toggle .line2 {
-  opacity: 0;
-}
-
-.toggle .line3 {
-  transform: rotate(45deg) translate(-5px,-6px) scale(.7);
-}
-
-
 
 
