@@ -66,6 +66,37 @@ const dropDownToggle = () => {
 }
 
 
+const cssManipulation = () => {
+  const cardDescTexts = document.querySelectorAll('.quiz-card-desc p');
+  const cardHeaderTexts = document.querySelectorAll('.quiz-card-title h2');
 
+
+  let descCountTextArray = [];
+  cardDescTexts.forEach((cht, index) => {
+    descCountTextArray.push(cht.innerHTML.length)
+  })
+  descCountTextArray.forEach((item, index) => {
+    if (item > 80) {
+      cardDescTexts[index].classList.add('small-text');
+    }
+  })
+
+
+  let headerTextCountArray = [];
+  cardHeaderTexts.forEach((cht, index) => {
+    headerTextCountArray.push(cht.innerHTML.length)
+  })
+
+  headerTextCountArray.forEach((item, index) => {
+    if (item > 25) {
+      cardHeaderTexts[index].classList.add('small-text');
+    }
+  })
+
+  console.log(headerTextCountArray)
+
+}
+
+cssManipulation();
 dropDownToggle();
 navSlide();
