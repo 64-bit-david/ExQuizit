@@ -25,7 +25,7 @@ a{
   text-decoration: none;
 }
 
-input{
+input, textarea{
   &:focus{
     outline: none;
   }

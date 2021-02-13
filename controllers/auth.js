@@ -3,8 +3,6 @@ const User = require('../models/user');
 
 const { validationResult } = require('express-validator');
 
-
-
 exports.getSignUp = (req, res, next) => {
   let errMsg = req.flash('error');
   if (errMsg.length > 0) {

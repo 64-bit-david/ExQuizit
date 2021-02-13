@@ -44,15 +44,30 @@ exports.about = (req, res, next) => {
 }
 
 exports.getContact = (req, res, next) => {
+  let errMsg = req.flash('error');
+  if (errMsg.length > 0) {
+    errMsg = errMsg[0];
+  } else {
+    errMsg = null;
+  }
   res.render('contact', {
     pageTitle: "Contact",
     path: '/contact',
-    errorMessage: null,
-
+    errorMessage: errMsg,
+    validationErrors: []
   })
 }
 
 exports.postContact = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('contact', {
+      pageTitle: "Contact",
+      path: '/contact',
+      errorMessage: errors.array()[0].msg,
+      validationErrors: errors.array(),
+    })
+  }
   const auth = {
     auth: {
       apiKey: `${process.env.MAILGUN_API_KEY}`,

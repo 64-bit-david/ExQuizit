@@ -16,7 +16,14 @@ router.get('/about', quizController.about);
 
 router.get('/contact', quizController.getContact);
 
-router.post('/contact', quizController.postContact)
+router.post('/contact',
+  [
+    body('email', 'Please provide a valid email address')
+      .isEmail(),
+    body('message', 'Type a message before sending something!')
+      .isLength({ min: 1 })
+  ],
+  quizController.postContact)
 
 router.get('/user/:userId', quizController.getUser);
 
