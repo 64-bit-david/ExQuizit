@@ -1,8 +1,9 @@
 <%- include('../includes/head.ejs') %>
 
 <body>
-	<%- include('../includes/nav.ejs') %>
-
+	<%- include('../includes/nav.ejs') %> <% if(errorMessage) { %>
+	<div class="error-msg"><p><%= errorMessage %></p></div>
+	<% } %>
 	<section class="welcome">
 		<h2>Create your own quiz for others to try!</h2>
 		<!-- Need the id for script to work! -->
@@ -120,6 +121,7 @@
 			<div class="btn error-msg create-q-err-empty hide">
 				<h2>Ensure all fields have values!</h2>
 			</div>
+			<input type="hidden" value="typeB" name="quizType" />
 		</form>
 	</section>
 

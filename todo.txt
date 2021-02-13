@@ -1,8 +1,6 @@
 Immediate
- validate create quiz?
-  - Need to add limits to characters - make sure doesn't allow for text overlap in cards
-  
-  Input Validation /  error handling for contact form
+error handling for contact form
+error handling throughout
 
   
 
@@ -11,7 +9,8 @@ Immediate
 maybe investigate error being thrown in devtools
 Error thrown on user log in - not sure what 
 
-  
+
+ Add some more quiz types
 
 
 
@@ -19,6 +18,7 @@ Error thrown on user log in - not sure what
 
 STYLING
 Update Quiz template for mobile
+General overhaul of styles of inputs
 
 
 
@@ -27,14 +27,13 @@ Update Quiz template for mobile
 
 
 Later important
-File Storage? Maybe just use svg?
 Implement Error Handling
 Implement Some testing
+Provide some descriptions for the quiztypes
 
 
 Later not so important
   - on complete quiz - msg if not signed in - sign up / login to save score?
-  -   - sanatize user input
    - fix height of mobile nav dropdown to full screen height
     - When you scroll with it active you see the gap where the nav is 
 

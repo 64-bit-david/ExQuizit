@@ -8,16 +8,10 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const dotenv = require('dotenv');
 const flash = require('connect-flash');
 
-
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-
 dotenv.config();
-
-
-
-
 
 const quizRoutes = require('./routes/quiz');
 const authRoutes = require('./routes/auth');
@@ -73,7 +67,7 @@ app.use((req, res, next) => {
       next();
     })
     .catch(err => {
-      console.log(err);
+      throw new Error(err);
     });
 });
 
@@ -81,6 +75,9 @@ app.use(express.json({ limit: '1mb' }));
 
 app.use(quizRoutes);
 app.use(authRoutes);
+
+app.get('/500', errorController.get500);
+
 app.use(errorController.get404);
 
 

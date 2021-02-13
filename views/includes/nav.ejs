@@ -34,12 +34,14 @@
 				</ul>
 			</li>
 			<li class="nav-main-li">
-				<a class="nav-main-a" href="/create-quiz/create-quiz-index"
+				<a
+					class="nav-main-a <%= path === '/create-quiz' ? 'active' : '' %>"
+					href="/create-quiz/create-quiz-index"
 					>Create Quiz</a
 				>
 			</li>
 			<li class="nav-main-li">
-				<a class="nav-main-a" href="/contact">Contact</a>
+				<a class="nav-main-a <%%>" href="/contact">Contact</a>
 			</li>
 			<% if(isAuthenticated) {%>
 			<li class="dropdown-toggle nav-main-li">

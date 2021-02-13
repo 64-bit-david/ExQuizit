@@ -2,8 +2,6 @@ const { validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 const mailGun = require('nodemailer-mailgun-transport')
 const dotenv = require('dotenv');
-const mg = require('mailgun-js');
-
 
 const Quiz = require('../models/quizModel');
 const User = require('../models/user');
@@ -137,26 +135,48 @@ exports.createQuizIndex = (req, res, next) => {
     pageTitle: 'Create Your Quiz',
     errorMessage: errMsg,
     validationErrors: [],
+    path: '/create-quiz'
   });
 };
 
 exports.createQuizA = (req, res, next) => {
+  let errMsg = req.flash('error');
+  if (errMsg.length > 0) {
+    errMsg = errMsg[0];
+  } else {
+    errMsg = null;
+  }
   res.render('create-quiz/create-quiz-a', {
     pageTitle: 'Create Your Quiz',
+    errorMessage: errMsg,
+    validationErrors: [],
+    path: '/create-quiz'
+
   })
 }
 
 exports.createQuizB = (req, res, next) => {
+  let errMsg = req.flash('error');
+  if (errMsg.length > 0) {
+    errMsg = errMsg[0];
+  } else {
+    errMsg = null;
+  }
   res.render('create-quiz/create-quiz-b', {
     pageTitle: 'Create Your Quiz',
+    errorMessage: errMsg,
+    validationErrors: [],
+    path: '/create-quiz'
   })
 }
 
 exports.createQuizC = (req, res, next) => {
   res.render('create-quiz/create-quiz-c', {
     pageTitle: 'Create Your Quiz',
+    path: '/create-quiz',
   })
 }
+
 exports.postCreateQuiz = async (req, res, next) => {
   const errors = validationResult(req);
   const title = req.body.title;
@@ -166,12 +186,28 @@ exports.postCreateQuiz = async (req, res, next) => {
   const qList = req.body.question;
   const aList = req.body.answer;
   const createdBy = req.user;
+  const quizType = req.body.quizType;
 
-  if (!errors.isEmpty()) {
-    return res.render('create-quiz/create-quiz-index', {
+
+
+
+  if (!errors.isEmpty() && quizType === 'typeB') {
+    return res.render('create-quiz/create-quiz-b', {
       pageTitle: 'Create Quiz',
       errorMessage: errors.array()[0].msg,
       validationErrors: errors.array(),
+      path: '/create-quiz'
+
+    })
+  }
+
+  if (!errors.isEmpty() && quizType === 'typeA') {
+    return res.render('create-quiz/create-quiz-a', {
+      pageTitle: 'Create Quiz',
+      errorMessage: errors.array()[0].msg,
+      validationErrors: errors.array(),
+      path: '/create-quiz'
+
     })
   }
 
@@ -185,11 +221,15 @@ exports.postCreateQuiz = async (req, res, next) => {
     createdBy: createdBy,
   });
 
-
-  await quiz.save();
-  createdBy.quizzes.push(quiz);
-  createdBy.save();
-  res.redirect('/');
+  try {
+    await quiz.save();
+    createdBy.quizzes.push(quiz);
+    createdBy.save();
+    res.redirect('/');
+  } catch (err) {
+    console.log(err);
+    res.redirect('/500');
+  }
 };
 
 exports.deleteQuiz = async (req, res, next) => {
