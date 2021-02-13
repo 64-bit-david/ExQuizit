@@ -5,7 +5,6 @@ const quizType = document.getElementById('quiz-type');
 const postCreateBtn = document.querySelector('.quiz-creator-btn.post-created-quiz');
 const postCreateError = document.querySelector('.create-q-err');
 const postCreateError2 = document.querySelector('.create-q-err-empty');
-let questionInputs = document.querySelectorAll('.create-q-input#answer');
 const quizTitle = document.querySelector('.create-q-r-input#title');
 const quizDesc = document.querySelector('.create-q-r-input#description');
 
@@ -13,25 +12,51 @@ let totalQuestions = 5;
 let numOfRows;
 
 
+if (quizType.innerHTML === 'Type A') {
+	answerInputs = document.querySelectorAll('.create-q-input#question')
+}
+
+
+
+
 //validation 
 postCreateBtn.addEventListener('mouseenter', () => {
-	let questionInputs = document.querySelectorAll('.create-q-input#answer');
-	inputsWithText = 0;
-	questionInputs.forEach(input => {
+	let answerInputs = document.querySelectorAll('.create-q-input#answer');
+	let answerInputsWithText = 0;
+	answerInputs.forEach(input => {
 		if (input.value !== "") {
-			inputsWithText++;
+			answerInputsWithText++;
 		}
 	})
-	if (inputsWithText < 5) {
+	if (answerInputsWithText < 5) {
 		postCreateError.classList.remove('hide');
 		postCreateBtn.type = 'button';
 	}
-	if (inputsWithText < questionInputs.length
+
+
+	if (answerInputsWithText < answerInputs.length
 		|| quizDesc.value === ""
 		|| quizTitle.value === ""
 	) {
 		postCreateError2.classList.remove('hide');
 		postCreateBtn.type = 'button';
+	}
+
+	if (quizType.innerHTML === "Type A") {
+		let questionInputs = document.querySelectorAll('.create-q-input#question');
+		let questionInputsWithText = 0;
+		questionInputs.forEach(input => {
+			if (input.value !== "") {
+				questionInputsWithText++;
+			}
+		})
+		if ((questionInputsWithText < questionInputs.length)
+			|| quizDesc.value === ""
+			|| quizTitle.value === ""
+		) {
+			postCreateError2.classList.remove('hide');
+			postCreateBtn.type = 'button';
+		}
 	}
 
 })
@@ -93,6 +118,8 @@ const qCLastRowStyler = () => {
 		cell2.childNodes[0].childNodes[0].setAttribute('type', 'text');
 		cell2.childNodes[0].childNodes[0].setAttribute('name', 'question');
 		cell2.childNodes[0].childNodes[0].setAttribute('id', 'question');
+		cell2.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
+		cell2.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Question ${cell1Value}`);
 
 		cell3.innerHTML = '<div class="form-control"></div>'
@@ -100,6 +127,7 @@ const qCLastRowStyler = () => {
 		cell3.childNodes[0].childNodes[0].setAttribute('type', 'text');
 		cell3.childNodes[0].childNodes[0].setAttribute('name', 'answer');
 		cell3.childNodes[0].childNodes[0].setAttribute('id', 'answer');
+		cell3.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell3.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
 	}
 
