@@ -256,6 +256,31 @@
       content: '\25b8';
     }
   }
+  .create-q-err {
+    background-color: red;
+    font-size: 1rem;
+    
+    &.hide{
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  } 
+  .create-q-err-empty{
+    background-color: red;
+    font-size: 1rem;
+    &.hide{
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}
+
+.create-quiz-error{
+  li{
+    font-size: 2rem;
+  }
 }
 
 

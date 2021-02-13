@@ -2,6 +2,13 @@
 <body>
 	<%- include('../includes/nav.ejs') %>
 
+	<section class="welcome">
+		<% if(errorMessage) { %>
+		<div class="error-msg"><p><%= errorMessage %></p></div>
+		<% } %>
+		<h2>Click on a quiz type to create a quiz</h2>
+	</section>
+
 	<section class="quiz-list-main">
 		<a href="/create-quiz/create-quiz-a">
 			<div class="quiz-card">

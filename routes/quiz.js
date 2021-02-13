@@ -55,9 +55,18 @@ router.get('/create-quiz/create-quiz-b', isAuth, quizController.createQuizB);
 router.get('/create-quiz/create-quiz-c', isAuth, quizController.createQuizC);
 
 
-router.post('/create-quiz', isAuth, quizController.postCreateQuiz);
 
 
 
+router.post('/create-quiz',
+  [
+    check('description', 'Your description should not be longer than 100 characters!')
+      .isLength({ max: 150 })
+      .trim(),
+    check('title', 'Your title should not be longer then 50 characters!')
+      .isLength({ max: 50 })
+      .trim(),
+  ],
+  isAuth, quizController.postCreateQuiz);
 
 module.exports = router;

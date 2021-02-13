@@ -112,9 +112,16 @@ exports.getQuiz = async (req, res, nex) => {
 
 
 exports.createQuizIndex = (req, res, next) => {
-
+  let errMsg = req.flash('error');
+  if (errMsg.length > 0) {
+    errMsg = errMsg[0]
+  } else {
+    errMsg = null;
+  }
   res.render('create-quiz/create-quiz-index', {
     pageTitle: 'Create Your Quiz',
+    errorMessage: errMsg,
+    validationErrors: [],
   });
 };
 
@@ -136,7 +143,7 @@ exports.createQuizC = (req, res, next) => {
   })
 }
 exports.postCreateQuiz = async (req, res, next) => {
-
+  const errors = validationResult(req);
   const title = req.body.title;
   const description = req.body.description;
   const time = req.body.time;
@@ -144,6 +151,14 @@ exports.postCreateQuiz = async (req, res, next) => {
   const qList = req.body.question;
   const aList = req.body.answer;
   const createdBy = req.user;
+
+  if (!errors.isEmpty()) {
+    return res.render('create-quiz/create-quiz-index', {
+      pageTitle: 'Create Quiz',
+      errorMessage: errors.array()[0].msg,
+      validationErrors: errors.array(),
+    })
+  }
 
   const quiz = new Quiz({
     title: title,

@@ -2,17 +2,50 @@ const addQuestionBtn = document.querySelector('.add-question');
 const removeQuestionBtn = document.querySelector('.remove-question');
 const createQuizTable = document.querySelector('.create-quiz-table');
 const quizType = document.getElementById('quiz-type');
+const postCreateBtn = document.querySelector('.quiz-creator-btn.post-created-quiz');
+const postCreateError = document.querySelector('.create-q-err');
+const postCreateError2 = document.querySelector('.create-q-err-empty');
+let questionInputs = document.querySelectorAll('.create-q-input#answer');
+const quizTitle = document.querySelector('.create-q-r-input#title');
+const quizDesc = document.querySelector('.create-q-r-input#description');
 
+let totalQuestions = 5;
 let numOfRows;
 
 
+//validation 
+postCreateBtn.addEventListener('mouseenter', () => {
+	let questionInputs = document.querySelectorAll('.create-q-input#answer');
+	inputsWithText = 0;
+	questionInputs.forEach(input => {
+		if (input.value !== "") {
+			inputsWithText++;
+		}
+	})
+	if (inputsWithText < 5) {
+		postCreateError.classList.remove('hide');
+		postCreateBtn.type = 'button';
+	}
+	if (inputsWithText < questionInputs.length
+		|| quizDesc.value === ""
+		|| quizTitle.value === ""
+	) {
+		postCreateError2.classList.remove('hide');
+		postCreateBtn.type = 'button';
+	}
+
+})
+
+postCreateBtn.addEventListener('mouseleave', () => {
+	postCreateError.classList.add('hide');
+	postCreateError2.classList.add('hide');
+	postCreateBtn.type = 'submit';
+
+})
 
 
 
-// MC STUFF
 
-let numQuestionsMC = 0;
-const mcQuestionList = document.querySelectorAll('.mc-question');
 
 
 
@@ -24,7 +57,23 @@ addQuestionBtn.addEventListener('click', () => {
 	numofRows = createQuizTable.rows.length;
 	numOfRows++;
 	qCLastRowStyler();
+	totalQuestions++;
+
+});
+
+//removes rows when use wants to remove question
+removeQuestionBtn.addEventListener('click', () => {
+	if ((quizType.innerHTML === "Type A") || (quizType.innerHTML === 'Type B')) {
+		const createQuizTable = document.querySelector('.create-quiz-table');
+		let row = createQuizTable.deleteRow(-1);
+		numOfRows--;
+		totalQuestions--;
+		questionInputs = document.querySelectorAll('.create-q-input#answer');
+	}
 })
+numOfRows = createQuizTable.rows.length;
+
+
 
 //inserts rows in table when user wants to add questions
 const qCLastRowStyler = () => {
@@ -67,6 +116,7 @@ const qCLastRowStyler = () => {
 		cell2.childNodes[0].childNodes[0].setAttribute('type', 'text');
 		cell2.childNodes[0].childNodes[0].setAttribute('name', 'answer');
 		cell2.childNodes[0].childNodes[0].setAttribute('id', 'answer');
+		cell2.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
 	}
 
@@ -76,24 +126,18 @@ const qCLastRowStyler = () => {
 		mcQuizNum[numQuestionsMC].innerHTML = numQuestionsMC + 2;
 		numQuestionsMC++;
 	}
-
-
 }
 
 
-//removes rows when use wants to remove question
-removeQuestionBtn.addEventListener('click', () => {
-	if ((quizType.innerHTML === "Type A") || (quizType.innerHTML === 'Type B')) {
-		const createQuizTable = document.querySelector('.create-quiz-table');
-		let row = createQuizTable.deleteRow(-1);
-		numOfRows--;
-	}
 
-})
-numOfRows = createQuizTable.rows.length;
 
-// console.log(createQuizTable.rows[0].cells)
-// console.log(createQuizTable.rows[numOfRows])
+
+
+
+//Attemps at mulitpchoice 
+let numQuestionsMC = 0;
+const mcQuestionList = document.querySelectorAll('.mc-question');
+
 
 
 

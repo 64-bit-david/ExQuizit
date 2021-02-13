@@ -93,7 +93,6 @@ const cssManipulation = () => {
     }
   })
 
-  console.log(headerTextCountArray)
 
 }
 

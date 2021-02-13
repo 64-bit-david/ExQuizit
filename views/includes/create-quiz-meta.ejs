@@ -21,14 +21,16 @@
 
 	<div class="form-control create-quiz-right-item">
 		<label for="time">Time (minutes)</label>
-		<input
-			class="create-q-input create-q-r-input"
-			type="text"
-			name="time"
-			id="time"
-		/>
+		<select id="time" name="time">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
 	</div>
-	<select id="category" name="category">
+
+	<select id="category" name="category" class="create-quiz-right-item">
 		<option value="general knowledge">General Knowledge</option>
 		<option value="history">History</option>
 		<option value="geography">Geography</option>
