@@ -17,13 +17,14 @@
     display: flex;
     justify-content: space-around;
     width: 50%;
+   
 
     a{
      &.nav-main-a {
       border-bottom: .5px solid $primary-color;
       transition: border .2s ease-in-out;
       padding: .5rem;
-      &:hover, &.active{
+      &:hover, &.active, &.current{
         border-bottom: 1.5px solid $primary-text-color;
       }
      }

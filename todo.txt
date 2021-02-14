@@ -1,6 +1,8 @@
 Immediate
-error handling for contact form
-error handling throughout
+ - 
+ Bug - cannot read prop quizzes taken of null
+      -  thown when try to take quiz and not logged in...
+  
 
   
 
@@ -17,6 +19,7 @@ Error thrown on user log in - not sure what
     
 
 STYLING
+Do your about page
 Update Quiz template for mobile
 General overhaul of styles of inputs
 

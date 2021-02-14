@@ -11,7 +11,6 @@ const quizDesc = document.querySelector('.create-q-r-input#description');
 let totalQuestions = 5;
 let numOfRows;
 
-
 if (quizType.innerHTML === 'Type A') {
 	answerInputs = document.querySelectorAll('.create-q-input#question')
 }

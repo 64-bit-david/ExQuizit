@@ -12,6 +12,7 @@ exports.getSignUp = (req, res, next) => {
   }
   res.render('auth/signup', {
     pageTitle: 'Sign Up',
+    path: '/signup',
     errorMessage: errMsg,
     oldInput: {
       email: '',
@@ -34,6 +35,7 @@ exports.postSignUp = async (req, res, next) => {
   if (!errors.isEmpty()) {
     return res.status(422).render('auth/signup', {
       pageTitle: "Sign Up",
+      path: '/signup',
       errorMessage: errors.array()[0].msg,
       oldInput: {
         email: email,
@@ -79,6 +81,7 @@ exports.getLogin = async (req, res, next) => {
   }
   res.render('auth/login', {
     pageTitle: 'Login',
+    path: '/login',
     errorMessage: errMsg,
     oldInput: {
       email: '',
@@ -100,6 +103,7 @@ exports.postLogin = async (req, res, next) => {
     if (!errors.isEmpty()) {
       return res.render('auth/login', {
         pageTitle: 'Login',
+        path: '/login',
         errorMessage: errors.array()[0].msg,
         oldInput: {
           email: email,
@@ -111,6 +115,7 @@ exports.postLogin = async (req, res, next) => {
     if (!user) {
       res.render('auth/login', {
         pageTitle: 'Login',
+        path: '/login',
         errorMessage: 'Invalid email or password',
         oldInput: {
           email: email,
@@ -120,7 +125,7 @@ exports.postLogin = async (req, res, next) => {
       })
     }
   } catch (err) {
-    res.status(500).render('/404', {
+    res.status(500).render('/500', {
       pageTitle: 'Error'
     })
   }

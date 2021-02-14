@@ -1,12 +1,10 @@
 <%- include('./includes/head.ejs') %>
 
 <body>
-	<%- include('./includes/nav.ejs') %>
-
+	<%- include('./includes/nav.ejs') %> <% if(errorMessage) { %>
+	<div class="error-msg"><p><%= errorMessage %></p></div>
+	<% } %>
 	<section class="welcome">
-		<% if(errorMessage) { %>
-		<div class="error-msg"><p><%= errorMessage %></p></div>
-		<% } %>
 		<h2>Contact</h2>
 	</section>
 	<form class="form" action="/contact" method="POST" novalidate role="form">

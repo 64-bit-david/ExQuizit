@@ -4,9 +4,19 @@
 			<a href="/"><img src="/img/logo/logo.svg" alt="" /></a>
 		</div>
 		<ul class="nav-links">
-			<li class="nav-main-li"><a class="nav-main-a" href="/">Home</a></li>
 			<li class="nav-main-li">
-				<a class="nav-main-a" href="/about">About</a>
+				<a
+					class="nav-main-a <%= path === '/' ? 'active' : '' %>"
+					href="/"
+					>Home</a
+				>
+			</li>
+			<li class="nav-main-li">
+				<a
+					class="nav-main-a <%= path === '/about' ? 'active' : '' %>"
+					href="/about"
+					>About</a
+				>
 			</li>
 			<li class="dropdown-toggle nav-main-li">
 				<div class="d-toggle-container">

@@ -114,6 +114,7 @@ exports.getQuiz = async (req, res, nex) => {
   }
 
   res.render('quiz-template', {
+    path: '',
     quiz: quiz,
     pageTitle: quiz.title,
     createdBy: createdBy,
@@ -257,7 +258,8 @@ exports.getUser = async (req, res, next) => {
   const quizzesToRender = userQuizList.slice(numQuizzesToSkip, numQuizzesToSkip + QUIZ_CARDS_PER_PAGE);
 
   res.render('user', {
-    pageTitle: 'hello',
+    pageTitle: `${user.username}'s page`,
+    path: '',
     user: user,
     quizzes: quizzesToRender,
     currentPage: page,
@@ -279,7 +281,8 @@ exports.getLoggedInUserQuizzes = async (req, res, next) => {
   const quizzesToRender = userQuizList.slice(numQuizzesToSkip, numQuizzesToSkip + USER_QUIZ_PER_PAGE);
 
   res.render('user-quiz-list', {
-    pageTitle: 'Your Quizzes',
+    pageTitle: `${user.username}'s page`,
+    path: '',
     quizzes: quizzesToRender,
     currentPage: page,
     hasNextPage: USER_QUIZ_PER_PAGE * page < totalQuizzes,
@@ -322,7 +325,9 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "General Knowledge Quizzes",
     ...categoryRenderInfo,
-    category: category
+    category: category,
+    path: '',
+
   });
 };
 
@@ -341,8 +346,8 @@ exports.getHistoryQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "History",
     ...categoryRenderInfo,
-    category: category
-
+    category: category,
+    path: '',
   });
 };
 
@@ -363,8 +368,8 @@ exports.getGeographyQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "Geography Quizzes",
     ...categoryRenderInfo,
-    category: category
-
+    category: category,
+    path: '',
   });
 };
 
@@ -384,8 +389,8 @@ exports.getMediaQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "Media Quizzes",
     ...categoryRenderInfo,
-    category: category
-
+    category: category,
+    path: '',
   });
 };
 
@@ -404,8 +409,8 @@ exports.getSportQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "Sport Quizzes",
     ...categoryRenderInfo,
-    category: category
-
+    category: category,
+    path: '',
   });
 };
 
@@ -424,7 +429,8 @@ exports.getAllQuizzes = async (req, res, next) => {
   res.render('categories', {
     pageTitle: "All Quizzes",
     ...categoryRenderInfo,
-    category: category
+    category: category,
+    path: '',
   });
 };
 
