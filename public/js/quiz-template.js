@@ -54,23 +54,27 @@ const quizEnd = async () => {
   });
   quizEndValueInput = totalCorrect;
 
+
+
   const quizId = document.getElementById('quiz-id').value;
-  const userId = document.getElementById('quiz-user').value;
-
-  const quizData = { score: totalCorrect, quizId: quizId, userId, userId };
-
-
+  const userId = document.getElementById('user-logged-in').value;
+  const quizData = { score: totalCorrect, quizId: quizId };
+  const guestMsg = document.querySelector('.guest-msg');
 
 
-  await fetch('/user-quiz-score', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(quizData)
-  })
+  if (userId) {
+    await fetch('/user-quiz-score', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(quizData)
+    })
+    guestMsg.classList.add('hide');
+  }
   quizEndCard.classList.add('active');
+
 }
 
 const countDown = () => {

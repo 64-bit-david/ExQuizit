@@ -297,6 +297,10 @@
     &.quiz-desc {
       font-weight: bold;
     }
+    &.highest-score{
+      font-size: 1.6rem;
+      letter-spacing: -.5px;
+    }
   }
   a{
     border-bottom: 1px solid $primary-text-color;
@@ -304,6 +308,7 @@
       font-weight: bold;
     }
   }
+  
 }
 
 .quiz-template-container{
@@ -401,6 +406,10 @@
   .quiz-end{
     opacity: 0;
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     &.active{
       opacity: 1;
       visibility: visible;
@@ -416,9 +425,29 @@
 
     &.end-score p{
       font-weight: 700;
-      font-size: 2.5rem;
-      margin-top: 5rem;
+      text-align: center;
+      font-size: 2.2rem;
     }
+    p.guest-msg{
+
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      margin-top: 1rem;
+      font-size: 1.8rem;
+      font-weight: 400;
+
+      &.hide{
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+      }
+  
+      a{
+        text-decoration: underline;
+      }
+  }
+
   }
 }
 

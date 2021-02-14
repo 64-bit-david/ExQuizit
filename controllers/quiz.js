@@ -98,13 +98,15 @@ exports.getQuiz = async (req, res, nex) => {
   const quiz = await Quiz.findById(quizId).populate('createdBy');
   const createdBy = quiz.createdBy.username;
   const createdById = quiz.createdBy._id;
-  let highestScore = "You haven't taken this quiz before";
-
+  let highestScore = null;
+  let userId;
 
   try {
     const userLoggedIn = await User.findById(req.user);
     //get array of the quizIds of quizzes the user has taken
     if (userLoggedIn) {
+      highestScore = "You haven't taken this quiz before";
+      userId = req.user._id;
       const userQuizzesTakenArray = userLoggedIn.quizzesTaken.map((quiz) => {
         return quiz.quiz
       });
@@ -121,6 +123,7 @@ exports.getQuiz = async (req, res, nex) => {
     res.render('quiz-template', {
       path: '',
       quiz: quiz,
+      userId: userId,
       pageTitle: quiz.title,
       createdBy: createdBy,
       createdById: createdById,
@@ -129,7 +132,7 @@ exports.getQuiz = async (req, res, nex) => {
     });
   } catch (err) {
     res.redirect('/500');
-    console.log(err);
+    // console.log(err);
   }
 };
 
@@ -447,9 +450,9 @@ exports.getAllQuizzes = async (req, res, next) => {
 exports.postUserQuizScore = async (req, res, next) => {
   const quiz = req.body.quizId;
   const latestScore = req.body.score;
-  const userId = req.body.userId;
   const quizObj = { quiz, score: latestScore };
-  const user = await User.findById(userId);
+  const user = await User.findById(req.user._id);
+
 
   const quizzesTakenQuizIds = user.quizzesTaken.map((quiz) => {
     return quiz.quiz;

@@ -10,9 +10,9 @@
 			Created by:
 			<a href="/user/<%= createdById %>"><%= createdBy %></a>
 		</p>
-		<br />
-		<br />
-		<p><%= highestScore %></p>
+		<% if(highestScore) {%>
+		<p class="highest-score"><%= highestScore %></p>
+		<% } %>
 	</section>
 
 	<section class="quiz">
@@ -93,20 +93,17 @@
 								><%= quiz.aList.length%></span
 							>
 						</p>
-						<input
-							id="quiz-id"
-							type="hidden"
-							value="<%= quiz._id %>"
-						/>
-						<input
-							id="quiz-user"
-							type="hidden"
-							value="<%= createdById %>"
-						/>
+						<p class="guest-msg">
+							<a href="/signup">Sign up</a> or
+							<a href="/login">Login</a> to save future results!
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		<input id="quiz-id" type="hidden" value="<%= quiz._id %>" />
+		<input id="quiz-user" type="hidden" value="<%= createdById %>" />
+		<input id="user-logged-in" type="hidden" value="<%= userId %>" />
 	</section>
 
 	<script src="/js/quiz-template.js"></script>
