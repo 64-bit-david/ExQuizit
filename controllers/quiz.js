@@ -98,30 +98,39 @@ exports.getQuiz = async (req, res, nex) => {
   const quiz = await Quiz.findById(quizId).populate('createdBy');
   const createdBy = quiz.createdBy.username;
   const createdById = quiz.createdBy._id;
-  let highestScore = "You haven't taken this quiz before"
+  let highestScore = "You haven't taken this quiz before";
 
-  const userLoggedIn = await User.findById(req.user);
-  //get array of the quizIds of quizzes the user has taken
-  const userQuizzesTakenArray = userLoggedIn.quizzesTaken.map((quiz) => {
-    return quiz.quiz
-  });
-  //if user has taken current quiz before, get the quiz from their quizzestaken array
-  //and extract the highest score taken
-  if (userQuizzesTakenArray.includes(quizId)) {
-    const quizArrayPos = userQuizzesTakenArray.findIndex(quiz => quiz === quizId)
-    const currentQuizHistory = userLoggedIn.quizzesTaken[quizArrayPos];
-    highestScore = `Your high score for this quiz is ${Math.max(...currentQuizHistory.score)}`;
+
+  try {
+    const userLoggedIn = await User.findById(req.user);
+    //get array of the quizIds of quizzes the user has taken
+    if (userLoggedIn) {
+      const userQuizzesTakenArray = userLoggedIn.quizzesTaken.map((quiz) => {
+        return quiz.quiz
+      });
+
+      //if user has taken current quiz before, get the quiz from their quizzestaken array
+      //and extract the highest score taken
+      if (userQuizzesTakenArray.includes(quizId)) {
+        const quizArrayPos = userQuizzesTakenArray.findIndex(quiz => quiz === quizId)
+        const currentQuizHistory = userLoggedIn.quizzesTaken[quizArrayPos];
+        highestScore = `Your high score for this quiz is ${Math.max(...currentQuizHistory.score)}`;
+      }
+    }
+
+    res.render('quiz-template', {
+      path: '',
+      quiz: quiz,
+      pageTitle: quiz.title,
+      createdBy: createdBy,
+      createdById: createdById,
+      highestScore: highestScore
+
+    });
+  } catch (err) {
+    res.redirect('/500');
+    console.log(err);
   }
-
-  res.render('quiz-template', {
-    path: '',
-    quiz: quiz,
-    pageTitle: quiz.title,
-    createdBy: createdBy,
-    createdById: createdById,
-    highestScore: highestScore
-
-  });
 };
 
 
