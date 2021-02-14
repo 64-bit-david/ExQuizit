@@ -8,30 +8,35 @@ const User = require('../models/user');
 
 dotenv.config()
 
-
 const QUIZ_CARDS_PER_PAGE = 10;
 const USER_QUIZ_PER_PAGE = 5;
 
 exports.getQuizzes = async (req, res, next) => {
   page = +req.query.page || 1;
-  const numofQuizzes = await Quiz.find().countDocuments()
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find()
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
+  try {
+    const numofQuizzes = await Quiz.find().countDocuments()
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find()
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  return res.render('index', {
-    pageTitle: 'Home',
-    path: '/',
-    quizzes: quizzes,
-    totalQuizzes: totalQuizzes,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
-  })
+    return res.render('index', {
+      pageTitle: 'Home',
+      path: '/',
+      quizzes: quizzes,
+      totalQuizzes: totalQuizzes,
+      currentPage: page,
+      hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
+      hasPreviousPage: page > 1,
+      nextPage: page + 1,
+      previousPage: page - 1,
+      lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    })
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 }
 
 exports.about = (req, res, next) => {
@@ -81,7 +86,9 @@ exports.postContact = (req, res, next) => {
   }
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) {
-      console.log(err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     }
     else {
       res.render('message-sent', {
@@ -131,8 +138,9 @@ exports.getQuiz = async (req, res, nex) => {
 
     });
   } catch (err) {
-    res.redirect('/500');
-    // console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
   }
 };
 
@@ -201,9 +209,6 @@ exports.postCreateQuiz = async (req, res, next) => {
   const createdBy = req.user;
   const quizType = req.body.quizType;
 
-
-
-
   if (!errors.isEmpty() && quizType === 'typeB') {
     return res.render('create-quiz/create-quiz-b', {
       pageTitle: 'Create Quiz',
@@ -240,8 +245,9 @@ exports.postCreateQuiz = async (req, res, next) => {
     createdBy.save();
     res.redirect('/');
   } catch (err) {
-    console.log(err);
-    res.redirect('/500');
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
   }
 };
 
@@ -251,7 +257,9 @@ exports.deleteQuiz = async (req, res, next) => {
     await Quiz.deleteOne({ _id: quizId });
     await User.updateOne({ _id: req.user }, { $pull: { "quizzes": quizId } });
   } catch (err) {
-    console.log(err)
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
   }
 };
 
@@ -263,46 +271,58 @@ exports.getUser = async (req, res, next) => {
     return res.redirect('/user-quizzes');
   }
 
-  const user = await User.findById(userId).populate('quizzes');
-  const userQuizList = user.quizzes;
-  const totalQuizzes = userQuizList.length;
-  const numQuizzesToSkip = (page - 1) * QUIZ_CARDS_PER_PAGE;
-  const quizzesToRender = userQuizList.slice(numQuizzesToSkip, numQuizzesToSkip + QUIZ_CARDS_PER_PAGE);
+  try {
+    const user = await User.findById(userId).populate('quizzes');
+    const userQuizList = user.quizzes;
+    const totalQuizzes = userQuizList.length;
+    const numQuizzesToSkip = (page - 1) * QUIZ_CARDS_PER_PAGE;
+    const quizzesToRender = userQuizList.slice(numQuizzesToSkip, numQuizzesToSkip + QUIZ_CARDS_PER_PAGE);
 
-  res.render('user', {
-    pageTitle: `${user.username}'s page`,
-    path: '',
-    user: user,
-    quizzes: quizzesToRender,
-    currentPage: page,
-    hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
-  });
+    res.render('user', {
+      pageTitle: `${user.username}'s page`,
+      path: '',
+      user: user,
+      quizzes: quizzesToRender,
+      currentPage: page,
+      hasNextPage: QUIZ_CARDS_PER_PAGE * page < totalQuizzes,
+      hasPreviousPage: page > 1,
+      nextPage: page + 1,
+      previousPage: page - 1,
+      lastPage: Math.ceil(totalQuizzes / QUIZ_CARDS_PER_PAGE)
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 
 exports.getLoggedInUserQuizzes = async (req, res, next) => {
   const page = +req.query.page || 1;
-  const user = await User.findById(req.user).populate('quizzes');
-  const userQuizList = user.quizzes;
-  const totalQuizzes = userQuizList.length;
-  const numQuizzesToSkip = (page - 1) * USER_QUIZ_PER_PAGE;
-  const quizzesToRender = userQuizList.slice(numQuizzesToSkip, numQuizzesToSkip + USER_QUIZ_PER_PAGE);
+  try {
+    const user = await User.findById(req.user).populate('quizzes');
+    const userQuizList = user.quizzes;
+    const totalQuizzes = userQuizList.length;
+    const numQuizzesToSkip = (page - 1) * USER_QUIZ_PER_PAGE;
+    const quizzesToRender = userQuizList.slice(numQuizzesToSkip, numQuizzesToSkip + USER_QUIZ_PER_PAGE);
 
-  res.render('user-quiz-list', {
-    pageTitle: `${user.username}'s page`,
-    path: '',
-    quizzes: quizzesToRender,
-    currentPage: page,
-    hasNextPage: USER_QUIZ_PER_PAGE * page < totalQuizzes,
-    hasPreviousPage: page > 1,
-    nextPage: page + 1,
-    previousPage: page - 1,
-    lastPage: Math.ceil(totalQuizzes / USER_QUIZ_PER_PAGE)
-  });
+    res.render('user-quiz-list', {
+      pageTitle: `${user.username}'s page`,
+      path: '',
+      quizzes: quizzesToRender,
+      currentPage: page,
+      hasNextPage: USER_QUIZ_PER_PAGE * page < totalQuizzes,
+      hasPreviousPage: page > 1,
+      nextPage: page + 1,
+      previousPage: page - 1,
+      lastPage: Math.ceil(totalQuizzes / USER_QUIZ_PER_PAGE)
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 
@@ -326,41 +346,54 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
   const category = "general knowledge";
   const page = +req.query.page || 1;
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find({ category }).countDocuments();
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find({ category })
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
 
-  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+  try {
+    const numofQuizzes = await Quiz.find({ category }).countDocuments();
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find({ category })
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  res.render('categories', {
-    pageTitle: "General Knowledge Quizzes",
-    ...categoryRenderInfo,
-    category: category,
-    path: '',
+    const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
-  });
+    res.render('categories', {
+      pageTitle: "General Knowledge Quizzes",
+      ...categoryRenderInfo,
+      category: category,
+      path: '',
+
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 exports.getHistoryQuizzes = async (req, res, next) => {
   const category = "history";
   const page = +req.query.page || 1;
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find({ category }).countDocuments();
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find({ category })
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
+  try {
+    const numofQuizzes = await Quiz.find({ category }).countDocuments();
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find({ category })
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+    const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
-  res.render('categories', {
-    pageTitle: "History",
-    ...categoryRenderInfo,
-    category: category,
-    path: '',
-  });
+    res.render('categories', {
+      pageTitle: "History",
+      ...categoryRenderInfo,
+      category: category,
+      path: '',
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 
@@ -368,21 +401,27 @@ exports.getGeographyQuizzes = async (req, res, next) => {
   const category = "geography";
   const page = +req.query.page || 1;
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find({ category }).countDocuments();
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find({ category })
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
+  try {
+    const numofQuizzes = await Quiz.find({ category }).countDocuments();
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find({ category })
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+    const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
 
-  res.render('categories', {
-    pageTitle: "Geography Quizzes",
-    ...categoryRenderInfo,
-    category: category,
-    path: '',
-  });
+    res.render('categories', {
+      pageTitle: "Geography Quizzes",
+      ...categoryRenderInfo,
+      category: category,
+      path: '',
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 exports.getMediaQuizzes = async (req, res, next) => {
@@ -390,60 +429,78 @@ exports.getMediaQuizzes = async (req, res, next) => {
 
   const page = +req.query.page || 1;
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find({ category }).countDocuments();
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find({ category })
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
+  try {
+    const numofQuizzes = await Quiz.find({ category }).countDocuments();
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find({ category })
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+    const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
-  res.render('categories', {
-    pageTitle: "Media Quizzes",
-    ...categoryRenderInfo,
-    category: category,
-    path: '',
-  });
+    res.render('categories', {
+      pageTitle: "Media Quizzes",
+      ...categoryRenderInfo,
+      category: category,
+      path: '',
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 exports.getSportQuizzes = async (req, res, next) => {
   const category = "sport";
   const page = +req.query.page || 1;
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find({ category }).countDocuments();
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find({ category })
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
+  try {
+    const numofQuizzes = await Quiz.find({ category }).countDocuments();
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find({ category })
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+    const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
-  res.render('categories', {
-    pageTitle: "Sport Quizzes",
-    ...categoryRenderInfo,
-    category: category,
-    path: '',
-  });
+    res.render('categories', {
+      pageTitle: "Sport Quizzes",
+      ...categoryRenderInfo,
+      category: category,
+      path: '',
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 exports.getAllQuizzes = async (req, res, next) => {
   const page = +req.query.page || 1;
   const category = 'All Quizzes';
   let totalQuizzes;
-  const numofQuizzes = await Quiz.find().countDocuments();
-  totalQuizzes = numofQuizzes;
-  const quizzes = await Quiz.find()
-    .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
-    .limit(QUIZ_CARDS_PER_PAGE);
+  try {
+    const numofQuizzes = await Quiz.find().countDocuments();
+    totalQuizzes = numofQuizzes;
+    const quizzes = await Quiz.find()
+      .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
+      .limit(QUIZ_CARDS_PER_PAGE);
 
-  const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
+    const categoryRenderInfo = catPaginationHelper(quizzes, page, QUIZ_CARDS_PER_PAGE, totalQuizzes);
 
-  res.render('categories', {
-    pageTitle: "All Quizzes",
-    ...categoryRenderInfo,
-    category: category,
-    path: '',
-  });
+    res.render('categories', {
+      pageTitle: "All Quizzes",
+      ...categoryRenderInfo,
+      category: category,
+      path: '',
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 
@@ -452,8 +509,6 @@ exports.postUserQuizScore = async (req, res, next) => {
   const latestScore = req.body.score;
   const quizObj = { quiz, score: latestScore };
   const user = await User.findById(req.user._id);
-
-
   const quizzesTakenQuizIds = user.quizzesTaken.map((quiz) => {
     return quiz.quiz;
   })

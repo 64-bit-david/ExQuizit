@@ -60,6 +60,7 @@ const quizEnd = async () => {
   const userId = document.getElementById('user-logged-in').value;
   const quizData = { score: totalCorrect, quizId: quizId };
   const guestMsg = document.querySelector('.guest-msg');
+  console.log(guestMsg);
 
 
   if (userId) {
@@ -71,7 +72,8 @@ const quizEnd = async () => {
       },
       body: JSON.stringify(quizData)
     })
-    guestMsg.classList.add('hide');
+  } else {
+    guestMsg.classList.remove('hide');
   }
   quizEndCard.classList.add('active');
 

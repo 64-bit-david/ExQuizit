@@ -296,6 +296,7 @@
     letter-spacing: -.5px;
     &.quiz-desc {
       font-weight: bold;
+      font-family: $font-1;
     }
     &.highest-score{
       font-size: 1.6rem;
@@ -473,6 +474,7 @@
   .auth-btn {
     align-self: flex-start;
     margin-top: 2rem;
+  
   }
 }
 

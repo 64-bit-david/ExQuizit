@@ -52,7 +52,9 @@
 
 					<h3>Start Quiz</h3>
 					<br />
-					<div class="btn start-quiz-btn">Click to Start</div>
+					<button class="btn auth-btn start-quiz-btn">
+						Click to Start
+					</button>
 				</div>
 				<div class="quiz-input-card quiz-during">
 					<div class="quiz-timer">
@@ -79,7 +81,9 @@
 						<p>Already Guessed!</p>
 					</div>
 					<br />
-					<div class="btn during-quiz-btn">End Quiz?</div>
+					<button class="btn auth-btn during-quiz-btn">
+						End Quiz?
+					</button>
 				</div>
 				<div class="quiz-input-card quiz-end">
 					<h3>Quiz Finished!</h3>
@@ -93,7 +97,7 @@
 								><%= quiz.aList.length%></span
 							>
 						</p>
-						<p class="guest-msg">
+						<p class="guest-msg hide">
 							<a href="/signup">Sign up</a> or
 							<a href="/login">Login</a> to save future results!
 						</p>
