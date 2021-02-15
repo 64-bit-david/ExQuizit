@@ -402,6 +402,7 @@
     .already-guessed{
       visibility: hidden;
       opacity: 0;
+      font-size: 1.6rem;
       &.active{
         opacity: 1;
         visibility: visible;
@@ -435,7 +436,7 @@
 
   .quiz-score{
     font-size: 1.9rem;
-    margin-top: 2rem;
+    margin-top: .5rem;
 
     &.end-score p{
       font-weight: 700;
@@ -573,10 +574,10 @@ section.user-quiz-list{
 .page-links{
   margin: 5rem 10vw;
   a{
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   &.active{
-    border-bottom: 1px solid$primary-text-color;
+    border-bottom: 2px solid $primary-text-color;
   }
   }
 }

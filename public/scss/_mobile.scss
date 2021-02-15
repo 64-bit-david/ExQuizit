@@ -211,13 +211,12 @@ section.quiz{
   margin-top: 5rem;
    .quiz-input-card{
       position: fixed;
-      bottom: 2vh;
+      bottom: 10vh;
       left: 0;
       width: 96vw;
       padding: 1rem;
       margin: 0 2vw;
-      backdrop-filter: blur(4px);
-      
+      backdrop-filter: blur(4px);      
     }
     .quiz-timer{
       font-size: 3rem;
@@ -229,6 +228,7 @@ section.quiz{
       margin: 0;
     }
     .quiz-during{
+
       br{
         height: 0;
         visibility: hidden;
@@ -240,8 +240,10 @@ section.quiz{
         top: 10rem;
       }
     }
-    .quiz-end.active{
-      bottom: auto;
+    .quiz-end{
+      &.active{
+        bottom: auto;
+      }
     }
   }
   section.user-quiz-list{

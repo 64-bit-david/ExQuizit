@@ -1,11 +1,17 @@
-<%- include('../includes/head.ejs') %> 
-	</head>
-	<body>
-    <%- include('../includes/nav.ejs') %> 
-    <div class="welcome">
-			<h2>Error 500</h2>
-      <p>Something went wrong, try again...</p>
+<%- include('../includes/head.ejs') %>
+<body>
+	<div class="main-container">
+		<div class="body-minus-footer">
+			<%- include('../includes/nav.ejs') %>
+			<div class="welcome">
+				<h2>Error 500</h2>
+				<p>Something went wrong, try again...</p>
+			</div>
 		</div>
-			
+		<footer>
+			<p>Website created by <a href="#">David Williamson</a></p>
+		</footer>
+	</div>
 
-		<script src="/js/ui.js"></script>
+	<script src="/js/ui.js"></script>
+</body>
