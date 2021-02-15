@@ -244,4 +244,20 @@ section.quiz{
       bottom: auto;
     }
   }
+  section.user-quiz-list{
+    width: 92vw;
+    margin: 0 3vw;
+
+    .delete-quiz-card{
+      width: 95vw;
+      margin: 0;
+      left: auto;
+
+      span{
+        line-height: 1;
+      }
+    }
   }
+  }
+
+

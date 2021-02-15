@@ -17,7 +17,11 @@
 				name="quizId"
 				value="<%= quiz._id%>"
 			/>
-			<button class="btn" type="button" onclick="deleteQuizPrompt(this)">
+			<button
+				class="btn auth-btn"
+				type="button"
+				onclick="deleteQuizPrompt(this)"
+			>
 				Delete
 			</button>
 		</li>
@@ -25,15 +29,22 @@
 
 		<div class="delete-quiz-card">
 			<h3>
-				Are you sure you want to delete? <br />
-				This quiz and all associated data will be deleted permanently.
+				Are you sure? <br />
+				<span
+					>This quiz and all associated data will be deleted
+					permanently</span
+				>.
 			</h3>
 			<div class="btn-container">
-				<button class="btn" type="button" onclick="deleteProduct(this)">
+				<button
+					class="btn auth-btn btn-red"
+					type="button"
+					onclick="deleteProduct(this)"
+				>
 					Delete
 				</button>
 				<button
-					class="btn"
+					class="btn auth-btn"
 					type="button"
 					onclick="deleteQuizPromptCancel()"
 				>

@@ -9,7 +9,7 @@ const User = require('../models/user');
 dotenv.config()
 
 const QUIZ_CARDS_PER_PAGE = 10;
-const USER_QUIZ_PER_PAGE = 5;
+const USER_QUIZ_PER_PAGE = 10;
 
 exports.getQuizzes = async (req, res, next) => {
   page = +req.query.page || 1;
