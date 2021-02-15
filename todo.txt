@@ -1,7 +1,6 @@
 Immediate
- - 
- Bug - cannot read prop quizzes taken of null
-      -  thown when try to take quiz and not logged in...
+ - Fix mobile styling for quiz template
+ - mobile styles for ddown
   
 
   
@@ -12,16 +11,15 @@ maybe investigate error being thrown in devtools
 Error thrown on user log in - not sure what 
 
 
- Add some more quiz types
+
 
 
 
     
 
 STYLING
-Do your about page
-Update Quiz template for mobile
-General overhaul of styles of inputs
+  - adjustments for mobile and mid screen
+
 
 
 
@@ -36,9 +34,8 @@ Provide some descriptions for the quiztypes
 
 
 Later not so important
-  - on complete quiz - msg if not signed in - sign up / login to save score?
    - fix height of mobile nav dropdown to full screen height
-    - When you scroll with it active you see the gap where the nav is 
+        When you scroll with it active you see the gap where the nav is 
 
   
   
