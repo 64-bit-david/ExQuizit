@@ -1,57 +1,70 @@
 <%- include('../includes/head.ejs') %>
 <body>
-	<%- include('../includes/nav.ejs') %>
+	<div class="main-container">
+		<div class="body-minus-footer">
+			<%- include('../includes/nav.ejs') %>
 
-	<section class="welcome">
-		<% if(errorMessage) { %>
-		<div class="error-msg"><p><%= errorMessage %></p></div>
-		<% } %>
-		<h2>Click on a quiz type to create a quiz</h2>
-	</section>
+			<section class="welcome">
+				<% if(errorMessage) { %>
+				<div class="error-msg"><p><%= errorMessage %></p></div>
+				<% } %>
+				<h2>Click on a quiz type to create a quiz</h2>
+			</section>
 
-	<section class="quiz-list-main">
-		<a href="/create-quiz/create-quiz-a">
-			<div class="quiz-card">
-				<div class="quiz-card-content">
-					<div class="quiz-card-title">
-						<h2>Quiz A</h2>
+			<section class="quiz-list-main">
+				<a href="/create-quiz/create-quiz-a">
+					<div class="quiz-card">
+						<div class="quiz-card-content">
+							<div class="create-quiz-card quiz-card-title">
+								<h2>Quiz A</h2>
+							</div>
+							<div class="quiz-card-desc">
+								<p>
+									Create a quiz with a list of answers, and a
+									hint for each.
+								</p>
+							</div>
+							<div class="quiz-card-onhover create-quiz-card">
+								<p class="quiz-card-info">Create Quiz Type A</p>
+							</div>
+						</div>
 					</div>
-					<div class="quiz-card-desc">
-						<p>Provide a question/hint for each answer</p>
+				</a>
+				<a href="/create-quiz/create-quiz-b">
+					<div class="quiz-card">
+						<div class="quiz-card-content">
+							<div class="create-quiz-card quiz-card-title">
+								<h2>Quiz B</h2>
+							</div>
+							<div class="quiz-card-desc">
+								<p>
+									Create a quiz that will contain a list of
+									answers only.
+								</p>
+							</div>
+							<div class="quiz-card-onhover create-quiz-card">
+								<p class="quiz-card-info">Create Quiz Type B</p>
+							</div>
+						</div>
 					</div>
-					<div class="quiz-card-onhover create-quiz-card">
-						<p class="quiz-card-info">Create Quiz Type A</p>
+				</a>
+				<!-- <a href="/create-quiz/create-quiz-c"> -->
+				<div class="quiz-card">
+					<div class="quiz-card-content">
+						<div class="create-quiz-card quiz-card-title">
+							<h2>Quiz C</h2>
+						</div>
+						<div class="quiz-card-onhover create-quiz-card">
+							<p class="quiz-card-info">Coming Soon!</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		</a>
-		<a href="/create-quiz/create-quiz-b">
-			<div class="quiz-card">
-				<div class="quiz-card-content">
-					<div class="quiz-card-title">
-						<h2>Quiz B</h2>
-					</div>
-					<div class="quiz-card-desc">
-						<p>A list of answers.</p>
-					</div>
-					<div class="quiz-card-onhover create-quiz-card">
-						<p class="quiz-card-info">Create Quiz Type B</p>
-					</div>
-				</div>
-			</div>
-		</a>
-		<!-- <a href="/create-quiz/create-quiz-c"> -->
-		<div class="quiz-card">
-			<div class="quiz-card-content">
-				<div class="quiz-card-title">
-					<h2>Quiz C</h2>
-				</div>
-				<div class="quiz-card-onhover create-quiz-card">
-					<p class="quiz-card-info">Coming Soon!</p>
-				</div>
-			</div>
+				<!-- </a> -->
+			</section>
 		</div>
-		<!-- </a> -->
-	</section>
+		<footer>
+			<p>Website created by <a href="#">David Williamson</a></p>
+		</footer>
+	</div>
 	<script src="/js/ui.js"></script>
 </body>

@@ -73,6 +73,7 @@ input, textarea{
       &.create-quiz-card{
         margin-top: 3rem;
         font-size: 2rem;
+        background-color: $primary-color;
       }
 
       
@@ -83,6 +84,7 @@ input, textarea{
       &.small-text{
         font-size: 1.8rem;
       }
+    
       @include mdScreen{
         font-size: 2rem;
       }

@@ -62,12 +62,13 @@ exports.postSignUp = async (req, res, next) => {
       email: email,
       password: hashedPassword,
     });
-
     await user.save();
-    console.log('user created!')
+
     res.redirect('/');
   } catch (err) {
-    console.log(err);
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
   }
 }
 
@@ -124,37 +125,39 @@ exports.postLogin = async (req, res, next) => {
 
       })
     }
-  } catch (err) {
-    res.status(500).render('/500', {
-      pageTitle: 'Error'
-    })
-  }
 
-  const match = await bcrypt.compare(password, user.password);
 
-  if (match) {
-    req.session.isLoggedIn = true;
-    req.session.user = user;
-    return req.session.save(err => {
-      console.log(err);
-      res.redirect('/');
-    })
+    const match = await bcrypt.compare(password, user.password);
+
+    if (match) {
+      req.session.isLoggedIn = true;
+      req.session.user = user;
+      return req.session.save(err => {
+        console.log(err);
+        res.redirect('/');
+      })
+    }
+    if (!match) {
+      return res.status(422).render('auth/login', {
+        pageTitle: 'Login',
+        errorMessage: "Invalid email or password",
+        oldInput: {
+          email: email,
+        },
+        validationErrors: []
+      })
+    }
   }
-  if (!match) {
-    return res.status(422).render('auth/login', {
-      pageTitle: 'Login',
-      errorMessage: "Invalid email or password",
-      oldInput: {
-        email: email,
-      },
-      validationErrors: []
-    })
+  catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
   }
 }
 
+
 exports.getLogout = (req, res, next) => {
   req.session.destroy(err => {
-    console.log(err);
     res.redirect('/');
   })
 }

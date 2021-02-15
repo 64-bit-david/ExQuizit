@@ -1,60 +1,66 @@
 <%- include('./includes/head.ejs') %>
 
 <body>
-	<%- include('./includes/nav.ejs') %>
+	<div class="main-container">
+		<div class="body-minus-footer">
+			<%- include('./includes/nav.ejs') %>
 
-	<section class="welcome">
-		<h2>Here are all the quizzes you've created!</h2>
-	</section>
+			<section class="welcome">
+				<h2>Here are all the quizzes you've created!</h2>
+			</section>
 
-	<section class="user-quiz-list">
-		<% for (let quiz of quizzes) { %>
-		<li>
-			<a href="/quizzes/<%= quiz._id %>"> <%= quiz.title %> </a>
-			<input
-				class="input-id"
-				type="hidden"
-				name="quizId"
-				value="<%= quiz._id%>"
-			/>
-			<button
-				class="btn auth-btn"
-				type="button"
-				onclick="deleteQuizPrompt(this)"
-			>
-				Delete
-			</button>
-		</li>
-		<% } %>
+			<section class="user-quiz-list">
+				<% for (let quiz of quizzes) { %>
+				<li>
+					<a href="/quizzes/<%= quiz._id %>"> <%= quiz.title %> </a>
+					<input
+						class="input-id"
+						type="hidden"
+						name="quizId"
+						value="<%= quiz._id%>"
+					/>
+					<button
+						class="btn auth-btn"
+						type="button"
+						onclick="deleteQuizPrompt(this)"
+					>
+						Delete
+					</button>
+				</li>
+				<% } %>
 
-		<div class="delete-quiz-card">
-			<h3>
-				Are you sure? <br />
-				<span
-					>This quiz and all associated data will be deleted
-					permanently</span
-				>.
-			</h3>
-			<div class="btn-container">
-				<button
-					class="btn auth-btn btn-red"
-					type="button"
-					onclick="deleteProduct(this)"
-				>
-					Delete
-				</button>
-				<button
-					class="btn auth-btn"
-					type="button"
-					onclick="deleteQuizPromptCancel()"
-				>
-					Cancel
-				</button>
-			</div>
+				<div class="delete-quiz-card">
+					<h3>
+						Are you sure? <br />
+						<span
+							>This quiz and all associated data will be deleted
+							permanently</span
+						>.
+					</h3>
+					<div class="btn-container">
+						<button
+							class="btn auth-btn btn-red"
+							type="button"
+							onclick="deleteProduct(this)"
+						>
+							Delete
+						</button>
+						<button
+							class="btn auth-btn"
+							type="button"
+							onclick="deleteQuizPromptCancel()"
+						>
+							Cancel
+						</button>
+					</div>
+				</div>
+			</section>
+			<%- include('./includes/pagination.ejs') %>
 		</div>
-	</section>
-
-	<%- include('./includes/pagination.ejs') %>
+		<footer>
+			<p>Website created by <a href="#">David Williamson</a></p>
+		</footer>
+	</div>
 	<script src="/js/delete-quiz.js"></script>
 	<script src="/js/ui.js"></script>
 </body>

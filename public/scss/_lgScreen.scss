@@ -1,4 +1,8 @@
 
+  .body-minus-footer{
+    margin-bottom: 5rem;
+  }
+
   nav{
     display: flex;
     justify-content: space-around;
@@ -577,6 +581,33 @@ section.user-quiz-list{
   }
 }
 
+.main-container{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: $primary-color;
+  padding: 1.5rem 0;
+
+  p{
+    font-size: 1.6rem;
+    letter-spacing: -1px;
+    font-family: $font-2;
+    a{
+      font-weight: bold;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
+  
+}
 
 
 
