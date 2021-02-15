@@ -13,6 +13,7 @@ const navSlide = () => {
       nestedDropMenus.forEach(dropMenu => {
         dropMenu.classList.remove('active');
       })
+      burger.classList.remove('toggle2');
       isSecondDropDownActive = !isSecondDropDownActive;
       return;
 
@@ -36,6 +37,7 @@ const navSlide = () => {
   //toggle clicked sub dropdown
   nestedDropBtns.forEach((dropBtn, index) => {
     dropBtn.addEventListener('click', () => {
+      burger.classList.add('toggle2')
       if (isFirstDropDownActive) {
         isSecondDropDownActive = !isSecondDropDownActive;
         nestedDropMenus[index].classList.toggle('active')

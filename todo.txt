@@ -1,5 +1,4 @@
 Immediate
- - Fix mobile styling for quiz template
  - mobile styles for ddown
   
 
