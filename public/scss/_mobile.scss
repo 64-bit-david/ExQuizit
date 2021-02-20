@@ -1,6 +1,9 @@
 
 @media only screen and (max-width: 768px) {
 
+  nav{
+    padding: .5rem 0;
+  }
   .nav-links{
     position: fixed;
     right: 0px;
@@ -104,6 +107,7 @@
 
   .quiz-list-main{
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 4rem 7rem;
   }
 
 

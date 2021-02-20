@@ -11,6 +11,9 @@
     width: 65%;
     a, .nav-btn{
       font-size: 1.6rem;
+      @media only screen and (max-height: 420px) {
+        font-size: 1.3rem;
+      }
     }
 
     .dropdown-menu {
