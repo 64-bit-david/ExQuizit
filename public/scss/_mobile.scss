@@ -2,13 +2,20 @@
 @media only screen and (max-width: 768px) {
 
   nav{
-    padding: .5rem 0;
+    padding: 1rem 0;
+  }
+
+   .logo {
+    img{
+      max-height: 3.5rem;
+    }
   }
   .nav-links{
     position: fixed;
     right: 0px;
-    height: 94vh;
-    top: 6vh;
+    height: 100vh;
+    top: 0;
+    padding: 5rem 0;
     background-color: $primary-color;
     display: flex;
     flex-direction: column;
@@ -22,6 +29,7 @@
   .burger{
     display: block;
     cursor: pointer;
+    z-index: 100;
     
     &.toggle{
       .line1 {
@@ -55,6 +63,8 @@
     position: fixed;
     right: 0px;
     height: 94vh;
+    top: 0;
+    padding: 5rem 0;
     background-color: $primary-color;
     display: flex;
     flex-direction: column;
@@ -99,9 +109,14 @@
   }
 
   section.welcome {
-    padding: .5rem 3vw 0 3vw;
+    padding: 1.5rem 3vw 0 3vw;
     h2{
-      font-size: 1.9rem;
+      font-size: 2rem;
+      
+    }
+    p{
+      font-size: 1.6rem;
+      margin: 1.3rem 0 0 0 ;
     }
   }
 
@@ -139,9 +154,11 @@
 
 .create-q-main{
   margin: auto 10px;
-  input{
+  input, select{
     width: 95%;
+    background-color: white;
   }
+
 
 form{
   margin: auto;
@@ -159,11 +176,19 @@ form{
   .create-quiz-right{
     width: 95vw;
     margin: 0;
+
+   
   }
 
   .quiz-creator-btn{
     margin-top: 2rem;
     display: block;
+    width: 25rem;
+  }
+
+  .create-q-err, .create-q-err-empty{
+    padding: .7rem;
+    margin: .5rem 0 0 0;
   }
 }
 

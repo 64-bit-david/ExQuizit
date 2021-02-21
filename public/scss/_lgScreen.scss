@@ -13,7 +13,7 @@
 
   .logo {
     img{
-      max-height: 5vh;
+      max-height: 5rem;
     }
   }
 
@@ -193,6 +193,8 @@
       }
 
       .create-quiz-table {
+       
+        
         width: inherit;
           th{
           background-color: #fff;
@@ -216,6 +218,10 @@
       margin-left: 5rem;
       margin-top: 1.2rem;
       width: 44rem;
+
+      label{
+        margin-bottom: .3rem;
+      }
 
     }
     .create-quiz-right-item {
