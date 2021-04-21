@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { check, body } = require('express-validator');
-const nodemailer = require('nodemailer');
 
 
 const quizController = require('../controllers/quiz');

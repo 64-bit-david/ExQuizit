@@ -316,7 +316,30 @@
     }
     &.quiz-temp-desc{
       margin: 1.5rem 0;
+    }
+    &.quiz-category{
+      display: inline-block;
+      margin: 0;
+      padding: .75rem 1.5rem .75rem 1.5rem;
+      letter-spacing: .5px;
+      background-color: $primary-color;
 
+
+      &.Sport{
+        background-color: $sport-color;
+      }
+      &.Geography{
+        background-color: $geo-color;
+      }
+      &.Media{
+        background-color: $media-color;
+      }
+      &.History{
+        background-color: $history-color;
+      }
+      // &.Sport{
+      //   background-color: $sport-color;
+      // }
     }
   }
   a{

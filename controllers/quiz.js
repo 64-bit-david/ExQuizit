@@ -17,6 +17,7 @@ exports.getQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find().countDocuments()
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find()
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 
@@ -127,6 +128,9 @@ exports.getQuiz = async (req, res, nex) => {
       }
     }
 
+    const quizCategory = quiz.category.charAt(0).toUpperCase() +
+      quiz.category.slice(1);
+
     res.render('quiz-template', {
       path: '',
       quiz: quiz,
@@ -134,13 +138,14 @@ exports.getQuiz = async (req, res, nex) => {
       pageTitle: quiz.title,
       createdBy: createdBy,
       createdById: createdById,
-      highestScore: highestScore
+      highestScore: highestScore,
+      category: quizCategory
 
     });
   } catch (err) {
     const error = new Error(err);
     error.httpStatusCode = 500;
-    return next(error);
+    return next(err);
   }
 };
 
@@ -351,6 +356,7 @@ exports.getGeneralKnowledgeQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find({ category }).countDocuments();
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find({ category })
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 
@@ -378,6 +384,7 @@ exports.getHistoryQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find({ category }).countDocuments();
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find({ category })
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 
@@ -405,6 +412,7 @@ exports.getGeographyQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find({ category }).countDocuments();
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find({ category })
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 
@@ -433,6 +441,7 @@ exports.getMediaQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find({ category }).countDocuments();
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find({ category })
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 
@@ -459,6 +468,7 @@ exports.getSportQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find({ category }).countDocuments();
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find({ category })
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 
@@ -485,6 +495,7 @@ exports.getAllQuizzes = async (req, res, next) => {
     const numofQuizzes = await Quiz.find().countDocuments();
     totalQuizzes = numofQuizzes;
     const quizzes = await Quiz.find()
+      .sort({ _id: -1 })
       .skip((page - 1) * QUIZ_CARDS_PER_PAGE)
       .limit(QUIZ_CARDS_PER_PAGE);
 

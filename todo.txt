@@ -10,7 +10,7 @@ Error thrown on user log in - not sure what
 
 
 
-
+SEE MERN COURSE 198 for better ways to update db with mongoose!
 
     
 
@@ -25,14 +25,14 @@ STYLING
 
 
 Later important
-Implement Error Handling
-Implement Some testing
 Provide some descriptions for the quiztypes
 
 
 Later not so important
    - fix height of mobile nav dropdown to full screen height
         When you scroll with it active you see the gap where the nav is 
+
+https://www.youtube.com/watch?v=1NrHkjlWVhM    bout 52min
 
   
   

@@ -10,6 +10,9 @@
 					Created by:
 					<a href="/user/<%= createdById %>"><%= createdBy %></a>
 				</p>
+				<p class="quiz-temp-desc quiz-category <%=category%>">
+					<%= category %>
+				</p>
 				<p class="quiz-desc quiz-temp-desc"><%= quiz.description%></p>
 				<% if(highestScore) {%>
 				<p class="highest-score quiz-temp-desc"><%= highestScore %></p>
@@ -22,7 +25,7 @@
 							<tr>
 								<th>#</th>
 								<%if(quiz.qList.length > 0){%>
-								<th>Question</th>
+								<th></th>
 								<%}%>
 								<th>Answer</th>
 							</tr>
