@@ -1,0 +1,26 @@
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 10vw;
+
+  .form-control{
+    width: 40vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  .auth-btn {
+    align-self: flex-start;
+    margin-top: 2rem;
+  }
+}
+
+@include mdScreen{
+  .form-control.form-control-log-sign,
+  .form-control.form-control-contact{
+   width: 65vw !important;
+ }
+}

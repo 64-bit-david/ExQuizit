@@ -32,261 +32,49 @@ input, textarea{
 }
 
 
-//QUIZ CARD
-
-.quiz-card{
-  border: 1px solid black;
-  height: 30rem;
-  position: relative;
+//sticks footer to bottom of page if page height is < 100vh
+.main-container{
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
-  box-shadow: 0 8px 11px rgba(0,0,0,0.15);
-  transition: all .2s ease-in;
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23d6d6d6' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  justify-content: space-between;
+}
 
-
-
- &:hover{
-   box-shadow: 0 30px 50px rgba(0,0,0,0.15);
- }
-    .quiz-card-title {
-      display: inline-block;
-      background-color: #eee;
-      margin-top: 1.5rem;
-      margin-right: 10%;
-      padding: 1rem 1rem;
-
-      @include mobile{
-        padding: .5rem 1rem;
-      }
-
-      &.geography{
-        background-color: $geo-color;
-      }
-      &.history{
-        background-color: $history-color;
-      }
-      &.media{
-        background-color: $media-color;
-      }
-      &.sport{
-        background-color: $sport-color;
-      }
-      &.general.knowledge{
-        background-color: $primary-color;
-      }
-      &.create-quiz-card{
-        margin-top: 3rem;
-        font-size: 2rem;
-        background-color: $primary-color;
-      }
-
-      
-
-      h2{
-      font-size: 2.2rem;
-      color:$primary-text-color;
-      &.small-text{
-        font-size: 1.8rem;
-        @include mobile{
-          font-size: 1.6rem;
-
-        }
-      }
-    
-      @include mdScreen{
-        font-size: 2rem;
-      }
-
-    }
-  }
-    .quiz-card-desc{
-      margin: 2rem;
-      p{
-        font-size: 2rem;
-        margin-top: 2rem;
-        font-family: $font-2;
-        letter-spacing: -1px;
-        @include mobile{
-        margin: 0 0;
-        }
-
-        &.small-text{
-          font-size: 1.5rem;
-          @include mobile{
-            font-size: 1.3rem;
-          }
-        }
-        
-
-        @include mdScreen{
-          font-size: 1.8rem;
-          margin-top: 1rem;
-        }
-
-
-      }
-    }
-    .quiz-card-onhover {
-      transform: translateX(-50%);
-      opacity: 0;
-      visibility: hidden;
-      font-size: 2.2rem;
-      font-family: $font-2;
-      padding: .7rem 2rem;
-      background-color: $primary-color;
-      display: inline-block;
-      transition: all .2s ease-in;
-
-      @include mobile{
-          transform: translateX(0);
-          transform: translateY(-25%);
-          visibility: visible;
-          opacity: 1;
-          font-size: 1.7rem;
-        }
-      }
-
-    &:hover  .quiz-card-onhover {
-      transform: translateX(0);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    
-
-    //direct to quizcard not qcard hover!
-  
-
-
-  }
-  
-
-
-//quizTable
-
-
-.table-quiz {
-  font-family: 'Arial';
-  border-collapse: collapse;
-  // border: 2px solid $primary-color;
- 
-
-  th, td {
-    padding: 1rem .5rem;
-    text-align: center;
-  }
-  th {
-    color: $primary-text-color;
-    font-size: 2.2rem;
-    border-bottom: 2px solid $primary-color;
-    &.number-row{
-      border-right: 2px solid $primary-color;
-    }
-  }
-  td {
-    font-size: 2rem;
-    font-family: $font-2;
-  }
-
-  tr.question-rows {
-    font-size: 2rem;
-
-  }
+.body-minus-footer{
+  margin-bottom: 5rem;
 }
 
 
-.btn {
-  display: inline-block;
-  position: relative;
+
+footer {
+  display: flex;
+  justify-content: center;
   background-color: $primary-color;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 2rem;
-  font-family: $font-2;
-  padding: 1.2rem;
-  transition: all 0.2s;
-  cursor: pointer;
-  outline: none;
-  }
+  padding: 1.5rem 0;
 
-  .auth-btn{
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      background: $primary-color;
-      z-index: -1;
-    transition: all 0.2s;
-  
+  p{
+    font-size: 1.6rem;
+    letter-spacing: -1px;
+    font-family: $font-2;
+    a{
+      font-weight: bold;
+      &:hover{
+        text-decoration: underline;
+      }
     }
-    &:hover::before{
-      transform: scale(1.05);
-    }
-}
-
-.btn-red{
-    &::before {
-      background: $danger-color;
   }
 }
 
-.btn span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.2s;
-}
-
-
-//INPUTS
-
-input[type=text], input[type=number], input[type=password], input[type=email], select, textarea {
-  padding: 1.1rem;
-  width: 65%;
-  border: 1.5px solid rgb(172, 172, 172);
-  font-size: 1.6rem;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 0px;
-  letter-spacing: .25px;
-
-
-  &.invalid{
-    border-color: red;
-  }
-}
-
-input::placeholder{
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-select {
-  cursor: pointer;
-}
-
-
-textarea:focus, input:focus{
-  border-color: lighten($primary-color, 5%);
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 
 
-label{
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-
-
-
-
-@import 'lgScreen';
-@import 'midScreen';
+@import 'nav';
 @import 'mobile';
+@import 'forms';
+@import 'loginsignup';
+@import 'accountpage';
+@import 'quizpage';
+@import 'quizcard';
+@import 'createquiz';
+@import 'layout';
 

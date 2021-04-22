@@ -1,0 +1,72 @@
+
+input[type=text], input[type=number], input[type=password], input[type=email], select, textarea {
+  padding: 1.1rem;
+  width: 65%;
+  border: 1.5px solid rgb(172, 172, 172);
+  font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 0px;
+  letter-spacing: .25px;
+
+
+  &.invalid{
+    border-color: red;
+  }
+}
+
+input::placeholder{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+select {
+  cursor: pointer;
+}
+
+
+textarea:focus, input:focus{
+  border-color: lighten($primary-color, 5%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+label{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@include mdScreen{
+  input.contact-input{
+    width: 50vw;
+  }
+
+  .form-control.form-control-log-sign,
+  .form-control.form-control-contact{
+   width: 65vw !important;
+ }
+}
+
+@include mobile {
+  .form{
+    margin: 3vw;
+
+   .form-control {
+    width: 92vw !important;
+    flex-direction: column;
+
+    label {
+      align-self: flex-start;
+      margin: .5rem 0;
+      font-size: 1.7rem;
+    }
+
+    input, textarea{
+      margin: 0;
+      width: inherit;
+      border-width: 1px;
+    }
+  }
+  .auth-btn {
+    align-self: center;
+  }
+}
+}

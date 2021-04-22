@@ -17,7 +17,6 @@ $gen-k-color: (rgb(139, 219, 219));
 $font-1: 'Nanum Gothic', sans-serif;
 $font-2: 'Roboto Mono', monospace;
 
-
 @mixin mobile {
   @media only screen and (max-width: 768px) {
     @content;
@@ -29,6 +28,143 @@ $font-2: 'Roboto Mono', monospace;
     @content;
   }
 }
+
+
+
+
+
+
+//btns
+
+
+.btn {
+  display: inline-block;
+  position: relative;
+  background-color: $primary-color;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 2rem;
+  font-family: $font-2;
+  padding: 1.2rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  outline: none;
+  }
+
+  .auth-btn{
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: $primary-color;
+      z-index: -1;
+    transition: all 0.2s;
+  
+    }
+    &:hover::before{
+      transform: scale(1.05);
+    }
+}
+
+.btn-red{
+    &::before {
+      background: $danger-color;
+  }
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.2s;
+}
+
+
+
+//main page titles
+.welcome {
+  padding: 4rem 10vw 1rem 10vw;
+
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  h2{
+    font-size: 4rem;
+  }
+
+  h3{
+    font-size: 2.4rem;
+  }
+
+  p{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 3rem;
+  }
+
+  @include mdScreen{
+    padding: 3rem 10vw 0 10vw;
+    h2{
+      font-size: 3rem;
+    }
+    p{
+      font-size: 1.6rem;
+      margin: 0;
+      margin-top: 2rem;
+    }
+  }
+}
+
+@include mobile {
+  
+  section.welcome {
+    padding: 1.5rem 3vw 0 3vw;
+    h2{
+      font-size: 2rem;
+      
+    }
+    p{
+      font-size: 1.6rem;
+      margin: 1.3rem 0 0 0 ;
+    }
+  }
+}
+
+
+//error msg
+
+.error-msg p{
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  // background-color: rgb(253, 84, 84);
+  border: 3px solid $danger-color;
+  width: initial;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  margin-left: 10vw;
+  }
+
+  
+  //pagination
+  .page-links{
+    text-align: center;
+    a{
+    font-size: 2.2rem;
+    font-weight: bold;
+    &.active{
+      border-bottom: 2px solid $primary-text-color;
+    }
+    }
+  }
+
+
+
 
 
 

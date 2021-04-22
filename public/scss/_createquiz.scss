@@ -1,0 +1,179 @@
+
+  .create-quiz-header {
+    h3{
+       font-size: 4rem;
+     }
+    }
+    .create-q-main {
+      margin: 0 10vw;
+      @include mobile{
+        margin: auto 10px;
+      }
+     
+     .create-quiz-form-container{
+       display: flex;
+       
+       @include mobile{
+        flex-direction: column;
+        width: 100%;
+       }
+     }
+
+     input.create-q-input{
+       @include mdScreen{
+        width: 95%;
+        padding: .75rem;
+       }
+     }
+
+     form{
+       @include mobile {
+        margin: auto;
+       }
+     }
+     
+     
+     .create-quiz-left{
+       width: 65rem;
+ 
+       &.create-quiz-left-a{
+         width: 50vw;
+       }
+
+       @include mdScreen{
+        width: 50vw;
+       }
+       @include mobile{
+        width: inherit;
+       }
+ 
+       .create-quiz-table {
+         @include mdScreen{
+           form{
+            width: inherit;
+           }
+         }
+         width: inherit;
+           th{
+           background-color: #fff;
+           color: black;
+           width: inherit;
+           margin: 0;
+         }
+           tr {
+             color: black;
+             margin: 5rem;
+           }
+       }
+     }
+     input, select{
+       width: 85%;
+      @include mobile{
+        width: 95%;
+        background-color: white;
+      }
+     }
+   
+ 
+     .create-quiz-right {
+       margin-left: 5rem;
+       margin-top: 1.2rem;
+       width: 44rem;
+
+       @include mdScreen{
+        width: 35vw;
+       }
+       @include mobile{
+        width: 95vw;
+        margin: 0;
+       }
+ 
+       label{
+         margin-bottom: .3rem;
+       }
+ 
+     }
+     .create-quiz-right-item {
+       margin: 2rem 0;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+       
+ 
+     
+     }
+ 
+   .quiz-creator-btn {
+     margin-top: 5rem;
+     
+     @include mobile {
+      margin-top: 2rem;
+      display: block;
+      width: 25rem;
+     }
+   }
+ 
+   .quiz-creator-btn span:after {
+     content: '\25be';
+     position: absolute;
+     opacity: 0;
+     top: 0;
+     right: -2rem;
+     transition: 0.2s;
+   }
+ 
+   .remove-question span:after {
+     content: '\25b4';
+   }
+ 
+   .quiz-creator-btn:hover span {
+     padding-right: 2.5rem;
+   }
+ 
+   .quiz-creator-btn:hover span:after {
+     opacity: 1;
+     right: 0;
+   }
+ 
+   .post-created-quiz {
+     
+     font-size: 3rem;
+     margin-top: 2rem;
+ 
+     span:after {
+       content: '\25b8';
+     }
+   }
+   .create-q-err {
+     background-color: $danger-color;
+     font-size: 1rem;
+     
+     &.hide{
+       display: none;
+       visibility: hidden;
+       opacity: 0;
+     }
+   } 
+   .create-q-err-empty{
+     background-color: $danger-color;
+     font-size: 1rem;
+     &.hide{
+       display: none;
+       visibility: hidden;
+       opacity: 0;
+     }
+   }
+  .create-q-err, .create-q-err-empty{
+   @include mobile{
+    padding: .7rem;
+    margin: .5rem 0 0 0;
+    }
+   }
+ }
+ 
+ .create-quiz-error{
+   li{
+     font-size: 2rem;
+   }
+ }
+ 

@@ -1,5 +1,10 @@
-Immediate
+convert mobile page 
+check over ui on all devices, fix needed
+
+
   -  error handle when quiz score posted?
+
+
   
 
   
@@ -32,7 +37,7 @@ Later not so important
    - fix height of mobile nav dropdown to full screen height
         When you scroll with it active you see the gap where the nav is 
 
-https://www.youtube.com/watch?v=1NrHkjlWVhM    bout 52min
+
 
   
   

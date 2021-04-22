@@ -1,0 +1,322 @@
+.quiz-template-welcome {
+  @include mobile{
+    margin: .4rem;
+  }
+  h2{
+    font-size: 3.5rem;
+
+  @include mobile{
+    font-size: 3rem;
+    letter-spacing: -.5px;
+    line-height: 1;
+  }
+  }
+  p {
+    font-weight: normal;
+    letter-spacing: -.5px;
+  @include mobile{
+    letter-spacing: -.5px;
+    line-height: 1;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+    &.quiz-desc {
+      font-weight: bold;
+      font-family: $font-1;
+    @include mobile{
+      font-weight: bold;
+      font-size: 1.7rem;
+      margin-top: 1rem;
+    }
+    }
+    &.highest-score{
+      font-size: 1.7rem;
+      letter-spacing: -.5px;
+    }
+    &.quiz-temp-desc{
+      margin: 1.5rem 0;
+    }
+    &.quiz-category{
+      display: inline-block;
+      margin: 0;
+      padding: .75rem 1.5rem .75rem 1.5rem;
+      letter-spacing: .5px;
+      background-color: $primary-color;
+
+
+      &.Sport{
+        background-color: $sport-color;
+      }
+      &.Geography{
+        background-color: $geo-color;
+      }
+      &.Media{
+        background-color: $media-color;
+      }
+      &.History{
+        background-color: $history-color;
+      }
+      // &.Sport{
+      //   background-color: $sport-color;
+      // }
+    }
+  }
+  br{
+    @include mobile{
+        margin: 0;
+        width: 0;
+        height: 0;
+    }
+  }
+  a{
+    border-bottom: 1px solid $primary-text-color;
+    font-family: $font-2;
+    &:hover{
+      font-weight: bold;
+    }
+  }
+  
+}
+
+
+.quiz-template-container{
+  display: flex;
+  align-items: start;
+  margin: 0 10vw;
+
+  @include mobile{
+    margin: 5rem 2vw; 
+  }
+ 
+  .table-quiz-container{
+    @include mdScreen{
+      line-height: 1;
+    }
+
+  @include mobile{
+    width: 100%;
+    
+  }
+
+    .table-quiz{
+      width: 35vw;
+      margin-right: 3rem;
+      @include mdScreen{
+        width: 45vw;
+      }
+      @include mobile{
+        width: 100%;
+      }
+
+    }
+    .number-row {
+      width: 15%;
+    }
+  }
+
+  //questions table
+  
+  .answer-cell{
+    &.answer-correct{
+      background: rgb(155, 250, 147);
+    }
+    &.answer-wrong{
+      background-color: rgb(250, 136, 136);
+    }
+  
+  .answer-cell-text{
+    visibility: hidden;
+    opacity: 0;
+    z-index: 5;
+
+    &.active{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+  //question input
+  .quiz-input-card{
+    border: 2px solid $primary-color;
+    padding: 2rem;
+    margin-left: 5rem;
+    margin-top: 4rem;
+    width: 35rem;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mdScreen{
+      width: 30vw;
+    }
+    @include mobile{
+      position: fixed;
+      bottom: 10vh;
+      left: 0;
+      width: 96vw;
+      padding: 1rem;
+      margin: 0 2vw;
+      backdrop-filter: blur(4px);     
+    }
+    
+    h3{
+      font-size: 3rem;
+    }
+  }
+  .btn{
+    @include mobile{
+    font-size: 1.5rem;
+    }
+  }
+  .quiz-start{
+    &.hide{
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  .quiz-during{
+    opacity: 0;
+    visibility: hidden;
+      input{
+        font-size: 1.7rem;
+        color: #333;
+        width: 75%;
+        &::placeholder {
+        // color: #333;
+        font-size: 1.7rem;
+      }
+      &:focus::placeholder {
+        color: transparent;
+
+      }
+    }
+    .already-guessed{
+      visibility: hidden;
+      opacity: 0;
+      font-size: 1.6rem;
+      &.active{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    &.active{
+      opacity: 1;
+      visibility: visible;
+      @include mobile{
+        padding: .5rem 0;
+        bottom: auto;
+        top: 10rem;
+      }
+    }
+    &.hide{
+      display: none;
+    }
+    br{
+      @include mobile{
+        height: 0;
+        visibility: hidden;
+        display: none;
+      }
+    }
+  }
+  .quiz-end{
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    &.active{
+      opacity: 1;
+      visibility: visible;
+      @include mobile{
+        bottom: auto;
+      }
+    }
+  }
+  .quiz-timer{
+    font-size: 5rem;
+    font-weight: bold;
+    @include mobile{
+      font-size: 3rem;
+
+    }
+  }
+
+  .quiz-score{
+    font-size: 1.9rem;
+    margin-top: .5rem;
+    @include mobile{
+      margin: 0;
+    }
+
+
+    &.end-score p{
+      font-weight: 700;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    p.guest-msg{
+
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      margin-top: 1rem;
+      font-size: 1.8rem;
+      font-weight: 400;
+
+      &.hide{
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+      }
+  
+      a{
+        text-decoration: underline;
+      }
+  }
+
+  }
+}
+
+
+.table-quiz {
+  font-family: 'Arial';
+  border-collapse: collapse;
+  // border: 2px solid $primary-color;
+ 
+
+  th, td {
+    padding: 1rem .5rem;
+    text-align: center;
+  }
+  th {
+    color: $primary-text-color;
+    font-size: 2.2rem;
+    border-bottom: 2px solid $primary-color;
+    &.number-row{
+      border-right: 2px solid $primary-color;
+    }
+  }
+  td {
+    font-size: 2rem;
+    font-family: $font-2;
+
+    &.number-cells{
+      @include mobile{
+        padding: 0;
+        width: 4rem;
+      }
+    }
+  }
+
+
+
+  tr.question-rows {
+    font-size: 2rem;
+
+  }
+}

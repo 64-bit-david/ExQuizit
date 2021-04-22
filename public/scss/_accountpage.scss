@@ -1,0 +1,85 @@
+section.user-quiz-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80rem;
+  margin: 3rem 10vw;
+  @include mdScreen{
+  width: 70vw;
+  }
+  @include mobile{
+    width: 92vw;
+    margin: 0 3vw;
+  }
+
+  li{
+    margin: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid $primary-color;
+    a{
+      font-size: 2.2rem;
+      &:hover{
+        border-bottom: 1px solid $primary-text-color;
+      }
+    }
+  }
+  .delete-quiz-card{
+    position: fixed;
+    background: #fff;
+    border: 2px solid $primary-color;
+    flex-direction: column;
+    padding: 4rem;
+    top: 25%;
+    left: 20%;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    
+    @include mobile {
+      width: 95vw;
+      margin: 0;
+      left: auto;
+      padding: 2rem;
+    }
+
+    &.active{
+    display: flex;   
+    visibility: visible; 
+    opacity: 1;
+    }
+    
+    h3{
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    span{
+      font-size: 1.6rem;
+      @include mobile{
+        line-height: -1;
+      }
+    }
+
+    .btn-container{
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      @include mobile{
+        text-align: center;
+      }
+    }
+
+    .btn{
+      margin-right: 4rem;
+    }
+
+    .btn-red{
+      background-color: $danger-color;
+    }
+
+    
+  }
+}
