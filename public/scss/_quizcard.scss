@@ -13,7 +13,10 @@
       box-shadow: 0 30px 50px rgba(0,0,0,0.15);
     }
     @include mdScreen{
-      max-width: 200px;
+      max-width: 250px;
+    }
+    @media only screen and (max-width: 550px) {
+    max-width: 250px;
     }
 
     

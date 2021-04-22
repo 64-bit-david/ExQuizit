@@ -1,6 +1,7 @@
 //Fonts
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 //variables
 $primary-color: #00c9c8;
@@ -16,6 +17,7 @@ $gen-k-color: (rgb(139, 219, 219));
 
 $font-1: 'Nanum Gothic', sans-serif;
 $font-2: 'Roboto Mono', monospace;
+$font-logo: 'Dancing Script', cursive;
 
 @mixin mobile {
   @media only screen and (max-width: 768px) {
@@ -106,6 +108,10 @@ $font-2: 'Roboto Mono', monospace;
     font-weight: bold;
     margin-top: 3rem;
   }
+  &.contact-welcome{
+    margin-bottom: 4rem;
+  }
+
 
   @include mdScreen{
     padding: 3rem 10vw 0 10vw;
@@ -121,9 +127,10 @@ $font-2: 'Roboto Mono', monospace;
 }
 
 @include mobile {
-  
   section.welcome {
+    text-align: center;
     padding: 1.5rem 3vw 0 3vw;
+    margin-top: 3rem;
     h2{
       font-size: 2rem;
       

@@ -35,14 +35,16 @@ label{
 }
 
 @include mdScreen{
-  input.contact-input{
-    width: 50vw;
-  }
+  form.contact-form{
+    input.contact-input{
+     width: 50vw;
+    }
 
   .form-control.form-control-log-sign,
   .form-control.form-control-contact{
-   width: 65vw !important;
+   width: 65vw;
  }
+}
 }
 
 @include mobile {
@@ -50,7 +52,7 @@ label{
     margin: 3vw;
 
    .form-control {
-    width: 92vw !important;
+    width: 92vw;
     flex-direction: column;
 
     label {

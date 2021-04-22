@@ -6,11 +6,11 @@
 			<%- include('./includes/nav.ejs') %> <% if(errorMessage) { %>
 			<div class="error-msg"><p><%= errorMessage %></p></div>
 			<% } %>
-			<section class="welcome">
+			<section class="welcome contact-welcome">
 				<h2>Contact</h2>
 			</section>
 			<form
-				class="form"
+				class="form contact-form"
 				action="/contact"
 				method="POST"
 				novalidate
