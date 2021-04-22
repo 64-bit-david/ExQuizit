@@ -3,129 +3,132 @@
 <body>
 	<div class="main-container">
 		<div class="body-minus-footer">
-			<%- include('../includes/nav.ejs') %> <% if(errorMessage) { %>
-			<div class="error-msg"><p><%= errorMessage %></p></div>
-			<% } %>
-			<section class="welcome">
-				<h2>Create your own quiz for others to try!</h2>
-				<!-- Need the id for script to work! -->
-				<h3 class="create-quiz-header" id="quiz-type">Type B</h3>
-				<p>Fill in all the fields, the upload the quiz!</p>
-			</section>
+			<%- include('../includes/nav.ejs') %>
+			<main>
+				<% if(errorMessage) { %>
+				<div class="error-msg"><p><%= errorMessage %></p></div>
+				<% } %>
+				<div class="welcome">
+					<h2>Create your own quiz for others to try!</h2>
+					<!-- Need the id for script to work! -->
+					<h3 class="create-quiz-header" id="quiz-type">Type B</h3>
+					<p>Fill in all the fields, the upload the quiz!</p>
+				</div>
 
-			<section class="create-q-main">
-				<form action="/create-quiz" method="POST">
-					<div class="create-quiz-form-container">
-						<div class="create-quiz-left">
-							<table class="table-quiz create-quiz-table">
-								<tr>
-									<th>#</th>
-									<th>Answer</th>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>
-										<div class="form-control">
-											<input
-												class="create-q-input"
-												type="text"
-												name="answer"
-												id="answer"
-												placeholder="Answer 1"
-											/>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>2</td>
+				<div class="create-q-main">
+					<form action="/create-quiz" method="POST">
+						<div class="create-quiz-form-container">
+							<div class="create-quiz-left">
+								<table class="table-quiz create-quiz-table">
+									<tr>
+										<th>#</th>
+										<th>Answer</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>
+											<div class="form-control">
+												<input
+													class="create-q-input"
+													type="text"
+													name="answer"
+													id="answer"
+													placeholder="Answer 1"
+												/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>2</td>
 
-									<td>
-										<div class="form-control">
-											<input
-												class="create-q-input"
-												type="text"
-												name="answer"
-												id="answer"
-												placeholder="Answer 2"
-											/>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>3</td>
+										<td>
+											<div class="form-control">
+												<input
+													class="create-q-input"
+													type="text"
+													name="answer"
+													id="answer"
+													placeholder="Answer 2"
+												/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>3</td>
 
-									<td>
-										<div class="form-control">
-											<input
-												class="create-q-input"
-												type="text"
-												name="answer"
-												id="answer"
-												placeholder="Answer 3"
-											/>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>
-										<div class="form-control">
-											<input
-												class="create-q-input"
-												type="text"
-												name="answer"
-												id="answer"
-												placeholder="Answer 4"
-											/>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>
-										<div class="form-control">
-											<input
-												class="create-q-input"
-												type="text"
-												name="answer"
-												id="answer"
-												placeholder="Answer 5"
-											/>
-										</div>
-									</td>
-								</tr>
-							</table>
-							<button
-								type="button"
-								class="btn quiz-creator-btn add-question"
-							>
-								<span>Add Question </span>
-							</button>
-							<button
-								type="button"
-								class="btn quiz-creator-btn remove-question"
-							>
-								<span>Remove Question </span>
-							</button>
+										<td>
+											<div class="form-control">
+												<input
+													class="create-q-input"
+													type="text"
+													name="answer"
+													id="answer"
+													placeholder="Answer 3"
+												/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="form-control">
+												<input
+													class="create-q-input"
+													type="text"
+													name="answer"
+													id="answer"
+													placeholder="Answer 4"
+												/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>
+											<div class="form-control">
+												<input
+													class="create-q-input"
+													type="text"
+													name="answer"
+													id="answer"
+													placeholder="Answer 5"
+												/>
+											</div>
+										</td>
+									</tr>
+								</table>
+								<button
+									type="button"
+									class="btn quiz-creator-btn add-question"
+								>
+									<span>Add Question </span>
+								</button>
+								<button
+									type="button"
+									class="btn quiz-creator-btn remove-question"
+								>
+									<span>Remove Question </span>
+								</button>
+							</div>
+
+							<%- include('../includes/create-quiz-meta.ejs') %>
 						</div>
-
-						<%- include('../includes/create-quiz-meta.ejs') %>
-					</div>
-					<button
-						class="btn quiz-creator-btn post-created-quiz"
-						type="submit"
-					>
-						<span> Create! </span>
-					</button>
-					<div class="btn error-msg create-q-err hide">
-						<h2>Must have at least 5 Questions!</h2>
-					</div>
-					<div class="btn error-msg create-q-err-empty hide">
-						<h2>Ensure all fields have values!</h2>
-					</div>
-					<input type="hidden" value="typeB" name="quizType" />
-				</form>
-			</section>
+						<button
+							class="btn quiz-creator-btn post-created-quiz"
+							type="submit"
+						>
+							<span> Create! </span>
+						</button>
+						<div class="btn error-msg create-q-err hide">
+							<h2>Must have at least 5 Questions!</h2>
+						</div>
+						<div class="btn error-msg create-q-err-empty hide">
+							<h2>Ensure all fields have values!</h2>
+						</div>
+						<input type="hidden" value="typeB" name="quizType" />
+					</form>
+				</div>
+			</main>
 		</div>
 		<footer>
 			<p>Website created by <a href="#">David Williamson</a></p>

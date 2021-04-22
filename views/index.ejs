@@ -3,34 +3,39 @@
 	<div class="main-container">
 		<div class="body-minus-footer">
 			<%- include('./includes/nav.ejs') %>
+			<main>
+				<div class="welcome">
+					<h2>
+						Welcome! Test your knowledge and see how you stack up
+						<br />against user created quizzes
+					</h2>
+					<p>Click on a quiz below to get started</p>
+				</div>
 
-			<section class="welcome">
-				<h2>
-					Test your knowledge and see how you stack up against other
-					<br />Ex-Quiz-It users!
-				</h2>
-				<p>Click on a quiz below to get started</p>
-			</section>
-
-			<section class="quiz-list-main">
-				<% for (let quiz of quizzes) { %>
-				<a href="/quizzes/<%= quiz._id %>">
-					<div class="quiz-card">
-						<div class="quiz-card-content">
-							<div class="quiz-card-title <%= quiz.category %>">
-								<h2><%= quiz.title %></h2>
+				<div class="quiz-list-main">
+					<% for (let quiz of quizzes) { %>
+					<section>
+						<a href="/quizzes/<%= quiz._id %>">
+							<div class="quiz-card">
+								<div class="quiz-card-content">
+									<div
+										class="quiz-card-title <%= quiz.category %>"
+									>
+										<h2><%= quiz.title %></h2>
+									</div>
+									<div class="quiz-card-desc">
+										<p><%- quiz.description%></p>
+									</div>
+									<div class="quiz-card-onhover">
+										<p>Take the Quiz!</p>
+									</div>
+								</div>
 							</div>
-							<div class="quiz-card-desc">
-								<p><%- quiz.description%></p>
-							</div>
-							<div class="quiz-card-onhover">
-								<p>Take the Quiz!</p>
-							</div>
-						</div>
-					</div>
-				</a>
-				<% } %>
-			</section>
+						</a>
+					</section>
+					<% } %>
+				</div>
+			</main>
 			<%- include('./includes/pagination.ejs')%>
 		</div>
 		<footer>

@@ -4,47 +4,52 @@
 	<div class="main-container">
 		<div class="body-minus-footer">
 			<%- include('../includes/nav.ejs') %>
-			<section class="welcome">
-				<% if(errorMessage) { %>
-				<div class="error-msg"><p><%= errorMessage %></p></div>
-				<% } %>
-				<h2>Sign Up</h2>
-			</section>
+			<main>
+				<div class="welcome">
+					<% if(errorMessage) { %>
+					<div class="error-msg"><p><%= errorMessage %></p></div>
+					<% } %>
+					<h2>Sign Up</h2>
+				</div>
 
-			<form class="form" action="/signup" method="POST" novalidate>
-				<div class="form-control form-control-log-sign">
-					<label for="email">Email</label>
-					<input
-						class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
-						type="email"
-						name="email"
-						id="email"
-						value="<%= oldInput.email%>"
-					/>
-				</div>
-				<div class="form-control form-control-log-sign">
-					<label for="username">Username</label>
-					<input class="<%= validationErrors.find(e => e.param ===
-					"username") ? 'invalid': '' %>" type="text" name="username"
-					id="username" value="<%= oldInput.username%>" />
-				</div>
-				<div class="form-control form-control-log-sign">
-					<label for="password">Password</label>
-					<input class="<%= validationErrors.find(e => e.param ===
-					"password") ? 'invalid': '' %>" type="password"
-					name="password" id="password" value="<%=
-					oldInput.password%>" />
-				</div>
-				<div class="form-control form-control-log-sign">
-					<label for="confirmPassword">Confirm Password</label>
-					<input class="<%= validationErrors.find(e => e.param ===
-					"password") ? 'invalid': '' %>" type="password"
-					type="password" name="confirmPassword" id="confirmPassword"
-					value="<%= oldInput.confirmPassword%>" />
-				</div>
-				<button class="btn auth-btn" type="submit">Sign Up!</button>
-			</form>
+				<form class="form" action="/signup" method="POST" novalidate>
+					<div class="form-control form-control-log-sign">
+						<label for="email">Email</label>
+						<input
+							class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+							type="email"
+							name="email"
+							id="email"
+							value="<%= oldInput.email%>"
+						/>
+					</div>
+					<div class="form-control form-control-log-sign">
+						<label for="username">Username</label>
+						<input class="<%= validationErrors.find(e => e.param ===
+						"username") ? 'invalid': '' %>" type="text"
+						name="username" id="username" value="<%=
+						oldInput.username%>" />
+					</div>
+					<div class="form-control form-control-log-sign">
+						<label for="password">Password</label>
+						<input class="<%= validationErrors.find(e => e.param ===
+						"password") ? 'invalid': '' %>" type="password"
+						name="password" id="password" value="<%=
+						oldInput.password%>" />
+					</div>
+					<div class="form-control form-control-log-sign">
+						<label for="confirmPassword">Confirm Password</label>
+						<input class="<%= validationErrors.find(e => e.param ===
+						"password") ? 'invalid': '' %>" type="password"
+						type="password" name="confirmPassword"
+						id="confirmPassword" value="<%=
+						oldInput.confirmPassword%>" />
+					</div>
+					<button class="btn auth-btn" type="submit">Sign Up!</button>
+				</form>
+			</main>
 		</div>
+
 		<footer>
 			<p>Website created by <a href="#">David Williamson</a></p>
 		</footer>

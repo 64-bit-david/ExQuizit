@@ -127,7 +127,7 @@ $font-logo: 'Dancing Script', cursive;
 }
 
 @include mobile {
-  section.welcome {
+  .welcome {
     text-align: center;
     padding: 1.5rem 3vw 0 3vw;
     margin-top: 3rem;

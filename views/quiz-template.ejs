@@ -4,120 +4,131 @@
 	<div class="main-container">
 		<div class="body-minus-footer">
 			<%- include('./includes/nav.ejs') %>
-			<section class="welcome quiz-template-welcome">
-				<h2><%= quiz.title %></h2>
-				<p class="quiz-temp-desc">
-					Created by:
-					<a href="/user/<%= createdById %>"><%= createdBy %></a>
-				</p>
-				<p class="quiz-temp-desc quiz-category <%=category%>">
-					<%= category %>
-				</p>
-				<p class="quiz-desc quiz-temp-desc"><%= quiz.description%></p>
-				<% if(highestScore) {%>
-				<p class="highest-score quiz-temp-desc"><%= highestScore %></p>
-				<% } %>
-			</section>
-			<section class="quiz">
-				<div class="quiz-template-container">
-					<div class="table-quiz-container">
-						<table class="table-quiz">
-							<tr>
-								<th>#</th>
-								<%if(quiz.qList.length > 0){%>
-								<th></th>
-								<%}%>
-								<th>Answer</th>
-							</tr>
-							<% for(let i = 0; i < quiz.aList.length; i++) { %>
-							<tr class="question-rows">
-								<td class="number-cells"><%= i + 1%></td>
-								<%if(quiz.qList.length > 0){%>
-								<td><%= quiz.qList[i]%></td>
-								<%}%>
-								<td class="answer-cell">
-									<span class="answer-cell-text"
-										><%= quiz.aList[i]%></span
-									>
-								</td>
-							</tr>
-							<% } %>
-						</table>
-					</div>
-					<div class="quiz-input-container">
-						<div class="quiz-input-card quiz-start">
-							<div class="quiz-timer">
-								<span class="min-left"><%=quiz.time%></span
-								>:<span class="sec-left">00</span>
-							</div>
-
-							<br />
-							<button class="btn auth-btn start-quiz-btn">
-								Click to Start
-							</button>
-						</div>
-						<div class="quiz-input-card quiz-during">
-							<div class="quiz-timer">
-								<span class="min-left" id="minutes-left"
-									><%=quiz.time%></span
-								>:<span class="sec-left" id="seconds-left"
-									>00</span
-								>
-							</div>
-							<input
-								id="answer-input"
-								type="text"
-								placeholder="Enter Answer here"
-							/>
-							<div class="quiz-score during-score">
-								<p>
-									<span class="total-correct-during">0</span>
-									/
-									<span class="total-questions"
-										><%= quiz.aList.length%></span
-									>
-								</p>
-							</div>
-							<div class="already-guessed">
-								<p>Already Guessed!</p>
-							</div>
-							<button class="btn auth-btn during-quiz-btn">
-								End Quiz?
-							</button>
-						</div>
-						<div class="quiz-input-card quiz-end">
-							<h3>Quiz Finished!</h3>
-							<br />
-							<div class="quiz-score end-score">
-								<p>
-									You scored
-									<span class="total-correct-end"> 0</span>
-									/
-									<span class="total-questions"
-										><%= quiz.aList.length%></span
-									>
-								</p>
-								<p class="guest-msg hide">
-									<a href="/signup">Sign up</a> or
-									<a href="/login">Login</a> to save future
-									results!
-								</p>
-							</div>
-						</div>
-					</div>
+			<main>
+				<div class="welcome quiz-template-welcome">
+					<h2><%= quiz.title %></h2>
+					<p class="quiz-temp-desc">
+						Created by:
+						<a href="/user/<%= createdById %>"><%= createdBy %></a>
+					</p>
+					<p class="quiz-temp-desc quiz-category <%=category%>">
+						<%= category %>
+					</p>
+					<p class="quiz-desc quiz-temp-desc">
+						<%= quiz.description%>
+					</p>
+					<% if(highestScore) {%>
+					<p class="highest-score quiz-temp-desc">
+						<%= highestScore %>
+					</p>
+					<% } %>
 				</div>
-				<input id="quiz-id" type="hidden" value="<%= quiz._id %>" />
-				<input
-					id="quiz-user"
-					type="hidden"
-					value="<%= createdById %>"
-				/>
-				<input
-					id="user-logged-in"
-					type="hidden"
-					value="<%= userId %>"
-				/>
-			</section>
+				<div class="quiz">
+					<div class="quiz-template-container">
+						<div class="table-quiz-container">
+							<table class="table-quiz">
+								<tr>
+									<th>#</th>
+									<%if(quiz.qList.length > 0){%>
+									<th></th>
+									<%}%>
+									<th>Answer</th>
+								</tr>
+								<% for(let i = 0; i < quiz.aList.length; i++) {
+								%>
+								<tr class="question-rows">
+									<td class="number-cells"><%= i + 1%></td>
+									<%if(quiz.qList.length > 0){%>
+									<td><%= quiz.qList[i]%></td>
+									<%}%>
+									<td class="answer-cell">
+										<span class="answer-cell-text"
+											><%= quiz.aList[i]%></span
+										>
+									</td>
+								</tr>
+								<% } %>
+							</table>
+						</div>
+						<div class="quiz-input-container">
+							<div class="quiz-input-card quiz-start">
+								<div class="quiz-timer">
+									<span class="min-left"><%=quiz.time%></span
+									>:<span class="sec-left">00</span>
+								</div>
+
+								<br />
+								<button class="btn auth-btn start-quiz-btn">
+									Click to Start
+								</button>
+							</div>
+							<div class="quiz-input-card quiz-during">
+								<div class="quiz-timer">
+									<span class="min-left" id="minutes-left"
+										><%=quiz.time%></span
+									>:<span class="sec-left" id="seconds-left"
+										>00</span
+									>
+								</div>
+								<input
+									id="answer-input"
+									type="text"
+									placeholder="Enter Answer here"
+								/>
+								<div class="quiz-score during-score">
+									<p>
+										<span class="total-correct-during"
+											>0</span
+										>
+										/
+										<span class="total-questions"
+											><%= quiz.aList.length%></span
+										>
+									</p>
+								</div>
+								<div class="already-guessed">
+									<p>Already Guessed!</p>
+								</div>
+								<button class="btn auth-btn during-quiz-btn">
+									End Quiz?
+								</button>
+							</div>
+							<div class="quiz-input-card quiz-end">
+								<h3>Quiz Finished!</h3>
+								<br />
+								<div class="quiz-score end-score">
+									<p>
+										You scored
+										<span class="total-correct-end">
+											0</span
+										>
+										/
+										<span class="total-questions"
+											><%= quiz.aList.length%></span
+										>
+									</p>
+									<p class="guest-msg hide">
+										<a href="/signup">Sign up</a> or
+										<a href="/login">Login</a> to save
+										future results!
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input id="quiz-id" type="hidden" value="<%= quiz._id %>" />
+					<input
+						id="quiz-user"
+						type="hidden"
+						value="<%= createdById %>"
+					/>
+					<input
+						id="user-logged-in"
+						type="hidden"
+						value="<%= userId %>"
+					/>
+				</div>
+			</main>
 		</div>
 		<footer>
 			<p>Website created by <a href="#">David Williamson</a></p>

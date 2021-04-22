@@ -3,35 +3,40 @@
 <body>
 	<div class="main-container">
 		<div class="body-minus-footer">
-			<%- include('./includes/nav.ejs') %> <% if(errorMessage) { %>
-			<div class="error-msg"><p><%= errorMessage %></p></div>
-			<% } %>
-			<section class="welcome contact-welcome">
-				<h2>Contact</h2>
-			</section>
-			<form
-				class="form contact-form"
-				action="/contact"
-				method="POST"
-				novalidate
-				role="form"
-			>
-				<div class="form-control form-control-contact">
-					<label for="email">Your Email</label>
-					<input type="email" id="email" name="email" />
+			<%- include('./includes/nav.ejs') %>
+			<main>
+				<% if(errorMessage) { %>
+				<div class="error-msg"><p><%= errorMessage %></p></div>
+				<% } %>
+				<div class="welcome contact-welcome">
+					<h2>Contact</h2>
 				</div>
+				<form
+					class="form contact-form"
+					action="/contact"
+					method="POST"
+					novalidate
+					role="form"
+				>
+					<div class="form-control form-control-contact">
+						<label for="email">Your Email</label>
+						<input type="email" id="email" name="email" />
+					</div>
 
-				<div class="form-control form-control-contact">
-					<label for="message">Message</label>
-					<textarea
-						type="text"
-						id="message"
-						name="message"
-						rows="8"
-					></textarea>
-				</div>
-				<button class="btn auth-btn" type="submit">Send Message</button>
-			</form>
+					<div class="form-control form-control-contact">
+						<label for="message">Message</label>
+						<textarea
+							type="text"
+							id="message"
+							name="message"
+							rows="8"
+						></textarea>
+					</div>
+					<button class="btn auth-btn" type="submit">
+						Send Message
+					</button>
+				</form>
+			</main>
 		</div>
 		<footer>
 			<p>Website created by <a href="#">David Williamson</a></p>

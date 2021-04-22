@@ -3,64 +3,75 @@
 	<div class="main-container">
 		<div class="body-minus-footer">
 			<%- include('../includes/nav.ejs') %>
-
-			<section class="welcome">
+			<main>
+			<div class="welcome">
 				<% if(errorMessage) { %>
 				<div class="error-msg"><p><%= errorMessage %></p></div>
 				<% } %>
 				<h2>Click on a quiz type to create a quiz</h2>
-			</section>
+			</div>
 
-			<section class="quiz-list-main">
-				<a href="/create-quiz/create-quiz-a">
-					<div class="quiz-card">
-						<div class="quiz-card-content">
-							<div class="create-quiz-card quiz-card-title">
-								<h2>Quiz A</h2>
-							</div>
-							<div class="quiz-card-desc">
-								<p>
-									Create a quiz with a list of answers, and a
-									hint for each.
-								</p>
-							</div>
-							<div class="quiz-card-onhover create-quiz-card">
-								<p class="quiz-card-info">Create Quiz Type A</p>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href="/create-quiz/create-quiz-b">
-					<div class="quiz-card">
-						<div class="quiz-card-content">
-							<div class="create-quiz-card quiz-card-title">
-								<h2>Quiz B</h2>
-							</div>
-							<div class="quiz-card-desc">
-								<p>
-									Create a quiz that will contain a list of
-									answers only.
-								</p>
-							</div>
-							<div class="quiz-card-onhover create-quiz-card">
-								<p class="quiz-card-info">Create Quiz Type B</p>
+			<div class="quiz-list-main">
+				<section>
+					<a href="/create-quiz/create-quiz-a">
+						<div class="quiz-card">
+							<div class="quiz-card-content">
+								<div class="create-quiz-card quiz-card-title">
+									<h2>Quiz A</h2>
+								</div>
+								<div class="quiz-card-desc">
+									<p>
+										Create a quiz with a list of answers,
+										and a hint for each.
+									</p>
+								</div>
+								<div class="quiz-card-onhover create-quiz-card">
+									<p class="quiz-card-info">
+										Create Quiz Type A
+									</p>
+								</div>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</section>
+				<section>
+					<a href="/create-quiz/create-quiz-b">
+						<div class="quiz-card">
+							<div class="quiz-card-content">
+								<div class="create-quiz-card quiz-card-title">
+									<h2>Quiz B</h2>
+								</div>
+								<div class="quiz-card-desc">
+									<p>
+										Create a quiz that will contain a list
+										of answers only.
+									</p>
+								</div>
+								<div class="quiz-card-onhover create-quiz-card">
+									<p class="quiz-card-info">
+										Create Quiz Type B
+									</p>
+								</div>
+							</div>
+						</div>
+					</a>
+				</section>
 				<!-- <a href="/create-quiz/create-quiz-c"> -->
-				<div class="quiz-card">
-					<div class="quiz-card-content">
-						<div class="create-quiz-card quiz-card-title">
-							<h2>Quiz C</h2>
-						</div>
-						<div class="quiz-card-onhover create-quiz-card">
-							<p class="quiz-card-info">Coming Soon!</p>
+				<section>
+					<div class="quiz-card">
+						<div class="quiz-card-content">
+							<div class="create-quiz-card quiz-card-title">
+								<h2>Quiz C</h2>
+							</div>
+							<div class="quiz-card-onhover create-quiz-card">
+								<p class="quiz-card-info">Coming Soon!</p>
+							</div>
 						</div>
 					</div>
-				</div>
+				</section>
 				<!-- </a> -->
-			</section>
+			</main>
+			</div>
 		</div>
 		<footer>
 			<p>Website created by <a href="#">David Williamson</a></p>

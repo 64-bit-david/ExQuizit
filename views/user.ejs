@@ -4,28 +4,31 @@
 	<div class="main-container">
 		<div class="body-minus-footer">
 			<%- include('./includes/nav.ejs') %>
+			<main>
+				<div class="welcome">
+					<h2>Quizzes made by <%=user.username%></h2>
+				</div>
 
-			<section class="welcome">
-				<h2>Quizzes made by <%=user.username%></h2>
-			</section>
-
-			<section class="quiz-list-main">
-				<% for (let quiz of quizzes) { %>
-				<a href="/quizzes/<%= quiz._id %>">
-					<div class="quiz-card">
-						<div class="quiz-card-content">
-							<div class="quiz-card-title <%= quiz.category %>">
-								<h2><%= quiz.title %></h2>
+				<div class="quiz-list-main">
+					<% for (let quiz of quizzes) { %>
+					<a href="/quizzes/<%= quiz._id %>">
+						<div class="quiz-card">
+							<div class="quiz-card-content">
+								<div
+									class="quiz-card-title <%= quiz.category %>"
+								>
+									<h2><%= quiz.title %></h2>
+								</div>
+								<div class="quiz-card-desc">
+									<p><%- quiz.description%></p>
+								</div>
+								<p class="quiz-card-onhover">Take the Quiz!</p>
 							</div>
-							<div class="quiz-card-desc">
-								<p><%- quiz.description%></p>
-							</div>
-							<p class="quiz-card-onhover">Take the Quiz!</p>
 						</div>
-					</div>
-				</a>
-				<% } %>
-			</section>
+					</a>
+					<% } %>
+				</div>
+			</main>
 			<%- include('./includes/pagination.ejs') %>
 		</div>
 		<footer>
