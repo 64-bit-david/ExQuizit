@@ -111,6 +111,7 @@
  
    .quiz-creator-btn {
      margin-top: 5rem;
+     color: $primary-text-color;
      
      @include mobile {
       margin-top: 2rem;

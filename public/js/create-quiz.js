@@ -120,6 +120,7 @@ const qCLastRowStyler = () => {
 		cell2.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell2.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Question ${cell1Value}`);
+		cell2.childNodes[0].childNodes[0].setAttribute('title', `question-${cell1Value}`);
 
 		cell3.innerHTML = '<div class="form-control"></div>'
 		cell3.childNodes[0].innerHTML = '<input>';
@@ -128,6 +129,8 @@ const qCLastRowStyler = () => {
 		cell3.childNodes[0].childNodes[0].setAttribute('id', 'answer');
 		cell3.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell3.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
+		cell3.childNodes[0].childNodes[0].setAttribute('title', `answer-${cell1Value}`);
+
 	}
 
 	if (quizType.innerHTML == 'Type B') {
@@ -145,6 +148,8 @@ const qCLastRowStyler = () => {
 		cell2.childNodes[0].childNodes[0].setAttribute('id', 'answer');
 		cell2.childNodes[0].childNodes[0].setAttribute('class', 'create-q-input');
 		cell2.childNodes[0].childNodes[0].setAttribute('placeholder', `Answer ${cell1Value}`);
+		cell2.childNodes[0].childNodes[0].setAttribute('title', `answer-${cell1Value}`);
+
 	}
 
 	if (quizType.innerHTML == 'Type C') {
